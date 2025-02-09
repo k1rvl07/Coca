@@ -1,0 +1,75 @@
+@use "sass:map";
+@use "sass:list";
+@use "sass:math";
+@use "sass:meta";
+
+@use "./maps.scss" as *;
+@use "./lists.scss" as *;
+@use "./mixins.scss" as *;
+@use "./functions.scss" as *;
+
+@each $item in $text-list {
+  $name: list.nth($item, 1);
+  $font-family: list.nth($item, 2);
+  $font-weight: list.nth($item, 3);
+  $font-style: list.nth($item, 4);
+  $color-name: list.nth($item, 5);
+  $font-size: list.nth($item, 6);
+  $desktop-font-size: list.nth($item, 7);
+
+  %#{$name} {
+    font-family: $font-family;
+    font-weight: font-weight($font-weight);
+    font-style: $font-style;
+    font-size: $font-size;
+    color: color($color-name);
+    @if $font-size != $desktop-font-size {
+      @include respond-to(desktop) {
+        font-size: $desktop-font-size;
+      }
+    }
+  }
+}
+
+@each $item in $dynamic-text-list {
+  $name: list.nth($item, 1);
+  $font-family: list.nth($item, 2);
+  $font-weight: list.nth($item, 3);
+  $font-style: list.nth($item, 4);
+  $color: list.nth($item, 5);
+  $hover-color: list.nth($item, 6);
+  $font-size: list.nth($item, 7);
+  $desktop-font-size: list.nth($item, 8);
+
+  %#{$name} {
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+    font-family: $font-family;
+    font-weight: font-weight($font-weight);
+    font-style: $font-style;
+    color: $color;
+    font-size: $font-size;
+    &:hover {
+      transition: all 0.5s ease-in-out;
+      color: $hover-color;
+    }
+    @if $font-size != $desktop-font-size {
+      @include respond-to(desktop) {
+        font-size: $desktop-font-size;
+      }
+    }
+  }
+}
+
+%container {
+  @include size(default, 335px);
+  @include spacing(margin, x, auto);
+  @include respond-to(desktop) {
+    @include size(default, 1200px);
+  }
+}
+
+%shared_button-black {
+  background-color: color(neutral-100);
+  border-radius: 100px;
+}

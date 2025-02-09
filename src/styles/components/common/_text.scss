@@ -1,0 +1,28 @@
+@use "@utils-scss" as *;
+
+.text {
+    &-main-image {
+        @extend %home_text-main-image;
+    }
+    &-title-heading {
+        @extend %shared_text-title-heading;
+    }
+    &-title-subheading {
+        @extend %shared_text-title-subheading;
+    }
+    &-card-statistic-name {
+        @extend %home_text-card-statistic-name;
+    }
+    &-card-statistic-price {
+        @extend %home_text-card-statistic-price;
+    }
+    &-card-statistic-percent-up {
+        @extend %home_text-card-statistic-percent-up;
+    }
+    &-card-statistic-percent-down {
+        @extend %home_text-card-statistic-percent-down;
+    }
+    &-card-statistic-period {
+        @extend %home_text-card-statistic-period;
+    }
+}

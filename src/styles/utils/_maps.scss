@@ -1,0 +1,64 @@
+@use 'sass:map';
+@use 'sass:list';
+@use 'sass:math';
+@use 'sass:meta';
+
+$colors-map: (
+  "iris-main": #2E8DFF,
+  "iris-surface": #F5F5FF,
+  "iris-border": #DFE0F3,
+  "iris-hover": #1463FF,
+  "iris-pressed": #085885,
+  "iris-focus": #DBDBF8,
+  "yellow-main": #FFD33C,
+  "yellow-surface": #FFF6D8,
+  "yellow-border": #FFF0BE,
+  "yellow-hover": #D5B032,
+  "yellow-pressed": #806A1E,
+  "yellow-focus": #FFF6D8,
+  "green-main": #50CD89,
+  "green-surface": #F2FFF8,
+  "green-border": #C5EED8,
+  "green-hover": #46B277,
+  "green-pressed": #28593F,
+  "green-focus": #DCF5E7,
+  "red-main": #F14141,
+  "red-surface": #FFF2F2,
+  "red-border": #FAC0C0,
+  "red-hover": #D93A3A,
+  "red-pressed": #802A2A,
+  "red-focus": #FCD9D9,
+  "blue-main": #7239EA,
+  "blue-surface": #F6F2FF,
+  "blue-border": #D0BDF8,
+  "blue-hover": #6633D1,
+  "blue-pressed": #3F2478,
+  "blue-focus": #E3D7FB,
+  "neutral-10": #FFFFFF,
+  "neutral-20": #F5F5F5,
+  "neutral-30": #EDEDED,
+  "neutral-40": #CED1D8,
+  "neutral-50": #AFB3BB,
+  "neutral-60": #7E8492,
+  "neutral-70": #606060,
+  "neutral-80": #35373D,
+  "neutral-90": #161A34,
+  "neutral-100": #1D1E25,
+);
+
+$font-weights-map: (
+  'thin': 100,
+  'extra-light': 200,
+  'light': 300,
+  'regular': 400,
+  'medium': 500,
+  'semi-bold': 600,
+  'bold': 700,
+  'extra-bold': 800,
+  'black': 900,
+  'extra-black': 1000,
+);
+
+$breakpoints-map: (
+  desktop: 1440px,
+);

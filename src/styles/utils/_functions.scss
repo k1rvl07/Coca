@@ -1,0 +1,14 @@
+@use 'sass:map';
+@use 'sass:list';
+@use 'sass:math';
+@use 'sass:meta';
+
+@use './maps.scss' as *;
+
+@function color($color-name) {
+  @return map.get($colors-map, $color-name);
+}
+
+@function font-weight($weight-name) {
+  @return map.get($font-weights-map, $weight-name);
+}

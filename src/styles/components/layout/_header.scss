@@ -1,0 +1,26 @@
+@use '@utils-scss' as *;
+
+.header {
+    &__container {
+        @include grid(on, repeat(2, auto), repeat(2, auto), "logo burger" "nav nav");
+        @include respond-to(desktop) {
+            @include flex(on, $justify: space-between, $align-items: center);
+        }
+    }
+    &__logo {
+        @include grid-item(logo, start, center);
+    }
+    &__button {
+        @include grid-item(burger, end, center);
+        @include size(default, fit-content, fit-content);
+        @include respond-to(desktop) {
+            display: none;
+        }            
+    }
+    &__contact {
+        display: none;
+        @include respond-to(desktop) {
+            display: block;
+        }
+    }
+}

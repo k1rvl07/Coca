@@ -1,0 +1,85 @@
+@use "@utils-scss" as *;
+
+.home-page {
+    .main {
+        @include spacing(margin, (top, bottom), 32px, 56px);
+        @include respond-to(desktop) {
+            @include spacing(margin, (top, bottom), 87px, 135px);
+        }
+        &__container {
+            @include respond-to(desktop) {
+                @include grid(on, repeat(2, auto), 617px 419px, "title image" "form statistic", $justify-content: space-between);
+            }
+        }
+        &__image {
+            @include spacing(margin, (x, bottom), 16px, 24px);
+            @include flex(on, column, $align-items: center, $gap: 12px);
+            @include respond-to(desktop) {
+                @include spacing(margin, (top, bottom), 88px, 28px);
+                @include size(default, null, fit-content);
+                @include grid-item(image, null, end);
+                @include flex($gap: 16px);
+            }
+            &-img {
+                @include size(default, 294px, 208px);
+                @include respond-to(desktop) {
+                    @include size(default, 366px, 260px);
+                }
+            }
+            &-text {
+                @include spacing(margin, right, auto);
+            }
+        }
+        &__statistic {
+            background-color: black;
+            border-radius: 6px;
+            @include flex(on, $align-items: center, $justify: center);
+            @include respond-to(desktop) {
+                @include size(default, null, fit-content);
+                @include grid-item(statistic, null, end);
+            }
+            &-container {
+                @include flex(on, $align-items: center, $gap: 48px);
+                @include spacing(padding, y, 16px);
+                @include respond-to(desktop) {
+                    @include spacing(padding, y, 20px);
+                    @include flex($gap: 100px);
+                }
+            }
+        }
+        .title {    
+            grid-area: title;
+            &__subheading {
+                @include spacing(margin, top, 48px);
+                @include respond-to(desktop) {
+                    @include spacing(margin, top, 114px);
+                }
+            }
+        }
+        .form {
+            @include flex(on, $justify: space-between, $align-items: bottom);
+            @include spacing(margin, (top, bottom), 40px, 56px);
+            @include respond-to(desktop) {
+                @include spacing(margin, all, 0px);
+                @include size(default, 471px, fit-content);
+                @include grid-item(form, null, end);
+                @include spacing(margin, (bottom, top), 5px, 68px);
+            }
+            &__input {
+                @include spacing(padding, bottom, 16px);
+                @include border(bottom, 1px, solid, color(neutral-60));
+                @include size(default, 219px);
+                @include respond-to(desktop) {
+                    @include size(default, 280px);
+                    @include spacing(padding, bottom, 23px);
+                }
+            }
+            &__button {
+                @include spacing(padding, (x, y), 32px, 10px);
+                @include respond-to(desktop) {
+                    @include spacing(padding, (x, y), 58px, 18px);
+                }
+            }
+        }
+    }
+}

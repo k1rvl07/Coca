@@ -1,0 +1,13 @@
+@use "@utils-scss" as *;
+
+.card-statistic {
+    &__price {
+        @include spacing(margin, (top, bottom), 2px, 6px);
+        @include respond-to(desktop) {
+            @include spacing(margin, (top, bottom), 4px, 8px);
+        }
+    }
+    &__percent {
+        @include flex(on, $align-items: center, $gap: 4px);
+    }
+}

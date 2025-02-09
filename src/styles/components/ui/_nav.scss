@@ -1,0 +1,21 @@
+@use "@utils-scss" as *;
+
+.header {
+    .nav {
+        display: none;
+        @include grid-item(nav);
+        @include respond-to(desktop) {
+            @include spacing(margin, left, 580px);
+        }
+        &__list {
+            display: none;
+            @include flex(on, $justify: space-between);
+            @include respond-to(desktop) {
+                @include flex($gap: 32px);
+            }
+        }
+        &--show {
+            display: block;
+        }
+    }
+}

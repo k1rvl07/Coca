@@ -1,0 +1,15 @@
+@use "@utils-scss" as *;
+
+.title {
+    &__subheading {
+        @include flex(on);
+        &-line {
+            @include size(default, 24px, 1px);
+            @include spacing(margin, (top, right), 9px, 8px);
+            @include respond-to(desktop) {
+                @include size(default, 76px, 1px);
+                @include spacing(margin, (top, right), 18px, 27px);
+            }
+        }
+    }
+}

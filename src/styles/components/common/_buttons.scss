@@ -1,0 +1,8 @@
+@use "@utils-scss" as *;
+
+.button {
+    &-black {
+        @extend %shared_button-black;
+    }
+}
+
