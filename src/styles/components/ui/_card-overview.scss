@@ -1,0 +1,45 @@
+@use "@utils-scss" as *;
+
+.card-overview {
+    &:nth-child(1) {
+        @include respond-to(desktop) {
+            @include size(default, 433px);
+        }
+    }
+    &:nth-child(2) {
+        @include respond-to(desktop) {
+            @include size(default, 401px);
+            @include spacing(margin, right, 80px);
+        }
+    }
+    &:nth-child(3) {
+        @include respond-to(desktop) {
+            @include size(default, 453px);
+        }
+    }
+    &:nth-child(4) {
+        @include respond-to(desktop) {
+            @include size(default, 481px);
+        }
+        .card-overview {
+            &__name {
+                @include respond-to(desktop) {
+                    @include size(default, 293px);
+                }
+            }
+        }
+    }
+    &__name {
+        @include spacing(margin, y, 16px);
+        @include respond-to(desktop) {
+            @include spacing(margin, y, 24px);
+            @include size(default, 249px);
+        }
+    }
+    &__icon {
+        @include size(default, 24px, 24px);
+        @include respond-to(desktop) {
+            @include size(default, 40px, 40px);
+        }
+    }
+}

@@ -1,4 +1,5 @@
 import { components } from "@exports";
+import { motion } from "framer-motion";
 import React from "react";
 
 export const Shared_Section = ({
@@ -7,20 +8,19 @@ export const Shared_Section = ({
   id = className,
   children,
   isHasContainer = true,
+  motionProps = {},
 }) => {
   const { Shared_Container: Container } = components;
 
-  const content = <>{children}</>;
+  const content = (
+    <motion.div {...motionProps} className={`${className}__container`}>
+      {children}
+    </motion.div>
+  );
 
   return (
     <Tag id={id} className={className}>
-      {isHasContainer ? (
-        <Container>
-          <div className={`${className}__container`}>{content}</div>
-        </Container>
-      ) : (
-        content
-      )}
+      {isHasContainer ? <Container>{content}</Container> : content}
     </Tag>
   );
 };

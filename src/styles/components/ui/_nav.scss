@@ -2,20 +2,27 @@
 
 .header {
     .nav {
-        display: none;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-20px);
+        transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
         @include grid-item(nav);
         @include respond-to(desktop) {
             @include spacing(margin, left, 580px);
         }
+
         &__list {
-            display: none;
             @include flex(on, $justify: space-between);
             @include respond-to(desktop) {
                 @include flex($gap: 32px);
             }
         }
         &--show {
-            display: block;
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
         }
     }
 }
+
+

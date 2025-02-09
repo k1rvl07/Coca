@@ -10,6 +10,12 @@
     &-title-subheading {
         @extend %shared_text-title-subheading;
     }
+    &-title-heading-second-white {
+        @extend %shared_text-title-heading-second-white;
+    }
+    &-title-subheading-small {
+        @extend %shared_text-title-subheading-small;
+    }
     &-card-statistic-name {
         @extend %home_text-card-statistic-name;
     }
@@ -24,5 +30,11 @@
     }
     &-card-statistic-period {
         @extend %home_text-card-statistic-period;
+    }
+    &-card-overview-name {
+        @extend %home_text-card-overview-name;
+    }
+    &-card-overview-description {
+        @extend %home_text-card-overview-description;
     }
 }

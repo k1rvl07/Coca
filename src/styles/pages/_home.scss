@@ -82,4 +82,33 @@
             }
         }
     }
+    .overview {
+        background-color: color(neutral-100);
+        @include spacing(padding, y, 40px);
+        @include respond-to(desktop) {
+            @include spacing(padding, y, 100px);
+        }
+        &__cards {
+            @include spacing(margin, top, 32px);
+            @include flex(on, $wrap: wrap, $justify: space-between, $gap: 24px);
+            @include respond-to(desktop) {
+                @include spacing(margin, top, 48px);
+                @include flex($gap: 56px);
+            }
+        }
+        .title {
+            &__heading {
+                @include respond-to(desktop) {
+                    @include size(default, 816px)
+                }
+            }
+            &__subheading {
+                @include spacing(margin, top, 16px);
+                @include respond-to(desktop) {
+                    @include spacing(margin, top, 24px);
+                    @include size(default, 660px)
+                }
+            }
+        }
+    }
 }
