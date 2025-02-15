@@ -1,9 +1,9 @@
-@use 'sass:map';
-@use 'sass:list';
-@use 'sass:math';
-@use 'sass:meta';
+@use "sass:map";
+@use "sass:list";
+@use "sass:math";
+@use "sass:meta";
 
-@use './maps.scss' as *;
+@use "./maps.scss" as *;
 
 @mixin respond-to($media) {
   @if map.has-key($breakpoints-map, $media) {
@@ -17,49 +17,25 @@
 }
 
 @mixin size($types, $values...) {
-  $types-list: if(meta.type-of($types) == 'list', $types, ($types));
+  $types-list: if(meta.type-of($types) == "list", $types, ($types));
   $value-index: 1;
 
   @each $type in $types-list {
-    @if $type == 'default' {
-      $width: if(
-        list.length($values) >= $value-index,
-        list.nth($values, $value-index),
-        null
-      );
-      $height: if(
-        list.length($values) >= $value-index + 1,
-        list.nth($values, $value-index + 1),
-        null
-      );
+    @if $type == "default" {
+      $width: if(list.length($values) >= $value-index, list.nth($values, $value-index), null);
+      $height: if(list.length($values) >= $value-index + 1, list.nth($values, $value-index + 1), null);
       width: $width;
       height: $height;
       $value-index: $value-index + 2;
-    } @else if $type == 'min' {
-      $min-width: if(
-        list.length($values) >= $value-index,
-        list.nth($values, $value-index),
-        null
-      );
-      $min-height: if(
-        list.length($values) >= $value-index + 1,
-        list.nth($values, $value-index + 1),
-        null
-      );
+    } @else if $type == "min" {
+      $min-width: if(list.length($values) >= $value-index, list.nth($values, $value-index), null);
+      $min-height: if(list.length($values) >= $value-index + 1, list.nth($values, $value-index + 1), null);
       min-width: $min-width;
       min-height: $min-height;
       $value-index: $value-index + 2;
-    } @else if $type == 'max' {
-      $max-width: if(
-        list.length($values) >= $value-index,
-        list.nth($values, $value-index),
-        null
-      );
-      $max-height: if(
-        list.length($values) >= $value-index + 1,
-        list.nth($values, $value-index + 1),
-        null
-      );
+    } @else if $type == "max" {
+      $max-width: if(list.length($values) >= $value-index, list.nth($values, $value-index), null);
+      $max-height: if(list.length($values) >= $value-index + 1, list.nth($values, $value-index + 1), null);
       max-width: $max-width;
       max-height: $max-height;
       $value-index: $value-index + 2;
@@ -153,21 +129,8 @@
   $justify-content: null,
   $align-content: null
 ) {
-  @include grid-template(
-    $on,
-    $rows,
-    $columns,
-    $areas,
-    $row-gap,
-    $column-gap,
-    $gap
-  );
-  @include grid-alignment(
-    $justify-items,
-    $align-items,
-    $justify-content,
-    $align-content
-  );
+  @include grid-template($on, $rows, $columns, $areas, $row-gap, $column-gap, $gap);
+  @include grid-alignment($justify-items, $align-items, $justify-content, $align-content);
 }
 
 @mixin grid-template(
@@ -202,12 +165,7 @@
   }
 }
 
-@mixin grid-alignment(
-  $justify-items: null,
-  $align-items: null,
-  $justify-content: null,
-  $align-content: null
-) {
+@mixin grid-alignment($justify-items: null, $align-items: null, $justify-content: null, $align-content: null) {
   @if $justify-items != null {
     justify-items: $justify-items;
   }
@@ -226,7 +184,7 @@
   @if $grid-area != null {
     grid-area: $grid-area;
   }
-  
+
   @if $justify-self != null {
     justify-self: $justify-self;
   }
@@ -237,27 +195,27 @@
 }
 
 @mixin spacing($types, $sides, $values...) {
-  $types-list: if(meta.type-of($types) == 'list', $types, ($types));
-  $sides-list: if(meta.type-of($sides) == 'list', $sides, ($sides));
+  $types-list: if(meta.type-of($types) == "list", $types, ($types));
+  $sides-list: if(meta.type-of($sides) == "list", $sides, ($sides));
 
   $value-index: 1;
 
   @each $type in $types-list {
-    @if $type == 'margin' or $type == 'padding' {
+    @if $type == "margin" or $type == "padding" {
       @each $side in $sides-list {
         @if list.length($values) < $value-index {
           @error "Not enough values provided for '#{$side}' side.";
         }
 
-        @if $side == 'all' {
+        @if $side == "all" {
           #{$type}: list.nth($values, $value-index);
-        } @else if $side == 'x' {
+        } @else if $side == "x" {
           #{$type}-left: list.nth($values, $value-index);
           #{$type}-right: list.nth($values, $value-index);
-        } @else if $side == 'y' {
+        } @else if $side == "y" {
           #{$type}-top: list.nth($values, $value-index);
           #{$type}-bottom: list.nth($values, $value-index);
-        } @else if list.index('top' 'bottom' 'left' 'right', $side) {
+        } @else if list.index("top" "bottom" "left" "right", $side) {
           #{$type}-#{$side}: list.nth($values, $value-index);
         } @else {
           @error "Invalid side: #{$side}. Use 'top', 'bottom', 'left', 'right', 'x', 'y', or 'all'.";
@@ -271,36 +229,51 @@
   }
 }
 
-@mixin border-radius(
-  $top-left: null,
-  $top-right: null,
-  $bottom-right: null,
-  $bottom-left: null
-) {
-  @if $top-left !=
-    null and
-    $top-right !=
-    null and
-    $bottom-right !=
-    null and
-    $bottom-left !=
-    null
-  {
+@mixin position($type: null, $sides: null, $values...) {
+  @if $type != null {
+    @if $type == "relative" or $type == "absolute" or $type == "fixed" or $type == "sticky" {
+      position: $type;
+    } @else {
+      @error "Invalid type: #{$type}. Use 'relative', 'absolute', 'fixed', or 'sticky'.";
+    }
+  }
+
+  $sides-list: if($sides == null, (), if(meta.type-of($sides) == "list", $sides, ($sides)));
+
+  $value-index: 1;
+  @if length($sides-list) > 0 {
+    @each $side in $sides-list {
+      @if list.length($values) < $value-index {
+        @error "Not enough values provided for '#{$side}' side.";
+      }
+
+      @if $side == "all" {
+        top: list.nth($values, $value-index);
+        right: list.nth($values, $value-index);
+        bottom: list.nth($values, $value-index);
+        left: list.nth($values, $value-index);
+      } @else if list.index("top" "bottom" "left" "right", $side) {
+        #{$side}: list.nth($values, $value-index);
+      } @else {
+        @error "Invalid side: #{$side}. Use 'top', 'bottom', 'left', 'right', or 'all'.";
+      }
+
+      $value-index: $value-index + 1;
+    }
+  }
+}
+
+@mixin border-radius($top-left: null, $top-right: null, $bottom-right: null, $bottom-left: null) {
+  @if $top-left != null and $top-right != null and $bottom-right != null and $bottom-left != null {
     border-radius: $top-left $top-right $bottom-right $bottom-left;
   } @else if $top-left != null {
-    @if meta.type-of($top-left) == number and math.unit($top-left) != '' {
+    @if meta.type-of($top-left) == number and math.unit($top-left) != "" {
       border-radius: $top-left;
     }
   }
 }
 
-@mixin border(
-  $sides: null,
-  $width: null,
-  $style: null,
-  $color: null,
-  $radiuses...
-) {
+@mixin border($sides: null, $width: null, $style: null, $color: null, $radiuses...) {
   @if $sides == all {
     @if $width != null {
       border-width: $width;
@@ -334,12 +307,7 @@
   object-position: $position;
 }
 
-@mixin background-image(
-  $image-path,
-  $repeat: null,
-  $size: null,
-  $position: null
-) {
+@mixin background-image($image-path, $repeat: null, $size: null, $position: null) {
   background-image: url($image-path);
   background-repeat: $repeat;
   background-size: $size;

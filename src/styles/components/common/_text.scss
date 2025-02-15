@@ -10,11 +10,38 @@
     &-title-subheading {
         @extend %shared_text-title-subheading;
     }
+    &-title-heading-second-black {
+        @extend %shared_text-title-heading-second-black;
+    }
     &-title-heading-second-white {
         @extend %shared_text-title-heading-second-white;
     }
     &-title-subheading-small {
         @extend %shared_text-title-subheading-small;
+    }
+    &-card-sales-report-name {
+        @extend %home_text-card-sales-report-name;
+    }
+    &-card-sales-report-price {
+        @extend %home_text-card-sales-report-price;
+    }
+    &-card-sales-report-percent-up {
+        @extend %home_text-card-sales-report-percent-up;
+    }
+    &-card-sales-report-percent-down {
+        @extend %home_text-card-sales-report-percent-down;
+    }
+    &-card-sales-report-period {
+        @extend %home_text-card-sales-report-period;
+    }
+    &-card-overview-name {
+        @extend %home_text-card-overview-name;
+    }
+    &-card-overview-description {
+        @extend %home_text-card-overview-description;
+    }
+    &-statistic-heading {
+        @extend %home_text-statistic-heading;
     }
     &-card-statistic-name {
         @extend %home_text-card-statistic-name;
@@ -22,19 +49,13 @@
     &-card-statistic-price {
         @extend %home_text-card-statistic-price;
     }
-    &-card-statistic-percent-up {
-        @extend %home_text-card-statistic-percent-up;
+    &-card-statistic-percent {
+        @extend %home_text-card-statistic-percent;
     }
-    &-card-statistic-percent-down {
-        @extend %home_text-card-statistic-percent-down;
+    &-card-statistic-description {
+        @extend %home_text-card-statistic-description;
     }
-    &-card-statistic-period {
-        @extend %home_text-card-statistic-period;
-    }
-    &-card-overview-name {
-        @extend %home_text-card-overview-name;
-    }
-    &-card-overview-description {
-        @extend %home_text-card-overview-description;
+    &-advantage-description {
+        @extend %home_text-advantage-description;
     }
 }

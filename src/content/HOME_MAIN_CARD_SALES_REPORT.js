@@ -1,4 +1,4 @@
-export const HOME_MAIN_STATISTIC_CARDS = [
+export const HOME_MAIN_CARD_SALES_REPORT = [
   {
     id: 1,
     name: "Sales",

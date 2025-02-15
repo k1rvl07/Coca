@@ -1,13 +1,37 @@
 @use "@utils-scss" as *;
 
 .card-statistic {
-    &__price {
-        @include spacing(margin, (top, bottom), 2px, 6px);
+    @include flex(on, $justify: space-between, $align-items: center);
+    &__exchange {
+        @include size(default, 58px, 53px);
         @include respond-to(desktop) {
-            @include spacing(margin, (top, bottom), 4px, 8px);
+            @include size(default, 94px, 87px);
+        }
+    }
+    &__info {
+        @include size(default, 84px);
+        @include respond-to(desktop) {
+            @include size(default, 136px);
+        }
+    }
+    &__icon {
+        @include size(default, 12.21px);
+        @include respond-to(desktop) {
+            @include size(default, 20px);
+        }
+    }
+    &__price-percent {
+        @include flex(on, $align-items: center, $gap: 8px);
+        @include spacing(margin, (top, bottom), 4px, 5px);
+        @include respond-to(desktop) {
+            @include spacing(margin, (top, bottom), 6px, 8px);
+            @include flex($gap: 12px);
         }
     }
     &__percent {
-        @include flex(on, $align-items: center, $gap: 4px);
+        @include flex(on, $align-items: center);
+        @include respond-to(desktop) {
+            @include flex($gap: 2.5px);
+        }
     }
 }

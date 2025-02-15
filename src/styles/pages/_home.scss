@@ -8,7 +8,7 @@
         }
         &__container {
             @include respond-to(desktop) {
-                @include grid(on, repeat(2, auto), 617px 419px, "title image" "form statistic", $justify-content: space-between);
+                @include grid(on, repeat(2, auto), 617px 419px, "title image" "form sales-report", $justify-content: space-between);
             }
         }
         &__image {
@@ -30,13 +30,13 @@
                 @include spacing(margin, right, auto);
             }
         }
-        &__statistic {
+        &__sales-report {
             background-color: black;
             border-radius: 6px;
             @include flex(on, $align-items: center, $justify: center);
             @include respond-to(desktop) {
                 @include size(default, null, fit-content);
-                @include grid-item(statistic, null, end);
+                @include grid-item(sales-report, null, end);
             }
             &-container {
                 @include flex(on, $align-items: center, $gap: 48px);
@@ -107,6 +107,94 @@
                 @include respond-to(desktop) {
                     @include spacing(margin, top, 24px);
                     @include size(default, 660px)
+                }
+            }
+        }
+    }
+    .features {
+        @include spacing(margin, (top, bottom), 56px, 32px);
+        @include respond-to(desktop) {
+            @include spacing(margin, (top, bottom), 160px, 94px);
+        }
+        &__container {
+            @include respond-to(desktop) {
+                @include grid(on, repeat(2, auto), repeat(2, auto), "image-statistic title" "image-statistic advantages", $justify-content: space-between, $column-gap: 58px);
+            }
+        }
+        &__image-statistic {
+            @include position(relative);
+            @include respond-to(desktop) {
+                @include grid-item(image-statistic, null, end);
+                @include size(default, 585px, 651px);
+            }
+        }
+        &__image {
+            @include image-fit(cover, center);
+        }
+        &__advantages {
+            @include flex(on, column, $gap: 16px);
+            @include respond-to(desktop) {
+                @include grid-item(advantages, null, end);
+                @include flex($gap: 32px);
+                @include size(default, 380px);
+                @include spacing(margin, bottom, 18px);
+            }
+        }
+        .statistic {
+            @include position(absolute, (right, bottom), 20px, 20px);
+            background-color: color(neutral-10);
+            @include size(default, 177px, 181px);
+            @include flex(on, column, $justify: center);
+            @include respond-to(desktop) {
+                @include size(default, 290px, 298px);
+                @include position(null, (right, bottom), 40px, 40px);
+            }
+            &__container {
+                @include spacing(padding, x, 10px);
+                @include respond-to(desktop) {
+                    @include spacing(padding, x, 18px);
+                }
+            }
+            &__title {
+                @include flex(on, $align-items: center, $justify: space-between);
+                @include spacing(margin, bottom, 11px);
+                @include respond-to(desktop) {
+                    @include spacing(margin, bottom, 18px);
+                }
+            }
+            &__more {
+                @include size(default, 10px);
+                @include respond-to(desktop) {
+                    @include size(default, 17.5px);
+                }
+            }
+            .card-statistic {
+                &:nth-child(2) {
+                    @include spacing(margin, bottom, 28px);
+                    @include respond-to(desktop) {
+                        @include spacing(margin, bottom, 46px);
+                    }
+                }
+            }
+        }
+        .title {
+            @include spacing(margin, (top, bottom), 32px, 24px);
+            @include respond-to(desktop) {
+                @include spacing(margin, (top, bottom), 18px, 0px);
+            }
+            @include respond-to(desktop) {
+                @include grid-item(title, null, start);
+            }
+            &__subheading {
+                @include spacing(margin, top, 16px);
+                @include respond-to(desktop) {
+                    @include spacing(margin, top, 24px);
+                    @include size(default, 360px)
+                }
+            }
+            &__heading {
+                @include respond-to(desktop) {
+                    @include size(default, 550px);
                 }
             }
         }

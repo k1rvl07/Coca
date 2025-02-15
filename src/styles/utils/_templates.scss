@@ -14,14 +14,16 @@
   $font-weight: list.nth($item, 3);
   $font-style: list.nth($item, 4);
   $color-name: list.nth($item, 5);
-  $font-size: list.nth($item, 6);
-  $desktop-font-size: list.nth($item, 7);
+  $line-height: list.nth($item, 6);
+  $font-size: list.nth($item, 7);
+  $desktop-font-size: list.nth($item, 8);
 
   %#{$name} {
     font-family: $font-family;
     font-weight: font-weight($font-weight);
     font-style: $font-style;
     font-size: $font-size;
+    line-height: $line-height;
     color: color($color-name);
     @if $font-size != $desktop-font-size {
       @include respond-to(desktop) {
