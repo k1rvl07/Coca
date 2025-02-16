@@ -11,21 +11,11 @@ export const Shared_Header = () => {
   } = components;
   const { logo, burger, close } = assets;
   const { SHARED_HEADER_LINKS: HEADER_LINKS } = content;
-  const { useScreenSize, useIntersectionObserver } = hooks;
+  const { useScreenSize, useAnimatedIntersection } = hooks;
   const [showNav, setShowNav] = useState(false);
   const { width } = useScreenSize();
 
-  const { targetRef: headerRef, isIntersecting: isHeaderVisible } = useIntersectionObserver({
-    threshold: 0.2,
-  });
-
-  const [hasAnimatedHeader, setHasAnimatedHeader] = useState(false);
-
-  useEffect(() => {
-    if (isHeaderVisible && !hasAnimatedHeader) {
-      setHasAnimatedHeader(true);
-    }
-  }, [isHeaderVisible, hasAnimatedHeader]);
+  const header = useAnimatedIntersection(0.2);
 
   useEffect(() => {
     if (width > 1440) {
@@ -42,14 +32,14 @@ export const Shared_Header = () => {
   };
 
   return (
-    <Section tagName="header" className="header" id="header" ref={headerRef}>
+    <Section tagName="header" className="header" id="header" ref={header.targetRef}>
       <Link className="header__logo" href="/">
         <motion.img
           className="header__logo-img"
           src={logo}
           alt="logo"
           initial={{ opacity: 0, scale: 0.6 }}
-          animate={hasAnimatedHeader ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.6 }}
+          animate={header.hasAnimated ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.6 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         />
       </Link>
@@ -61,9 +51,9 @@ export const Shared_Header = () => {
               src={showNav ? close : burger}
               alt={showNav ? "close" : "burger"}
               initial={{ rotate: 0, opacity: 0 }}
-              animate={hasAnimatedHeader ? { rotate: 360, opacity: 1 } : { rotate: 0, opacity: 0 }}
+              animate={header.hasAnimated ? { rotate: 360, opacity: 1 } : { rotate: 0, opacity: 0 }}
               exit={{ rotate: -360, opacity: 0 }}
-              transition={{ duration: 0.4, ease: "easeInOut" }}
+              transition={{ duration: 0.7, ease: "easeInOut" }}
             />
           </AnimatePresence>
         </Button>
@@ -75,25 +65,25 @@ export const Shared_Header = () => {
           width > 1440
             ? {
                 initial: { opacity: 0, x: -20 },
-                animate: hasAnimatedHeader ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 },
+                animate: header.hasAnimated ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 },
                 exit: { opacity: 0, x: -20 },
                 transition: { duration: 0.5, ease: "easeOut" },
               }
             : {
                 initial: { opacity: 0, y: -50, visibility: "hidden" },
                 animate:
-                  showNav && hasAnimatedHeader
+                  showNav && header.hasAnimated
                     ? { opacity: 1, y: 0, visibility: "visible" }
                     : { opacity: 0, y: -20, visibility: "hidden" },
                 exit: { opacity: 0, y: -20, visibility: "hidden" },
-                transition: { duration: 0.4, ease: "easeInOut" },
+                transition: { duration: 0.55, ease: "easeInOut" },
               }
         }
         itemMotion={{
           initial: { opacity: 0, x: -40 },
           animate: (i) => ({
-            opacity: hasAnimatedHeader ? 1 : 0,
-            x: hasAnimatedHeader ? 0 : -40,
+            opacity: header.hasAnimated ? 1 : 0,
+            x: header.hasAnimated ? 0 : -40,
             transition: { delay: i * 0.15, duration: 0.8, ease: "easeOut" },
           }),
           exit: { opacity: 0, x: -20 },
@@ -101,7 +91,7 @@ export const Shared_Header = () => {
       />
       <motion.div
         initial={{ x: -60, opacity: 0 }}
-        animate={hasAnimatedHeader ? { x: 0, opacity: 1 } : { x: -60, opacity: 0 }}
+        animate={header.hasAnimated ? { x: 0, opacity: 1 } : { x: -60, opacity: 0 }}
         transition={{ duration: 1, ease: "easeOut" }}
       >
         <Link className="header__contact link-arrow-underline" href="/contact">

@@ -58,4 +58,10 @@
     &-advantage-description {
         @extend %home_text-advantage-description;
     }
+    &-result-number {
+        @extend %home_text-result-number;
+    }
+    &-result-description {
+        @extend %home_text-result-description;
+    }
 }

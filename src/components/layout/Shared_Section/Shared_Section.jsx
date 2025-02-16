@@ -1,8 +1,8 @@
 import { components } from "@exports";
 import { motion } from "framer-motion";
-import React from "react";
+import { forwardRef } from "react";
 
-export const Shared_Section = React.forwardRef(
+export const Shared_Section = forwardRef(
   (
     {
       tagName: Tag = "section",

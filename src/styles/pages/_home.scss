@@ -115,9 +115,9 @@
         }
     }
     .features {
-        @include spacing(margin, (top, bottom), 56px, 32px);
+        @include spacing(padding, (top, bottom), 56px, 32px);
         @include respond-to(desktop) {
-            @include spacing(margin, (top, bottom), 160px, 94px);
+            @include spacing(padding, (top, bottom), 160px, 94px);
         }
         &__container {
             @include respond-to(desktop) {
@@ -198,6 +198,47 @@
             &__heading {
                 @include respond-to(desktop) {
                     @include size(default, 550px);
+                }
+            }
+        }
+    }
+    .growth {
+        @include spacing(padding, (top, bottom), 26px, 56px);
+        @include respond-to(desktop) {
+            @include spacing(padding, (top, bottom), 66px, 160px)
+        }
+        &__results {
+            @include flex(on, $justify: space-between, $align-items: center, $wrap: wrap, $gap: 16px);
+            &-line {
+                display: none;
+                @include respond-to(desktop) {
+                    display: block;
+                    @include size(default, 1px, 66px);
+                }
+            }
+        }
+        &__image {
+            @include size(default, 335px, 162px);
+            @include image-fit(cover, center);
+            @include spacing(margin, (top, bottom), 32px, 40px);
+            @include respond-to(desktop) {
+                @include size(default, 1200px, 536px);
+                @include spacing(margin, y, 80px);
+            }
+        }
+        .title {
+            @include flex(on, column, $gap: 16px);
+            @include respond-to(desktop) {
+                @include flex($direction: row, $gap: 0px, $justify: space-between);
+            }
+            &__heading {
+                @include respond-to(desktop) {
+                    @include size(default, 772px);
+                }
+            }
+            &__subheading {
+                @include respond-to(desktop) {
+                    @include size(default, 398px);
                 }
             }
         }
