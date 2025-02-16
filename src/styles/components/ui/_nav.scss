@@ -2,10 +2,6 @@
 
 .header {
     .nav {
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(-20px);
-        transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
         @include grid-item(nav);
         @include respond-to(desktop) {
             @include spacing(margin, left, 580px);
@@ -16,11 +12,6 @@
             @include respond-to(desktop) {
                 @include flex($gap: 32px);
             }
-        }
-        &--show {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
         }
     }
 }

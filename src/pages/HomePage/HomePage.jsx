@@ -18,10 +18,10 @@ export const HomePage = () => {
   } = components;
   const { sales_report, features, more } = assets;
   const {
-    HOME_MAIN_CARD_SALES_REPORT,
-    HOME_OVERVIEW_CARDS,
-    HOME_FEATURES_ADVANTAGES,
-    HOME_FEATURES_CARD_STATISTIC,
+    HOME_MAIN_CARD_SALES_REPORT: MAIN_CARD_SALES_REPORT,
+    HOME_OVERVIEW_CARDS: OVERVIEW_CARDS,
+    HOME_FEATURES_ADVANTAGES: FEATURES_ADVANTAGES,
+    HOME_FEATURES_CARD_STATISTIC: FEATURES_CARD_STATISTIC,
   } = content;
   const { useIntersectionObserver } = hooks;
 
@@ -60,8 +60,16 @@ export const HomePage = () => {
   return (
     <div className="home-page">
       <Header />
-      <motion.main ref={mainRef}>
-        <Section className="main">
+      <main>
+        <Section
+          className="main"
+          motionProps={{
+            ref: mainRef,
+            initial: { opacity: 0, y: 50 },
+            animate: hasAnimatedMain ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 },
+            transition: { duration: 0.8, ease: "easeOut", delay: 0.2 },
+          }}
+        >
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={hasAnimatedMain ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
@@ -70,11 +78,10 @@ export const HomePage = () => {
             <Title
               heading="Digitally forward creative"
               headingClass="text-title-heading"
-              subHeading="When it comes to interactive marketing, we've got you covered."
+              subHeading="When it comes to interactive marketing, we've got you covered. Be where the world is going."
               subHeadingClass="text-title-subheading"
             />
           </motion.div>
-
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={hasAnimatedMain ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
@@ -91,7 +98,6 @@ export const HomePage = () => {
               </Button>
             </Form>
           </motion.div>
-
           <motion.div
             className="main__image"
             initial={{ scale: 0.9, opacity: 0 }}
@@ -103,7 +109,6 @@ export const HomePage = () => {
             </Text>
             <img className="main__image-img" src={sales_report} alt="" />
           </motion.div>
-
           <motion.div
             className="main__sales-report"
             initial={{ opacity: 0, y: 30 }}
@@ -111,7 +116,7 @@ export const HomePage = () => {
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
           >
             <div className="main__sales-report-container">
-              {HOME_MAIN_CARD_SALES_REPORT.map((item, index) => (
+              {MAIN_CARD_SALES_REPORT.map((item, index) => (
                 <motion.div
                   key={item.id}
                   className="card-sales-report"
@@ -143,7 +148,7 @@ export const HomePage = () => {
             isSubheadingLine={false}
           />
           <div className="overview__cards">
-            {HOME_OVERVIEW_CARDS.map((item, index) => (
+            {OVERVIEW_CARDS.map((item, index) => (
               <motion.div
                 key={item.id}
                 className="card-overview"
@@ -180,7 +185,7 @@ export const HomePage = () => {
                   </Text>
                   <img className="statistic__more" src={more} alt="" />
                 </div>
-                {HOME_FEATURES_CARD_STATISTIC.map((item, index) => (
+                {FEATURES_CARD_STATISTIC.map((item, index) => (
                   <motion.div
                     key={item.id}
                     className="card-statistic"
@@ -219,7 +224,7 @@ export const HomePage = () => {
             animate={hasAnimatedFeatures ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 1.0 }}
           >
-            {HOME_FEATURES_ADVANTAGES.map((item, index) => (
+            {FEATURES_ADVANTAGES.map((item, index) => (
               <motion.div
                 key={item.id}
                 initial={{ opacity: 0, y: 20 }}
@@ -231,7 +236,7 @@ export const HomePage = () => {
             ))}
           </motion.div>
         </Section>
-      </motion.main>
+      </main>
     </div>
   );
 };

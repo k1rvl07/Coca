@@ -12,11 +12,14 @@
             }
         }
         &__image {
-            @include spacing(margin, (x, bottom), 16px, 24px);
-            @include flex(on, column, $align-items: center, $gap: 12px);
+            background-color: color(neutral-10);
+            border-radius: 8px;
+            @include spacing(margin, bottom, 24px);
+            @include size(default, 335px, 278px);
+            @include flex(on, column, $align-items: center, $gap: 12px, $justify: center);
             @include respond-to(desktop) {
                 @include spacing(margin, (top, bottom), 88px, 28px);
-                @include size(default, null, fit-content);
+                @include size(default, 419px, 346px);
                 @include grid-item(image, null, end);
                 @include flex($gap: 16px);
             }
@@ -27,7 +30,7 @@
                 }
             }
             &-text {
-                @include spacing(margin, right, auto);
+                @include spacing(margin, (right, left), auto, 16px);
             }
         }
         &__sales-report {

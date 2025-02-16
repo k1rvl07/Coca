@@ -1,6 +1,10 @@
 @use '@utils-scss' as *;
 
 .header {
+    @include spacing(margin, top, 24px);
+    @include respond-to(desktop) {
+        @include spacing(margin, y, 26px);
+    }
     &__container {
         @include grid(on, repeat(2, auto), repeat(2, auto), "logo burger" "nav nav");
         @include respond-to(desktop) {
@@ -12,6 +16,7 @@
     }
     &__button {
         @include grid-item(burger, end, center);
+        @include flex(on, $justify: center, $align-items: center);
         @include size(default, fit-content, fit-content);
         @include respond-to(desktop) {
             display: none;

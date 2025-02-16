@@ -6,7 +6,7 @@ export const HOME_FEATURES_CARD_STATISTIC = [
     price: "$7.020",
     percent: "15%",
     description: "Your Income of this month compared to last month",
-    icon: "statistic-up",
+    icon: "statistic_up",
   },
   {
     id: 2,
@@ -15,6 +15,6 @@ export const HOME_FEATURES_CARD_STATISTIC = [
     price: "$2.150",
     percent: "10%",
     description: "Your Expense of this month compared to last month",
-    icon: "statistic-down",
+    icon: "statistic_down",
   },
 ];

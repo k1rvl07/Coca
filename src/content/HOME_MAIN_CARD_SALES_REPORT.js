@@ -4,7 +4,7 @@ export const HOME_MAIN_CARD_SALES_REPORT = [
     name: "Sales",
     price: "$31,092",
     percent: "4.2%",
-    icon: "statistic-up",
+    icon: "statistic_up",
     color: "green",
   },
   {
@@ -12,7 +12,7 @@ export const HOME_MAIN_CARD_SALES_REPORT = [
     name: "Marketing",
     price: "$29,128",
     percent: "1.2%",
-    icon: "statistic-down",
+    icon: "statistic_down",
     color: "red",
   },
 ];
