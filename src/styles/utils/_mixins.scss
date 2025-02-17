@@ -241,18 +241,18 @@
   $sides-list: if($sides == null, (), if(meta.type-of($sides) == "list", $sides, ($sides)));
 
   $value-index: 1;
-  @if length($sides-list) > 0 {
+  @if list.length($sides-list) > 0 {
     @each $side in $sides-list {
       @if list.length($values) < $value-index {
         @error "Not enough values provided for '#{$side}' side.";
       }
 
       @if $side == "all" {
-        top: list.nth($values, $value-index);
+        top: list.nth($values, $value-index);    
         right: list.nth($values, $value-index);
         bottom: list.nth($values, $value-index);
         left: list.nth($values, $value-index);
-      } @else if list.index("top" "bottom" "left" "right", $side) {
+      } @else if list.index(("top", "bottom", "left", "right"), $side) {
         #{$side}: list.nth($values, $value-index);
       } @else {
         @error "Invalid side: #{$side}. Use 'top', 'bottom', 'left', 'right', or 'all'.";
