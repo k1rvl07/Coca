@@ -1,5 +1,5 @@
 import { assets, components } from "@exports";
-import React from "react";
+import { motion } from "framer-motion";
 
 export const Shared_Title = ({
   heading,
@@ -8,11 +8,12 @@ export const Shared_Title = ({
   subHeading,
   subHeadingClass,
   isSubheadingLine = true,
+  motionProps = {},
 }) => {
   const { Shared_Text: Text } = components;
   const { subheading_line } = assets;
   return (
-    <div className="title">
+    <motion.div className="title" {...motionProps}>
       <Text type="heading" headingTag={headingTag} className={`title__heading ${headingClass}`}>
         {heading}
       </Text>
@@ -22,6 +23,6 @@ export const Shared_Title = ({
         )}
         {subHeading}
       </Text>
-    </div>
+    </motion.div>
   );
 };

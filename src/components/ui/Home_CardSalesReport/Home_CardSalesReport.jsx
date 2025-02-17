@@ -1,12 +1,13 @@
 import { assets, components } from "@exports";
 import classnames from "classnames";
+import { motion } from "framer-motion";
 import React from "react";
 
-export const Home_CardSalesReport = ({ name, price, percent, color }) => {
+export const Home_CardSalesReport = ({ name, price, percent, color, motionProps = {} }) => {
   const { Shared_Text: Text } = components;
   const { up, down } = assets;
   return (
-    <>
+    <motion.div className="card-sales-report" {...motionProps}>
       <Text type="body" className="card-sales-report__name text-card-sales-report-name">
         {name}
       </Text>
@@ -27,6 +28,6 @@ export const Home_CardSalesReport = ({ name, price, percent, color }) => {
           from last year
         </Text>
       </Text>
-    </>
+    </motion.div>
   );
 };

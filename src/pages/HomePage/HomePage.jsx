@@ -44,18 +44,17 @@ export const HomePage = () => {
             transition: { duration: 0.8, ease: "easeOut", delay: 0.2 },
           }}
         >
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={main.hasAnimated ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          >
-            <Title
-              heading="Digitally forward creative"
-              headingClass="text-title-heading"
-              subHeading="When it comes to interactive marketing, we've got you covered. Be where the world is going."
-              subHeadingClass="text-title-subheading"
-            />
-          </motion.div>
+          <Title
+            heading="Digitally forward creative"
+            headingClass="text-title-heading"
+            subHeading="When it comes to interactive marketing, we've got you covered. Be where the world is going."
+            subHeadingClass="text-title-subheading"
+            motionProps={{
+              initial: { opacity: 0, x: -50 },
+              animate: main.hasAnimated ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 },
+              transition: { duration: 0.8, ease: "easeOut" },
+            }}
+          />
           <Form
             className="form"
             motionProps={{
@@ -89,15 +88,15 @@ export const HomePage = () => {
           >
             <div className="main__sales-report-container">
               {MAIN_CARD_SALES_REPORT.map((item, index) => (
-                <motion.div
+                <CardSalesReport
                   key={item.id}
-                  className="card-sales-report"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={main.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                  transition={{ duration: 0.6, ease: "easeOut", delay: 0.7 + index * 0.2 }}
-                >
-                  <CardSalesReport {...item} />
-                </motion.div>
+                  {...item}
+                  motionProps={{
+                    initial: { opacity: 0, y: 20 },
+                    animate: main.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
+                    transition: { duration: 0.6, ease: "easeOut", delay: 0.7 + index * 0.2 },
+                  }}
+                />
               ))}
             </div>
           </motion.div>
@@ -121,15 +120,16 @@ export const HomePage = () => {
           />
           <div className="overview__cards">
             {OVERVIEW_CARDS.map((item, index) => (
-              <motion.div
+              <CardOverview
                 key={item.id}
-                className="card-overview"
-                initial={{ opacity: 0, y: 20 }}
-                animate={overview.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 + index * 0.2 }}
-              >
-                <CardOverview {...item} icon={assets[item.icon]} />
-              </motion.div>
+                {...item}
+                icon={assets[item.icon]}
+                motionProps={{
+                  initial: { opacity: 0, y: 20 },
+                  animate: overview.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
+                  transition: { duration: 0.6, ease: "easeOut", delay: 0.4 + index * 0.2 },
+                }}
+              />
             ))}
           </div>
         </Section>
@@ -158,38 +158,34 @@ export const HomePage = () => {
                   <img className="statistic__more" src={more} alt="" />
                 </div>
                 {FEATURES_CARD_STATISTIC.map((item, index) => (
-                  <motion.div
+                  <CardStatistic
                     key={item.id}
-                    className="card-statistic"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={features.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                    transition={{ duration: 0.6, ease: "easeOut", delay: 0.6 + index * 0.2 }}
-                  >
-                    <CardStatistic
-                      key={item.id}
-                      {...item}
-                      icon={assets[item.icon]}
-                      exchange={assets[item.exchange]}
-                    />
-                  </motion.div>
+                    {...item}
+                    icon={assets[item.icon]}
+                    exchange={assets[item.exchange]}
+                    motionProps={{
+                      initial: { opacity: 0, y: 20 },
+                      animate: features.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
+                      transition: { duration: 0.6, ease: "easeOut", delay: 0.6 + index * 0.2 },
+                    }}
+                  />
                 ))}
               </div>
             </div>
           </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={features.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.8 }}
-          >
-            <Title
-              heading="Passion to increase company revenue up to 85%"
-              headingTag="h2"
-              headingClass="text-title-heading-second-black"
-              subHeadingClass="text-title-subheading-small"
-              subHeading="Automate your sales, marketing and service in one platform. Avoid date leaks and enable consistent messaging"
-              isSubheadingLine={false}
-            />
-          </motion.div>
+          <Title
+            heading="Passion to increase company revenue up to 85%"
+            headingTag="h2"
+            headingClass="text-title-heading-second-black"
+            subHeadingClass="text-title-subheading-small"
+            subHeading="Automate your sales, marketing and service in one platform. Avoid date leaks and enable consistent messaging"
+            isSubheadingLine={false}
+            motionProps={{
+              initial: { opacity: 0, y: 30 },
+              animate: features.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
+              transition: { duration: 0.8, ease: "easeOut", delay: 0.8 },
+            }}
+          />
           <motion.div
             className="features__advantages"
             initial={{ opacity: 0, y: 30 }}
@@ -197,15 +193,15 @@ export const HomePage = () => {
             transition={{ duration: 0.8, ease: "easeOut", delay: 1.0 }}
           >
             {FEATURES_ADVANTAGES.map((item, index) => (
-              <motion.div
-                className="advantage"
+              <Advantage
                 key={item.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={features.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                transition={{ duration: 0.6, ease: "easeOut", delay: 1.2 + index * 0.2 }}
-              >
-                <Advantage key={item.id} {...item} />
-              </motion.div>
+                {...item}
+                motionProps={{
+                  initial: { opacity: 0, y: 20 },
+                  animate: features.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
+                  transition: { duration: 0.6, ease: "easeOut", delay: 1.2 + index * 0.2 },
+                }}
+              />
             ))}
           </motion.div>
         </Section>
@@ -226,14 +222,14 @@ export const HomePage = () => {
           >
             {GROWTH_RESULTS.map((item, index) => (
               <Fragment key={item.id}>
-                <motion.div
-                  className="result"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={growth.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                  transition={{ duration: 0.6, ease: "easeOut", delay: 0.6 + index * 0.2 }}
-                >
-                  <Result {...item} />
-                </motion.div>
+                <Result
+                  {...item}
+                  motionProps={{
+                    initial: { opacity: 0, y: 20 },
+                    animate: growth.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
+                    transition: { duration: 0.6, ease: "easeOut", delay: 0.6 + index * 0.2 },
+                  }}
+                />
                 {index < 3 && (
                   <motion.img
                     className="growth__results-line"
@@ -255,20 +251,19 @@ export const HomePage = () => {
             animate={growth.hasAnimated ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 1.0 }}
           />
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={growth.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 1.2 }}
-          >
-            <Title
-              heading="Lift your business to new heights with our digital marketing services"
-              headingTag="h2"
-              headingClass="text-title-heading-second-black"
-              subHeadingClass="text-title-subheading-small"
-              subHeading="To build software that gives customer facing teams in small and medium-sized businesses the ability to create rewarding and long-lasting relationships with customers"
-              isSubheadingLine={false}
-            />
-          </motion.div>
+          <Title
+            heading="Lift your business to new heights with our digital marketing services"
+            headingTag="h2"
+            headingClass="text-title-heading-second-black"
+            subHeadingClass="text-title-subheading-small"
+            subHeading="To build software that gives customer facing teams in small and medium-sized businesses the ability to create rewarding and long-lasting relationships with customers"
+            isSubheadingLine={false}
+            motionProps={{
+              initial: { opacity: 0, y: 30 },
+              animate: growth.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
+              transition: { duration: 0.8, ease: "easeOut", delay: 1.4 },
+            }}
+          />
         </Section>
       </main>
     </div>
