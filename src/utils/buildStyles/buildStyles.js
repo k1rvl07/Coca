@@ -145,4 +145,3 @@ const main = async () => {
 main().catch((error) => {
   console.error("Error in main process:", error);
 });
-

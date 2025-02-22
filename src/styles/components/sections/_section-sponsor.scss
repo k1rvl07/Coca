@@ -1,0 +1,39 @@
+@use "@utils-scss" as *;
+
+.sponsor {
+    @include spacing(padding, bottom, 80px);
+    @include respond-to(desktop) {
+        @include spacing(padding, y, 86px);
+    }
+    &__container {
+        @include respond-to(desktop) {
+            @include flex(on, $justify: space-between, $align-items: center);
+        }
+    }
+    &__image {
+        @include size(default, 125px, 70px);
+        @include respond-to(desktop) {
+            @include size(default, 160px, 90px);
+        }
+    }
+    &__images {
+        @include size(default, 263px);
+        @include flex(on, $justify: space-between, $row-gap: 16px, $wrap: wrap);
+        @include spacing(margin, top, 8px);
+        @include respond-to(desktop) {
+            @include size(default, 700px);
+            @include spacing(margin, all, 0px);
+            @include flex($gap: 0px);
+        }
+    }
+    .title {
+        &__subheading {
+            @include size(default, 231px);
+            @include spacing(margin, top, 8px);
+            @include respond-to(desktop) {
+                @include size(default, 330px);
+                @include spacing(margin, top, 16px);
+            }
+        }
+    }
+}

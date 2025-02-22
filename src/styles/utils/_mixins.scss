@@ -52,7 +52,9 @@
   $align-content: null,
   $align-items: null,
   $wrap: null,
-  $gap: null
+  $gap: null,
+  $row-gap: null,
+  $column-gap: null
 ) {
   @if $flex == on {
     display: flex;
@@ -80,6 +82,14 @@
 
   @if $gap != null {
     gap: $gap;
+  }
+
+  @if $row-gap != null {
+    row-gap: $row-gap;
+  }
+
+  @if $column-gap != null {
+    column-gap: $column-gap;
   }
 }
 

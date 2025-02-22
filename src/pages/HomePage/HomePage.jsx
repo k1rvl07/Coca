@@ -16,6 +16,7 @@ export const HomePage = () => {
     Home_CardStatistic: CardStatistic,
     Home_Advantage: Advantage,
     Home_Result: Result,
+    Shared_SectionSponsors: SectionSponsors,
   } = components;
   const { sales_report, features: features_image, more, growth_team, results_line } = assets;
   const {
@@ -44,9 +45,9 @@ export const HomePage = () => {
   };
 
   return (
-    <div className="home-page">
+    <>
       <Header />
-      <main>
+      <main className="home-page">
         <Section
           className="main"
           motionProps={{
@@ -284,7 +285,8 @@ export const HomePage = () => {
             }}
           />
         </Section>
+        <SectionSponsors />
       </main>
-    </div>
+    </>
   );
 };
