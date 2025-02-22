@@ -33,7 +33,7 @@ export const Shared_Header = () => {
 
   return (
     <Section tagName="header" className="header" id="header" ref={header.targetRef}>
-      <Link className="header__logo" href="/">
+      <Link className="header__logo" href="/Coca/#">
         <motion.img
           className="header__logo-img"
           src={logo}
