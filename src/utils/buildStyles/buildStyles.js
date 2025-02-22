@@ -12,12 +12,12 @@ const configUrl = pathToFileURL(configPath).href;
 const outputFilePath = path.join(stylesDir, "_global.scss");
 
 if (!fs.existsSync(stylesDir)) {
-  console.error(`Папка ${stylesDir} не существует! Создайте её вручную.`);
+  console.error(`The ${stylesDir} folder does not exist!`);
   process.exit(1);
 }
 
 if (!fs.existsSync(configPath)) {
-  console.error(`Конфигурационный файл ${configPath} не существует!`);
+  console.error(`The ${configPath} configuration file does not exist!`);
   process.exit(1);
 }
 
@@ -27,7 +27,7 @@ const loadConfig = async () => {
     const configModule = await import(`${configUrl}${cacheBuster}`);
     return configModule.default;
   } catch (error) {
-    console.error(`Ошибка при загрузке конфигурации: ${error.message}`);
+    console.error(`Error loading configuration: ${error.message}`);
     process.exit(1);
   }
 };
@@ -36,7 +36,7 @@ const processFolder = (folderPath, folderConfig) => {
   let globalStylesContent = "";
 
   if (!fs.existsSync(folderPath)) {
-    console.warn(`Папка ${folderPath} не существует!`);
+    console.warn(`The ${folderPath} folder does not exist!`);
     return globalStylesContent;
   }
 
@@ -50,7 +50,7 @@ const processFolder = (folderPath, folderConfig) => {
         const fullPath = directoryPath !== "." ? `${directoryPath}/${fileName}` : fileName;
         globalStylesContent += `@forward '${fullPath}';\n`;
       } else {
-        console.warn(`Файл ${filePath} не найден!`);
+        console.warn(`The ${filePath} file was not found!`);
       }
     }
   }
@@ -102,7 +102,7 @@ const buildStyles = (foldersOrder) => {
   }
 
   fs.writeFileSync(outputFilePath, globalStylesContent);
-  console.log("_global.scss успешно обновлён!");
+  console.log("_global.scss was successfully updated!");
 };
 
 const main = async () => {
@@ -116,32 +116,33 @@ const main = async () => {
 
   watcher
     .on("add", (filePath) => {
-      console.log(`Файл ${filePath} добавлен. Пересборка _global.scss...`);
+      console.log(`The ${filePath} file was added. Rebuilding _global.scss...`);
       buildStyles(foldersOrder);
     })
     .on("change", async (filePath) => {
       if (filePath === configPath) {
-        console.log("Конфигурация изменена. Перезагрузка...");
+        console.log("The configuration was changed. Reloading...");
         try {
           foldersOrder = await loadConfig();
         } catch (error) {
-          console.error(`Ошибка при загрузке конфигурации: ${error.message}`);
+          console.error(`Error loading configuration: ${error.message}`);
           return;
         }
       }
-      console.log(`Файл ${filePath} изменён. Пересборка _global.scss...`);
+      console.log(`The ${filePath} file was changed. Rebuilding _global.scss...`);
       buildStyles(foldersOrder);
     })
     .on("unlink", (filePath) => {
-      console.log(`Файл ${filePath} удалён. Пересборка _global.scss...`);
+      console.log(`The ${filePath} file was deleted. Rebuilding _global.scss...`);
       buildStyles(foldersOrder);
     });
 
-  console.log("Наблюдение за файлами и конфигурацией запущено...");
+  console.log("File and configuration watching has been started...");
 
   buildStyles(foldersOrder);
 };
 
 main().catch((error) => {
-  console.error("Ошибка в основном процессе:", error);
+  console.error("Error in main process:", error);
 });
+
