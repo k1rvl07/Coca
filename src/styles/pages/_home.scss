@@ -78,9 +78,9 @@
                 }
             }
             &__button {
-                @include spacing(padding, (x, y), 32px, 10px);
+                @include spacing(padding, (x, y), 16px, 10px);
                 @include respond-to(desktop) {
-                    @include spacing(padding, (x, y), 58px, 18px);
+                    @include spacing(padding, (x, y), 44px, 18px);
                 }
             }
         }

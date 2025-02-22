@@ -6,6 +6,9 @@
 @use 'functions.scss' as *;
 
 $text-list: (
+    "swal_confirm-button" "Inter" semi-bold normal "neutral-10" normal 12px 16px,
+    "swal_title" "Inter" semi-bold normal "neutral-100" normal 28px 36px,
+    "swal_text" "Inter" medium normal "neutral-60" normal 12px 16px,
     "shared_link-nav-black" "Inter" medium normal "neutral-100" normal 16px 16px,
     "shared_link-arrow-underline" "Inter" semi-bold normal "neutral-100" normal 16px 16px,
     "shared_text-title-heading" "Inter" bold normal "neutral-100" normal 32px 80px,

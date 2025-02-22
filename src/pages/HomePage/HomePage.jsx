@@ -1,6 +1,6 @@
 import { assets, components, content, hooks } from "@exports";
 import { motion } from "framer-motion";
-import React, { Fragment } from "react";
+import React, { useState, Fragment } from "react";
 
 export const HomePage = () => {
   const {
@@ -24,12 +24,24 @@ export const HomePage = () => {
     HOME_FEATURES_ADVANTAGES: FEATURES_ADVANTAGES,
     HOME_FEATURES_CARD_STATISTIC: FEATURES_CARD_STATISTIC,
     HOME_GROWTH_RESULTS: GROWTH_RESULTS,
+    HOME_MAIN_SWAL_CONFIG: MAIN_SWAL_CONFIG,
   } = content;
-  const { useAnimatedIntersection } = hooks;
+  const { useAnimatedIntersection, useFormSubmit } = hooks;
 
   const sections = ["main", "overview", "features", "growth"];
   const animations = sections.map(() => useAnimatedIntersection(0.2));
   const [main, overview, features, growth] = animations;
+
+  const [email, setEmail] = useState("");
+  const { submit, loading } = useFormSubmit("http://localhost:5000/api/subscribe");
+
+  const handleSubmitSubscribe = async (e) => {
+    e.preventDefault();
+
+    const swalConfig = MAIN_SWAL_CONFIG;
+
+    await submit({ email }, swalConfig);
+  };
 
   return (
     <div className="home-page">
@@ -63,10 +75,17 @@ export const HomePage = () => {
               animate: main.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
               transition: { duration: 0.6, ease: "easeOut", delay: 0.3 },
             }}
+            onSubmit={handleSubmitSubscribe}
           >
-            <Input className="form__input input-main" type="email" placeholder="Enter your email" />
-            <Button className="form__button button-black" type="submit">
-              Sign up
+            <Input
+              className="form__input input-main"
+              type="email"
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <Button className="form__button button-black" type="submit" disabled={loading}>
+              Try for free
             </Button>
           </Form>
           <motion.div

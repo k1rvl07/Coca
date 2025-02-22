@@ -4,6 +4,9 @@ export default [
     files: ["_font.scss", "_reset.scss", "_common.scss"],
   },
   {
+    folder: "special",
+  },
+  {
     folder: "components",
   },
   {

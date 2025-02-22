@@ -14,7 +14,9 @@
     "biome:unsafe": "npx biome check --unsafe --write .",
     "preview": "vite preview",
     "watchStyles": "node src/utils/buildStyles/buildStyles.js",
-    "generate": "plop"
+    "generate": "plop",
+    "server": "node src/database/server.js",
+    "start": "concurrently \"npm run dev\" \"npm run watchStyles\" \"npm run server\""
   },
   "dependencies": {
     "react": "^18.3.1",
@@ -28,10 +30,14 @@
     "autoprefixer": "^10.4.20",
     "chokidar": "^4.0.3",
     "classnames": "^2.5.1",
+    "concurrently": "^9.1.2",
+    "cors": "^2.8.5",
     "cssnano": "^7.0.6",
+    "express": "^4.21.2",
     "framer-motion": "^11.15.0",
     "gh-pages": "^6.2.0",
     "globals": "^15.9.0",
+    "pg": "^8.13.3",
     "plop": "^4.0.1",
     "postcss": "^8.4.47",
     "postcss-flexbugs-fixes": "^5.0.2",
@@ -43,6 +49,7 @@
     "reactcci": "^1.14.0",
     "rome": "^12.1.3",
     "sass": "^1.80.4",
+    "sweetalert2": "^11.17.2",
     "vite": "^5.4.8"
   }
 }

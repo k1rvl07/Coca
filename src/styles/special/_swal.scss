@@ -1,0 +1,45 @@
+@use "@utils-scss" as *;
+
+.swal {
+    &__popup {
+        @include spacing(padding, (top, bottom), 24px, 16px);
+        @include size(default, 390px);
+        @include respond-to(desktop) {
+            @include size(default, 520px);
+            @include spacing(padding, (top, bottom), 32px, 24px);
+        }
+    }
+    &__icon {
+        @include spacing(margin, top, 0px);
+    }
+    &__title {
+        @extend %swal_title;
+        @include spacing((padding, margin), (top, x), 8px, 0px, null, auto);
+        @include size(default, 300px);
+        @include respond-to(desktop) {
+            @include spacing(padding, top, 10px);
+        }
+    }
+    &__text {
+        @extend %swal_text;
+        @include spacing((padding, margin), (top, x), 6px, 0px, null, auto);
+        @include size(default, 300px);
+        @include respond-to(desktop) {
+            @include size(default, 400px);
+            @include spacing(padding, top, 8px);
+        }
+    }
+    &__confirm-button {
+        @extend %swal_confirm-button;
+        @include size(default, 60px);
+        @include respond-to(desktop) {
+            @include size(default, 80px);
+        }
+    }
+    &__actions {
+        @include spacing(margin, top, 8px);
+        @include respond-to(desktop) {
+            @include spacing(margin, top, 12px);
+        }
+    }
+}
