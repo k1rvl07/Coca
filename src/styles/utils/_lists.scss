@@ -15,7 +15,7 @@ $text-list: (
     "shared_text-title-subheading" "Inter" semi-bold normal "neutral-100" 1.5 16px 32px,
     "shared_text-title-heading-second-black" "Inter" bold normal "neutral-100" normal 24px 56px,
     "shared_text-title-heading-second-white" "Inter" semi-bold normal "neutral-10" normal 24px 56px,
-    "shared_text-title-subheading-small" "Inter" medium normal "neutral-60" 1.75 14px 18px,
+    "shared_text-title-subheading-small" "Inter" medium normal "neutral-60" 1.65 14px 18px,
     "shared_button-black" "Inter" semi-bold normal "neutral-10" normal 12px 16px,
     "home_text-main-image" "Inter" bold normal "neutral-100" normal 16px 20px,
     "home_input-main" "Inter" medium normal "neutral-100" normal 16px 18px,
@@ -34,7 +34,9 @@ $text-list: (
     "home_text-card-statistic-description" "Inter" regular normal "neutral-60" normal 5px 8px,
     "home_text-advantage-description" "Inter" medium normal "neutral-100" 1.5 14px 18px,
     "home_text-result-number" "Inter" semi-bold normal "neutral-100" normal 32px 56px,
-    "home_text-result-description" "Inter" medium normal "neutral-60" normal 16px 18px
+    "home_text-result-description" "Inter" medium normal "neutral-60" normal 16px 18px,
+    "home_text-card-benefit-description-heading" "Inter" semi-bold normal "neutral-100" normal 16px 32px,
+    "home_text-card-benefit-description-text" "Inter" medium normal "neutral-60" normal 14px 16px
 );
 
 $dynamic-text-list: (

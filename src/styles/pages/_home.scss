@@ -243,4 +243,35 @@
             }
         }
     }
+    .sponsor {
+        @include spacing(padding, bottom, 80px);
+        @include respond-to(desktop) {
+            @include spacing(padding, y, 86px);
+        }
+    }
+    .benefits {
+        @include spacing(padding, bottom, 56px);
+        @include respond-to(desktop) {
+            @include spacing(padding, (top, bottom), 160px, 100px);
+        }
+        &__cards {
+            @include flex(on, column, $gap: 24px);
+            @include spacing(margin, top, 32px);
+            @include respond-to(desktop) {
+                @include flex($direction: row, $justify: space-between, $align-items: center, $row-gap: 56px, $wrap: wrap);
+                @include spacing(margin, top, 80px);
+            }
+        }
+        .title {
+            @include respond-to(desktop) {
+                @include size(default, 610px);
+            }
+            &__subheading {
+                @include spacing(margin, top, 16px);
+                @include respond-to(desktop) {
+                    @include spacing(margin, top, 24px);
+                }
+            }
+        }
+    }
 }

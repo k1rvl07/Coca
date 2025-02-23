@@ -1,10 +1,6 @@
 @use "@utils-scss" as *;
 
 .sponsor {
-    @include spacing(padding, bottom, 80px);
-    @include respond-to(desktop) {
-        @include spacing(padding, y, 86px);
-    }
     &__container {
         @include respond-to(desktop) {
             @include flex(on, $justify: space-between, $align-items: center);

@@ -17,6 +17,7 @@ export const HomePage = () => {
     Home_Advantage: Advantage,
     Home_Result: Result,
     Shared_SectionSponsors: SectionSponsors,
+    Home_CardBenefit: CardBenefit,
   } = components;
   const { sales_report, features: features_image, more, growth_team, results_line } = assets;
   const {
@@ -26,12 +27,13 @@ export const HomePage = () => {
     HOME_FEATURES_CARD_STATISTIC: FEATURES_CARD_STATISTIC,
     HOME_GROWTH_RESULTS: GROWTH_RESULTS,
     HOME_MAIN_SWAL_CONFIG: MAIN_SWAL_CONFIG,
+    HOME_BENEFITS_CARD_BENEFIT: BENEFITS_CARD_BENEFIT,
   } = content;
   const { useAnimatedIntersection, useFormSubmit } = hooks;
 
-  const sections = ["main", "overview", "features", "growth"];
+  const sections = ["main", "overview", "features", "growth", "benefits"];
   const animations = sections.map(() => useAnimatedIntersection(0.2));
-  const [main, overview, features, growth] = animations;
+  const [main, overview, features, growth, benefits] = animations;
 
   const [email, setEmail] = useState("");
   const { submit, loading } = useFormSubmit("http://localhost:5000/api/subscribe");
@@ -286,6 +288,44 @@ export const HomePage = () => {
           />
         </Section>
         <SectionSponsors />
+        <Section
+          className="benefits"
+          motionProps={{
+            ref: benefits.targetRef,
+            initial: { opacity: 0, y: 50 },
+            animate: benefits.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 },
+            transition: { duration: 0.8, ease: "easeOut", delay: 0.2 },
+          }}
+        >
+          <Title
+            heading="Here’s how Coca can benefit your business"
+            headingTag="h2"
+            headingClass="text-title-heading-second-black"
+            subHeadingClass="text-title-subheading-small"
+            subHeading="Build more meaningful and lasting relationships - better understand their needs, identify new opportunities to help address any problems faster"
+            isSubheadingLine={false}
+            motionProps={{
+              initial: { opacity: 0, y: 30 },
+              animate: benefits.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
+              transition: { duration: 0.8, ease: "easeOut", delay: 0.4 },
+            }}
+          />
+          <div className="benefits__cards">
+            {BENEFITS_CARD_BENEFIT.map((item, index) => (
+              <CardBenefit
+                key={item.id}
+                {...item}
+                img={assets[item.png]}
+                svg={assets[item.svg]}
+                motionProps={{
+                  initial: { opacity: 0, y: 20 },
+                  animate: benefits.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
+                  transition: { duration: 0.6, ease: "easeOut", delay: 0.6 + index * 0.2 },
+                }}
+              />
+            ))}
+          </div>
+        </Section>
       </main>
     </>
   );
