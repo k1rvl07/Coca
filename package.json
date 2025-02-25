@@ -16,7 +16,7 @@
     "watchStyles": "node src/utils/buildStyles/buildStyles.js",
     "generate": "plop",
     "server": "node src/database/server.js",
-    "start": "concurrently -n \"DEV,WATCH_STYLES,SERVER\" \"npm run dev\" \"npm run watchStyles\" \"npm run server\""
+    "start": "concurrently -n \"DEV,SERVER,WATCH_STYLES\" --prefix-colors \"blue.bold,magenta.bold,green.bold\" --kill-others-on-fail --success first --restart-tries 3 \"npm run dev\" \"npm run server\" \"npm run watchStyles\""
   },
   "dependencies": {
     "react": "^18.3.1",

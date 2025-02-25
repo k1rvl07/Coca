@@ -40,7 +40,7 @@ export const Shared_Header = () => {
           alt="logo"
           initial={{ opacity: 0, scale: 0.6 }}
           animate={header.hasAnimated ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.6 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
         />
       </Link>
       {width <= 1440 && (
@@ -53,7 +53,7 @@ export const Shared_Header = () => {
               initial={{ rotate: 0, opacity: 0 }}
               animate={header.hasAnimated ? { rotate: 360, opacity: 1 } : { rotate: 0, opacity: 0 }}
               exit={{ rotate: -360, opacity: 0 }}
-              transition={{ duration: 0.7, ease: "easeInOut" }}
+              transition={{ duration: 0.6, ease: "easeInOut" }}
             />
           </AnimatePresence>
         </Button>
@@ -76,7 +76,7 @@ export const Shared_Header = () => {
                     ? { opacity: 1, y: 0, visibility: "visible" }
                     : { opacity: 0, y: -20, visibility: "hidden" },
                 exit: { opacity: 0, y: -20, visibility: "hidden" },
-                transition: { duration: 0.55, ease: "easeInOut" },
+                transition: { duration: 0.5, ease: "easeInOut" },
               }
         }
         itemMotion={{
@@ -84,7 +84,7 @@ export const Shared_Header = () => {
           animate: (i) => ({
             opacity: header.hasAnimated ? 1 : 0,
             x: header.hasAnimated ? 0 : -40,
-            transition: { delay: i * 0.15, duration: 0.8, ease: "easeOut" },
+            transition: { delay: i * 0.1, duration: 0.6, ease: "easeOut" },
           }),
           exit: { opacity: 0, x: -20 },
         }}
@@ -92,9 +92,9 @@ export const Shared_Header = () => {
       <motion.div
         initial={{ x: -60, opacity: 0 }}
         animate={header.hasAnimated ? { x: 0, opacity: 1 } : { x: -60, opacity: 0 }}
-        transition={{ duration: 1, ease: "easeOut" }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        <Link className="header__contact link-arrow-underline" href="/contact">
+        <Link className="header__contact link-arrow-underline" href="/Coca/#">
           Contact Us 🡪
         </Link>
       </motion.div>

@@ -17,7 +17,7 @@ export const Shared_SectionSponsors = () => {
         ref: sectionAnimation.targetRef,
         initial: { opacity: 0, y: 50 },
         animate: sectionAnimation.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 },
-        transition: { duration: 0.8, ease: "easeOut", delay: 0.2 },
+        transition: { duration: 0.6, ease: "easeOut", delay: 0.2 },
       }}
     >
       <Title
@@ -30,7 +30,7 @@ export const Shared_SectionSponsors = () => {
         motionProps={{
           initial: { opacity: 0, x: -50 },
           animate: sectionAnimation.hasAnimated ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 },
-          transition: { duration: 0.8, ease: "easeOut" },
+          transition: { duration: 0.6, ease: "easeOut" },
         }}
       />
 
@@ -38,7 +38,7 @@ export const Shared_SectionSponsors = () => {
         className="sponsor__images"
         initial={{ opacity: 0, y: 30 }}
         animate={sectionAnimation.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-        transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
+        transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
       >
         {SPONSORS.map((sponsor, index) => (
           <motion.img
@@ -50,7 +50,7 @@ export const Shared_SectionSponsors = () => {
             animate={
               sectionAnimation.hasAnimated ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }
             }
-            transition={{ duration: 0.6, ease: "easeOut", delay: 0.6 + index * 0.15 }}
+            transition={{ duration: 0.5, ease: "easeOut", delay: 0.6 + index * 0.15 }}
           />
         ))}
       </motion.div>

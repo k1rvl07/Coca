@@ -40,9 +40,7 @@ export const HomePage = () => {
 
   const handleSubmitSubscribe = async (e) => {
     e.preventDefault();
-
     const swalConfig = MAIN_SWAL_CONFIG;
-
     await submit({ email }, swalConfig);
   };
 
@@ -56,7 +54,7 @@ export const HomePage = () => {
             ref: main.targetRef,
             initial: { opacity: 0, y: 50 },
             animate: main.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 },
-            transition: { duration: 0.8, ease: "easeOut", delay: 0.2 },
+            transition: { duration: 0.6, ease: "easeOut", delay: 0.2 },
           }}
         >
           <Title
@@ -67,7 +65,7 @@ export const HomePage = () => {
             motionProps={{
               initial: { opacity: 0, x: -50 },
               animate: main.hasAnimated ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 },
-              transition: { duration: 0.8, ease: "easeOut" },
+              transition: { duration: 0.6, ease: "easeOut" },
             }}
           />
           <Form
@@ -76,7 +74,7 @@ export const HomePage = () => {
               ref: main.formRef,
               initial: { opacity: 0, y: 30 },
               animate: main.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
-              transition: { duration: 0.6, ease: "easeOut", delay: 0.3 },
+              transition: { duration: 0.5, ease: "easeOut", delay: 0.3 },
             }}
             onSubmit={handleSubmitSubscribe}
           >
@@ -95,7 +93,7 @@ export const HomePage = () => {
             className="main__image"
             initial={{ scale: 0.9, opacity: 0 }}
             animate={main.hasAnimated ? { scale: 1, opacity: 1 } : { scale: 0.9, opacity: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.5 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.5 }}
           >
             <Text type="body" className="main__image-text text-main-image">
               Sales Report
@@ -106,7 +104,7 @@ export const HomePage = () => {
             className="main__sales-report"
             initial={{ opacity: 0, y: 30 }}
             animate={main.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.6 }}
           >
             <div className="main__sales-report-container">
               {MAIN_CARD_SALES_REPORT.map((item, index) => (
@@ -116,7 +114,7 @@ export const HomePage = () => {
                   motionProps={{
                     initial: { opacity: 0, y: 20 },
                     animate: main.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
-                    transition: { duration: 0.6, ease: "easeOut", delay: 0.7 + index * 0.2 },
+                    transition: { duration: 0.5, ease: "easeOut", delay: 0.7 + index * 0.2 },
                   }}
                 />
               ))}
@@ -129,7 +127,7 @@ export const HomePage = () => {
             ref: overview.targetRef,
             initial: { opacity: 0, y: 50 },
             animate: overview.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 },
-            transition: { duration: 0.8, ease: "easeOut", delay: 0.2 },
+            transition: { duration: 0.6, ease: "easeOut", delay: 0.2 },
           }}
         >
           <Title
@@ -149,7 +147,7 @@ export const HomePage = () => {
                 motionProps={{
                   initial: { opacity: 0, y: 20 },
                   animate: overview.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
-                  transition: { duration: 0.6, ease: "easeOut", delay: 0.4 + index * 0.2 },
+                  transition: { duration: 0.5, ease: "easeOut", delay: 0.4 + index * 0.2 },
                 }}
               />
             ))}
@@ -161,14 +159,14 @@ export const HomePage = () => {
             ref: features.targetRef,
             initial: { opacity: 0, y: 50 },
             animate: features.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 },
-            transition: { duration: 0.8, ease: "easeOut", delay: 0.2 },
+            transition: { duration: 0.6, ease: "easeOut", delay: 0.2 },
           }}
         >
           <motion.div
             className="features__image-statistic"
             initial={{ opacity: 0, y: 30 }}
             animate={features.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
           >
             <img className="features__image" src={features_image} alt="" />
             <div className="statistic">
@@ -188,7 +186,7 @@ export const HomePage = () => {
                     motionProps={{
                       initial: { opacity: 0, y: 20 },
                       animate: features.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
-                      transition: { duration: 0.6, ease: "easeOut", delay: 0.6 + index * 0.2 },
+                      transition: { duration: 0.5, ease: "easeOut", delay: 0.6 + index * 0.2 },
                     }}
                   />
                 ))}
@@ -205,14 +203,14 @@ export const HomePage = () => {
             motionProps={{
               initial: { opacity: 0, y: 30 },
               animate: features.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
-              transition: { duration: 0.8, ease: "easeOut", delay: 0.8 },
+              transition: { duration: 0.6, ease: "easeOut", delay: 0.8 },
             }}
           />
           <motion.div
             className="features__advantages"
             initial={{ opacity: 0, y: 30 }}
             animate={features.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 1.0 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 1.0 }}
           >
             {FEATURES_ADVANTAGES.map((item, index) => (
               <Advantage
@@ -221,7 +219,7 @@ export const HomePage = () => {
                 motionProps={{
                   initial: { opacity: 0, y: 20 },
                   animate: features.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
-                  transition: { duration: 0.6, ease: "easeOut", delay: 1.2 + index * 0.2 },
+                  transition: { duration: 0.5, ease: "easeOut", delay: 1.2 + index * 0.2 },
                 }}
               />
             ))}
@@ -233,14 +231,14 @@ export const HomePage = () => {
             ref: growth.targetRef,
             initial: { opacity: 0, y: 50 },
             animate: growth.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 },
-            transition: { duration: 0.8, ease: "easeOut", delay: 0.2 },
+            transition: { duration: 0.6, ease: "easeOut", delay: 0.2 },
           }}
         >
           <motion.div
             className="growth__results"
             initial={{ opacity: 0, y: 30 }}
             animate={growth.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
           >
             {GROWTH_RESULTS.map((item, index) => (
               <Fragment key={item.id}>
@@ -249,7 +247,7 @@ export const HomePage = () => {
                   motionProps={{
                     initial: { opacity: 0, y: 20 },
                     animate: growth.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
-                    transition: { duration: 0.6, ease: "easeOut", delay: 0.6 + index * 0.2 },
+                    transition: { duration: 0.5, ease: "easeOut", delay: 0.6 + index * 0.2 },
                   }}
                 />
                 {index < 3 && (
@@ -259,7 +257,7 @@ export const HomePage = () => {
                     alt="line"
                     initial={{ opacity: 0, x: -20 }}
                     animate={growth.hasAnimated ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-                    transition={{ duration: 0.6, ease: "easeOut", delay: 0.8 + index * 0.2 }}
+                    transition={{ duration: 0.5, ease: "easeOut", delay: 0.8 + index * 0.2 }}
                   />
                 )}
               </Fragment>
@@ -271,7 +269,7 @@ export const HomePage = () => {
             alt=""
             initial={{ opacity: 0, scale: 0.9 }}
             animate={growth.hasAnimated ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 1.0 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 1.0 }}
           />
           <Title
             heading="Lift your business to new heights with our digital marketing services"
@@ -283,7 +281,7 @@ export const HomePage = () => {
             motionProps={{
               initial: { opacity: 0, y: 30 },
               animate: growth.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
-              transition: { duration: 0.8, ease: "easeOut", delay: 1.4 },
+              transition: { duration: 0.6, ease: "easeOut", delay: 1.4 },
             }}
           />
         </Section>
@@ -294,7 +292,7 @@ export const HomePage = () => {
             ref: benefits.targetRef,
             initial: { opacity: 0, y: 50 },
             animate: benefits.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 },
-            transition: { duration: 0.8, ease: "easeOut", delay: 0.2 },
+            transition: { duration: 0.6, ease: "easeOut", delay: 0.2 },
           }}
         >
           <Title
@@ -307,7 +305,7 @@ export const HomePage = () => {
             motionProps={{
               initial: { opacity: 0, y: 30 },
               animate: benefits.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
-              transition: { duration: 0.8, ease: "easeOut", delay: 0.4 },
+              transition: { duration: 0.6, ease: "easeOut", delay: 0.4 },
             }}
           />
           <div className="benefits__cards">
@@ -320,7 +318,7 @@ export const HomePage = () => {
                 motionProps={{
                   initial: { opacity: 0, y: 20 },
                   animate: benefits.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
-                  transition: { duration: 0.6, ease: "easeOut", delay: 0.6 + index * 0.2 },
+                  transition: { duration: 0.5, ease: "easeOut", delay: 0.6 + index * 0.2 },
                 }}
               />
             ))}

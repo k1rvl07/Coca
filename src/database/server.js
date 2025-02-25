@@ -15,5 +15,7 @@ app.get("/", (_, res) => {
 app.use(routes);
 
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(
+    `Server is running on \x1b[36mhttp://localhost:\x1b[1m${PORT}\x1b[0m\x1b[36m/\x1b[0m`,
+  );
 });
