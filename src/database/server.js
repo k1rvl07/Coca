@@ -8,11 +8,15 @@ const PORT = 5000;
 app.use(cors());
 app.use(express.json());
 
-app.get("/", (_, res) => {
+app.use((_req, _res, next) => {
+  next();
+});
+
+app.get("/api", (_, res) => {
   res.send("Server is running!");
 });
 
-app.use(routes);
+app.use("/api", routes);
 
 app.listen(PORT, () => {
   console.log(

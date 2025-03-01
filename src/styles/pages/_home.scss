@@ -274,4 +274,50 @@
             }
         }
     }
+    .news {
+        @include spacing(padding, bottom, 40px);
+        @include respond-to(desktop) {
+            @include spacing(padding, (top, bottom), 60px, 90px);
+        }
+        &__dragger {
+            @include position(absolute, (left, top), 286px, 76px);
+            @include respond-to(desktop) {
+                @include size(default, 80px);
+                @include position(null, (left, top), 560px, 126px);
+            }
+        }
+        .slider {
+            &__window {
+                @include size(default, 100%);
+
+            }
+            &__slides {
+                @include position(relative);
+                @include flex(on, row-reverse, $align-items: center, $gap: 16px);
+                @include size(default, fit-content);
+                @include respond-to(desktop) {
+                    @include flex($gap: 36px);
+                }
+            }
+            &__slide {
+                @include size(default, 300px);
+                @include respond-to(desktop) {
+                    @include size(default, 582px);
+                }
+            }
+        }
+        .title {
+            @include spacing(margin, bottom, 32px);
+            @include respond-to(desktop) {
+                @include spacing(margin, bottom, 80px);
+                @include flex(on, column, $align-items: center);
+            }
+            &__subheading {
+                @include spacing(margin, top, 16px);
+                @include respond-to(desktop) {
+                    @include spacing(margin, top, 24px);
+                }
+            }
+        }
+    }
 }

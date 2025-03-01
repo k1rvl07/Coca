@@ -80,3 +80,21 @@
   background-color: color(neutral-100);
   border-radius: 100px;
 }
+
+%slider-window {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  @include respond-to("desktop") {
+      overflow-x: hidden;
+  }
+}
+
+%slides {
+  transition: transform 0.5s ease-in-out;
+}
+
+%slide {
+  scroll-snap-align: start;
+  position: relative;
+}

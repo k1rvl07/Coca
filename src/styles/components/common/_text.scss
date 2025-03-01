@@ -70,4 +70,10 @@
     &-card-benefit-description-text {
         @extend %home_text-card-benefit-description-text;
     }
+    &-card-news-name {
+        @extend %home_text-card-news-name;
+    }
+    &-card-news-description {
+        @extend %home_text-card-news-description;
+    }
 }

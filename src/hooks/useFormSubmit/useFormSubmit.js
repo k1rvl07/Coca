@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { hooks } from "@exports";
+import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 
 export const useFormSubmit = (url, options = {}) => {
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const [response, setResponse] = useState(null);
+  const { useFetch } = hooks;
+  const { fetchData, loading, response } = useFetch();
+  const [swalConfig, setSwalConfig] = useState(null);
 
   const swalConfigDefault = {
     customClass: {
@@ -18,22 +19,19 @@ export const useFormSubmit = (url, options = {}) => {
   };
 
   const submit = async (formData, swalConfig = {}) => {
-    setLoading(true);
-    setError(null);
+    setSwalConfig(swalConfig);
+    await fetchData(url, {
+      ...options,
+      method: options.method || "POST",
+      body: formData,
+    });
+  };
 
-    try {
-      const response = await fetch(url, {
-        method: options.method || "POST",
-        headers: options.headers || { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-
-      const data = await response.json();
-      setResponse(data);
-
+  useEffect(() => {
+    if (response && swalConfig) {
       if (swalConfig.errorConditions && Array.isArray(swalConfig.errorConditions)) {
         for (const condition of swalConfig.errorConditions) {
-          if (condition.condition(data)) {
+          if (condition.condition(response)) {
             if (condition.error) {
               Swal.fire({
                 ...condition.error,
@@ -45,7 +43,7 @@ export const useFormSubmit = (url, options = {}) => {
         }
       }
 
-      if (swalConfig.successCondition?.(data)) {
+      if (swalConfig.successCondition?.(response)) {
         if (swalConfig.success) {
           Swal.fire({
             ...swalConfig.success,
@@ -55,24 +53,17 @@ export const useFormSubmit = (url, options = {}) => {
         return;
       }
 
-      if (response.ok) {
+      if (!response.ok) {
+        if (swalConfig.failure) {
+          Swal.fire({
+            ...swalConfig.failure,
+            ...swalConfigDefault,
+          });
+        }
         return;
       }
-
-      throw new Error(data.message || `Error: ${response.status}`);
-    } catch (err) {
-      setError(err.message);
-
-      if (swalConfig.failure) {
-        Swal.fire({
-          ...swalConfig.failure,
-          ...swalConfigDefault,
-        });
-      }
-    } finally {
-      setLoading(false);
     }
-  };
+  }, [response, swalConfig]);
 
-  return { submit, loading, error, response };
+  return { submit, loading, response };
 };

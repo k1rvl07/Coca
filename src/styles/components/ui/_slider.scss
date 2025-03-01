@@ -1,0 +1,13 @@
+@use "@utils-scss" as *;
+
+.slider {
+    &__window {
+        @extend %slider-window;
+    }
+    &__slides {
+        @extend %slides;
+    }
+    &__slide {
+        @extend %slide;
+    }
+}

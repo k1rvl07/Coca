@@ -1,7 +1,7 @@
 export const HOME_MAIN_SWAL_CONFIG = {
   errorConditions: [
     {
-      condition: (data) => data.message === "Email already subscribed",
+      condition: (response) => response.data.message === "Email already subscribed",
       error: {
         icon: "warning",
         title: "Warning",
@@ -9,7 +9,7 @@ export const HOME_MAIN_SWAL_CONFIG = {
       },
     },
     {
-      condition: (data) => data.message === "Invalid email format",
+      condition: (response) => response.data.message === "Invalid email format",
       error: {
         icon: "error",
         title: "Error",
@@ -17,7 +17,7 @@ export const HOME_MAIN_SWAL_CONFIG = {
       },
     },
     {
-      condition: (data) => data.message === "Email is required",
+      condition: (response) => response.data.message === "Email is required",
       error: {
         icon: "error",
         title: "Error",
@@ -25,7 +25,7 @@ export const HOME_MAIN_SWAL_CONFIG = {
       },
     },
   ],
-  successCondition: (data) => data.message === "Subscription successful",
+  successCondition: (response) => response.data.message === "Subscription successful",
   success: {
     icon: "success",
     title: "Success",

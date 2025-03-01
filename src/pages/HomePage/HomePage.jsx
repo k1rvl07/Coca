@@ -1,6 +1,6 @@
 import { assets, components, content, hooks } from "@exports";
 import { motion } from "framer-motion";
-import React, { useState, Fragment } from "react";
+import React, { useState, useEffect, Fragment, useRef } from "react";
 
 export const HomePage = () => {
   const {
@@ -18,8 +18,17 @@ export const HomePage = () => {
     Home_Result: Result,
     Shared_SectionSponsors: SectionSponsors,
     Home_CardBenefit: CardBenefit,
+    Shared_Slider: Slider,
+    Home_CardNews: CardNews,
   } = components;
-  const { sales_report, features: features_image, more, growth_team, results_line } = assets;
+  const {
+    sales_report,
+    features: features_image,
+    more,
+    growth_team,
+    results_line,
+    dragger,
+  } = assets;
   const {
     HOME_MAIN_CARD_SALES_REPORT: MAIN_CARD_SALES_REPORT,
     HOME_OVERVIEW_CARDS: OVERVIEW_CARDS,
@@ -29,14 +38,36 @@ export const HomePage = () => {
     HOME_MAIN_SWAL_CONFIG: MAIN_SWAL_CONFIG,
     HOME_BENEFITS_CARD_BENEFIT: BENEFITS_CARD_BENEFIT,
   } = content;
-  const { useAnimatedIntersection, useFormSubmit } = hooks;
+  const { useAnimatedIntersection, useFormSubmit, useFetch } = hooks;
 
-  const sections = ["main", "overview", "features", "growth", "benefits"];
+  const sections = ["main", "overview", "features", "growth", "benefits", "news"];
   const animations = sections.map(() => useAnimatedIntersection(0.2));
-  const [main, overview, features, growth, benefits] = animations;
+  const [main, overview, features, growth, benefits, news] = animations;
 
   const [email, setEmail] = useState("");
   const { submit, loading } = useFormSubmit("http://localhost:5000/api/subscribe");
+
+  const { fetchData, response: newsData } = useFetch();
+  const [newsContent, setNewsContent] = useState([]);
+
+  const isMounted = useRef(false);
+
+  useEffect(() => {
+    if (!isMounted.current) {
+      isMounted.current = true;
+      fetchData("http://localhost:5000/api/news");
+    }
+  }, [fetchData]);
+
+  useEffect(() => {
+    if (newsData) {
+      if (newsData.ok) {
+        setNewsContent(newsData.data || []);
+      } else {
+        console.error("Failed to fetch news data:", newsData.message);
+      }
+    }
+  }, [newsData]);
 
   const handleSubmitSubscribe = async (e) => {
     e.preventDefault();
@@ -323,6 +354,58 @@ export const HomePage = () => {
               />
             ))}
           </div>
+        </Section>
+        <Section
+          className="news"
+          motionProps={{
+            ref: news.targetRef,
+            initial: { opacity: 0, y: 50 },
+            animate: news.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 },
+            transition: { duration: 0.6, ease: "easeOut", delay: 0.2 },
+          }}
+        >
+          <Title
+            heading="Trending news from Coca"
+            headingTag="h2"
+            headingClass="text-title-heading-second-black"
+            subHeadingClass="text-title-subheading-small"
+            subHeading="we have some new Service to pamper you"
+            isSubheadingLine={false}
+            motionProps={{
+              initial: { opacity: 0, y: 30 },
+              animate: news.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
+              transition: { duration: 0.6, ease: "easeOut", delay: 0.4 },
+            }}
+          />
+          <Slider
+            motionProps={{
+              initial: { opacity: 0, y: 30 },
+              animate: news.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
+              transition: { duration: 0.6, ease: "easeOut", delay: 0.6 },
+            }}
+          >
+            {(newsContent || []).map((item, index) => (
+              <CardNews
+                key={item.id}
+                {...item}
+                img={assets[`card_news_img_${item.id}`]}
+                motionProps={{
+                  initial: { opacity: 0, x: -20 },
+                  animate: news.hasAnimated ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 },
+                  transition: { duration: 0.5, ease: "easeOut", delay: 1.2 - index * 0.2 },
+                }}
+              />
+            ))}
+            <motion.img
+              className="news__dragger"
+              src={dragger}
+              alt=""
+              data-no-slide={true}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={news.hasAnimated ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 1.0 }}
+            />
+          </Slider>
         </Section>
       </main>
     </>
