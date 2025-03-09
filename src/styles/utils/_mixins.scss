@@ -54,7 +54,10 @@
   $wrap: null,
   $gap: null,
   $row-gap: null,
-  $column-gap: null
+  $column-gap: null,
+  $flex-basis: null,
+  $flex-grow: null,
+  $flex-shrink: null
 ) {
   @if $flex == on {
     display: flex;
@@ -90,6 +93,18 @@
 
   @if $column-gap != null {
     column-gap: $column-gap;
+  }
+
+  @if $flex-basis != null {
+    flex-basis: $flex-basis;
+  }
+
+  @if $flex-grow != null {
+    flex-grow: $flex-grow;
+  }
+
+  @if $flex-shrink != null {
+    flex-shrink: $flex-shrink;
   }
 }
 

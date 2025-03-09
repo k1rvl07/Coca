@@ -76,4 +76,16 @@
     &-card-news-description {
         @extend %home_text-card-news-description;
     }
+    &-card-review-star-count {
+        @extend %home_text-card-review-star-count;
+    }
+    &-card-review-text {
+        @extend %home_text-card-review-text;
+    }
+    &-card-review-author-name {
+        @extend %home_text-card-review-author-name;
+    }
+    &-card-review-author-role {
+        @extend %hone_text-card-review-author-role;
+    }
 }

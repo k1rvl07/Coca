@@ -20,6 +20,7 @@ export const HomePage = () => {
     Home_CardBenefit: CardBenefit,
     Shared_Slider: Slider,
     Home_CardNews: CardNews,
+    Home_CardReview: CardReview,
   } = components;
   const {
     sales_report,
@@ -28,6 +29,7 @@ export const HomePage = () => {
     growth_team,
     results_line,
     dragger,
+    backtick,
   } = assets;
   const {
     HOME_MAIN_CARD_SALES_REPORT: MAIN_CARD_SALES_REPORT,
@@ -37,12 +39,13 @@ export const HomePage = () => {
     HOME_GROWTH_RESULTS: GROWTH_RESULTS,
     HOME_MAIN_SWAL_CONFIG: MAIN_SWAL_CONFIG,
     HOME_BENEFITS_CARD_BENEFIT: BENEFITS_CARD_BENEFIT,
+    HOME_REVIEWS_CARD_REVIEW: REVIEWS_CARD_REVIEW,
   } = content;
   const { useAnimatedIntersection, useFormSubmit, useFetch } = hooks;
 
-  const sections = ["main", "overview", "features", "growth", "benefits", "news"];
+  const sections = ["main", "overview", "features", "growth", "benefits", "news", "reviews"];
   const animations = sections.map(() => useAnimatedIntersection(0.2));
-  const [main, overview, features, growth, benefits, news] = animations;
+  const [main, overview, features, growth, benefits, news, reviews] = animations;
 
   const [email, setEmail] = useState("");
   const { submit, loading } = useFormSubmit("http://localhost:5000/api/subscribe");
@@ -51,6 +54,8 @@ export const HomePage = () => {
   const [newsContent, setNewsContent] = useState([]);
 
   const isMounted = useRef(false);
+
+  const [currentReviewIndex, setCurrentReviewIndex] = useState(0);
 
   useEffect(() => {
     if (!isMounted.current) {
@@ -406,6 +411,60 @@ export const HomePage = () => {
               transition={{ duration: 0.6, ease: "easeOut", delay: 1.0 }}
             />
           </Slider>
+        </Section>
+        <Section
+          className="reviews"
+          motionProps={{
+            ref: reviews.targetRef,
+            initial: { opacity: 0, y: 50 },
+            animate: reviews.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 },
+            transition: { duration: 0.6, ease: "easeOut", delay: 0.2 },
+          }}
+        >
+          <Title
+            heading="What our customers are saying"
+            headingTag="h2"
+            headingClass="text-title-heading-second-black"
+            subHeadingClass="text-title-subheading-small"
+            subHeading="We are trusted numerous companies from different business to meet their needs"
+            isSubheadingLine={false}
+            motionProps={{
+              initial: { opacity: 0, y: 30 },
+              animate: reviews.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
+              transition: { duration: 0.6, ease: "easeOut", delay: 0.4 },
+            }}
+          />
+          <motion.div
+            className="reviews__cards"
+            initial={{ opacity: 0, y: 30 }}
+            animate={reviews.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.6 }}
+          >
+            <motion.img
+              className="reviews__cards-backtick"
+              src={backtick}
+              alt=""
+              key={currentReviewIndex}
+              initial={{ opacity: 0, scale: 0.9, x: -20 }}
+              animate={
+                reviews.hasAnimated
+                  ? { opacity: 1, scale: 1, x: 0 }
+                  : { opacity: 0, scale: 0.9, x: -20 }
+              }
+              exit={{ opacity: 0, scale: 0.9, x: -20 }}
+              transition={{ duration: 0.4, ease: "easeOut", delay: 0.6 }}
+            />
+            <CardReview
+              reviews={REVIEWS_CARD_REVIEW}
+              reviewsAnimation={reviews}
+              onUpdateIndex={setCurrentReviewIndex}
+              motionProps={{
+                initial: { opacity: 0, x: -20 },
+                animate: reviews.hasAnimated ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 },
+                transition: { duration: 0.6, ease: "easeOut", delay: 1.0 },
+              }}
+            />
+          </motion.div>
         </Section>
       </main>
     </>

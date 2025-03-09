@@ -1,0 +1,59 @@
+@use "@utils-scss" as *;
+
+.card-review {
+    @include size(default, 303px);
+    @include grid(on, repeat(3, auto), repeat(2, auto), "rating rating" "text text" "author arrows");
+    @include spacing(margin, top, 22px);
+    @include respond-to(desktop) {
+        @include size(default, 1040px);
+        @include spacing(margin, top, 64px)
+    }
+    &__rating {
+        @include flex(on, $align-items: center, $gap: 8px);
+        @include grid-item(rating, start, center);
+    }
+    &__text {
+        @include grid-item(text, start, start);
+        @include spacing(margin, (top, bottom), 11px, 8px);
+        @include respond-to(desktop) {
+            @include spacing(margin, (top, bottom), 16px, 40px)
+        }
+    }
+    &__stars {
+        @include flex(on, $align-items: center, $gap: 8px);
+    }
+    &__star {
+        @include size(default, 16px);
+        @include respond-to(desktop) {
+            @include size(default, 20px);
+        }
+    }
+    &__author {
+        @include flex(on, $align-items: center, $gap: 14px);
+        @include grid-item(author, start, center);
+        @include respond-to(desktop) {
+            @include flex($gap: 24px);
+        }
+        &-info {
+            @include flex(on, column, $gap: 6px);
+            @include size(default, 170px);
+            @include respond-to(desktop) {
+                @include size(default, 280px);
+            }
+        }
+        &-image {
+            @include size(default, 40px, 40px);
+            @include image-fit(cover, center);
+            @include respond-to(desktop) {
+                @include size(default, 56px, 56px);
+            }
+        }
+    }
+    .arrows {
+        @include grid-item(arrows, end, center);
+        @include flex(on, $gap: 8px);
+        @include respond-to(desktop) {
+            @include flex($gap: 16px);
+        }
+    }
+}

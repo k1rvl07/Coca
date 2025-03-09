@@ -4,5 +4,11 @@
     &-black {
         @extend %shared_button-black;
     }
+    &-arrow-active {
+        @extend %shared_button-arrow-active;
+    }
+    &-arrow-disabled {
+        @extend %shared_button-arrow-disabled;
+    }
 }
 

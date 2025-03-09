@@ -320,4 +320,39 @@
             }
         }
     }
+    .reviews {
+        @include spacing(padding, (top, bottom), 17px, 80px);
+        @include respond-to(desktop) {
+            @include spacing(padding, (top, bottom), 70px, 160px);
+        }
+        &__cards {
+            @include flex(on, $justify: space-between);
+            @include spacing(margin, top, 58px);
+            &-backtick {
+                @include size(default, 32px, 21px);
+                @include respond-to(desktop) {
+                    @include size(default, 117px, 77px);
+                }
+            }
+        }
+        .title {
+            @include size(default, 232px);
+            @include respond-to(desktop) {
+                @include size(default, auto);
+                @include flex(on, $align-items: center, $justify: space-between);
+            }
+            &__heading {
+                @include respond-to(desktop) {
+                    @include size(default, 530px);
+                }
+            }
+            &__subheading {
+                @include spacing(margin, top, 16px);
+                @include respond-to(desktop) {
+                    @include spacing(margin, all, 0px);
+                    @include size(default, 376px);
+                }
+            }
+        }
+    }
 }

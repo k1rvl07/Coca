@@ -74,11 +74,32 @@
 %shared_button-black {
   background-color: color(neutral-100);
   border-radius: 100px;
+  @include border(all, 1px, solid, color(neutral-100));
+  @extend %buttom-effect;
 }
 
-%swal_confirm-button {
+%shared_button-arrow-active {
   background-color: color(neutral-100);
+  color: color(neutral-10);
   border-radius: 100px;
+  @include size(default, 28px, 28px);
+  @include flex(on, $align-items: center, $justify: center);
+  @include border(all, 1px, solid, color(neutral-100));
+  @extend %buttom-effect;
+  @include respond-to(desktop) {
+    @include size(default, 50px, 50px);
+  }
+}
+
+%shared_button-arrow-disabled {
+  background-color: color(neutral-10);
+  color: color(neutral-60);
+  @include flex(on, $align-items: center, $justify: center);
+  @include border(all, 1px, solid, color(neutral-60), 100px);
+  @include size(default, 28px, 28px);
+  @include respond-to(desktop) {
+    @include size(default, 50px, 50px);
+  }
 }
 
 %slider-window {
@@ -97,4 +118,18 @@
 %slide {
   scroll-snap-align: start;
   position: relative;
+}
+
+%buttom-effect {
+  transition: all 0.5s ease-in-out;
+  &:hover {
+    transition: all 0.5s ease-in-out;
+    color: color(neutral-100);
+    background-color: color(neutral-10);
+  }
+  &:active {
+    transition: all 0.2s ease-in-out;
+    color: color(neutral-10);
+    background-color: color(neutral-100);
+  }
 }
