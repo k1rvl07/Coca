@@ -1,5 +1,5 @@
 import { hooks } from "@exports";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Swal from "sweetalert2";
 
 export const useFormSubmit = (url, options = {}) => {
@@ -18,52 +18,59 @@ export const useFormSubmit = (url, options = {}) => {
     },
   };
 
-  const submit = async (formData, swalConfig = {}) => {
-    setSwalConfig(swalConfig);
-    await fetchData(url, {
-      ...options,
-      method: options.method || "POST",
-      body: formData,
-    });
-  };
+  const submit = useCallback(
+    async (formData, config) => {
+      setSwalConfig(config || {});
+      await fetchData(url, {
+        ...options,
+        method: options.method || "POST",
+        body: formData,
+      });
+    },
+    [fetchData, options, url],
+  );
 
   useEffect(() => {
-    if (response && swalConfig) {
-      if (swalConfig.errorConditions && Array.isArray(swalConfig.errorConditions)) {
-        for (const condition of swalConfig.errorConditions) {
-          if (condition.condition(response)) {
-            if (condition.error) {
-              Swal.fire({
-                ...condition.error,
-                ...swalConfigDefault,
-              });
-            }
-            return;
-          }
-        }
-      }
+    if (!response || !swalConfig) {
+      return;
+    }
 
-      if (swalConfig.successCondition?.(response)) {
-        if (swalConfig.success) {
+    let handled = false;
+
+    if (swalConfig.errorConditions?.length) {
+      for (const condition of swalConfig.errorConditions) {
+        if (condition.condition(response)) {
           Swal.fire({
-            ...swalConfig.success,
+            ...condition.error,
+            icon: condition.error.icon || "warning",
             ...swalConfigDefault,
           });
+          handled = true;
+          break;
         }
-        return;
       }
+    }
 
-      if (!response.ok) {
-        if (swalConfig.failure) {
-          Swal.fire({
-            ...swalConfig.failure,
-            ...swalConfigDefault,
-          });
-        }
-        return;
-      }
+    if (!handled && swalConfig.successCondition?.(response)) {
+      Swal.fire({
+        ...swalConfig.success,
+        icon: swalConfig.success?.icon || "success",
+        ...swalConfigDefault,
+      });
+      handled = true;
+    }
+
+    if (!handled && !response.ok) {
+      const errorMessage = response.data?.message || "Unknown error";
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: errorMessage,
+        ...swalConfigDefault,
+        ...(swalConfig.failure || {}),
+      });
     }
   }, [response, swalConfig]);
 
-  return { submit, loading, response };
+  return { submit, loading };
 };

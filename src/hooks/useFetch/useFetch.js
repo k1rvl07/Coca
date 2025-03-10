@@ -7,23 +7,29 @@ export const useFetch = () => {
   const fetchData = useCallback(async (url, options = {}) => {
     setLoading(true);
     try {
-      const response = await fetch(url, {
+      const fetchOptions = {
         method: options.method || "GET",
-        headers: options.headers || { "Content-Type": "application/json" },
-        body: options.body ? JSON.stringify(options.body) : null,
-      });
+        headers: options.headers || {
+          ...(options.body instanceof FormData ? {} : { "Content-Type": "application/json" }),
+        },
+        body:
+          options.body && !(options.body instanceof FormData)
+            ? JSON.stringify(options.body)
+            : options.body,
+      };
 
-      const data = await response.json();
+      const res = await fetch(url, fetchOptions);
+      let data;
+      try {
+        data = await res.json();
+      } catch (_e) {
+        data = { message: "Invalid response format" };
+      }
 
-      setResponse({
-        data,
-        status: response.status,
-        ok: response.ok,
-      });
+      setResponse({ data, status: res.status, ok: res.ok });
     } catch (err) {
       setResponse({
-        data: null,
-        message: err.message || "Something went wrong",
+        data: { message: err.message || "Connection error" },
         status: 0,
         ok: false,
       });
