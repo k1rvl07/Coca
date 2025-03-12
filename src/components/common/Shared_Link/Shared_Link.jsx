@@ -1,10 +1,10 @@
-import classnames from "classnames";
+import { motion } from "framer-motion";
 import React from "react";
 
-export const Shared_Link = ({ className, href = "#", children }) => {
+export const Shared_Link = ({ className, href = "#", children, motionProps = {} }) => {
   return (
-    <a href={href} className={className}>
+    <motion.a href={href} className={className} {...motionProps}>
       {children}
-    </a>
+    </motion.a>
   );
 };

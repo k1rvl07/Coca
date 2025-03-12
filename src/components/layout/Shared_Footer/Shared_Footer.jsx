@@ -1,4 +1,5 @@
-import { assets, components, content } from "@exports";
+import { assets, components, content, hooks } from "@exports";
+import { motion } from "framer-motion";
 import React from "react";
 
 export const Shared_Footer = () => {
@@ -16,8 +17,21 @@ export const Shared_Footer = () => {
     SHARED_FOOTER_SOCIAL_ICONS: FOOTER_SOCIAL_ICONS,
     SHARED_FOOTER_LINKS: FOOTER_LINKS,
   } = content;
+  const { useAnimatedIntersection } = hooks;
+
+  const footerAnimation = useAnimatedIntersection(0.2);
+
   return (
-    <Section tagName="footer" className="footer">
+    <Section
+      tagName="footer"
+      className="footer"
+      motionProps={{
+        ref: footerAnimation.targetRef,
+        initial: { opacity: 0, y: 50 },
+        animate: footerAnimation.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 },
+        transition: { duration: 0.6, ease: "easeOut", delay: 0.2 },
+      }}
+    >
       <Title
         heading="Think beyond the wave"
         headingTag="h2"
@@ -25,41 +39,125 @@ export const Shared_Footer = () => {
         subheading="Ask about Sans products, pricing, implementation, or anything else. Our highly trained reps are standing by, ready to help"
         subheadingClass="text-title-subheading-footer"
         subheadingLineColor="white"
+        motionProps={{
+          initial: { opacity: 0, y: 20 },
+          animate: footerAnimation.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
+          transition: { duration: 0.5, delay: 0.3 },
+        }}
       />
       <Button type="button" className="footer__button button-white text-button-white">
         Try for free
       </Button>
-      <div className="footer__company">
-        <Link className="footer__company-link" href="/Coca/#">
+      <motion.div
+        className="footer__company"
+        initial={{ opacity: 0, y: 20 }}
+        animate={footerAnimation.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+        transition={{ duration: 0.5, delay: 0.5 }}
+      >
+        <Link
+          className="footer__company-link"
+          href="/Coca/#"
+          motionProps={{
+            initial: { opacity: 0, x: -20 },
+            animate: footerAnimation.hasAnimated ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 },
+            transition: { duration: 0.5, delay: 0.6 },
+          }}
+        >
           <img className="footer__logo" src={logo_white} alt="" />
         </Link>
-        <Text className="footer__slogan text-footer-slogan">
+        <Text
+          className="footer__slogan text-footer-slogan"
+          motionProps={{
+            initial: { opacity: 0, y: 20 },
+            animate: footerAnimation.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
+            transition: { duration: 0.5, delay: 0.7 },
+          }}
+        >
           We built an elegant solution. Our team created a fully integrated sales and marketing
           solution for SMBs
         </Text>
-      </div>
+      </motion.div>
       <Nav
         navData={FOOTER_NAV}
         linkClassName="text-footer-nav-link"
         titleClassName="text-footer-nav-title"
+        motionProps={{
+          initial: { opacity: 0, y: 20 },
+          animate: footerAnimation.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
+          transition: { duration: 0.5, delay: 1.0 },
+        }}
+        itemMotion={{
+          initial: { opacity: 0, x: -40 },
+          animate: (i) => ({
+            opacity: footerAnimation.hasAnimated ? 1 : 0,
+            x: footerAnimation.hasAnimated ? 0 : -40,
+            transition: { delay: 1.0 + i * 0.125, duration: 0.6, ease: "easeOut" },
+          }),
+          exit: { opacity: 0, x: -20 },
+        }}
+        titleMotion={{
+          initial: { opacity: 0, x: -40 },
+          animate: (i) => ({
+            opacity: footerAnimation.hasAnimated ? 1 : 0,
+            x: footerAnimation.hasAnimated ? 0 : -40,
+            transition: { delay: 1.0 + i * 0.125, duration: 0.6, ease: "easeOut" },
+          }),
+          exit: { opacity: 0, x: -20 },
+        }}
       />
+
       <hr className="footer__line" />
-      <div className="footer__icons">
-        {FOOTER_SOCIAL_ICONS.map((icon) => (
-          <Link className="footer__icon-link" href={icon.href} key={icon.id}>
+      <motion.div
+        className="footer__icons"
+        initial={{ opacity: 0, y: 20 }}
+        animate={footerAnimation.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+        transition={{ duration: 0.5, delay: 1.0 }}
+      >
+        {FOOTER_SOCIAL_ICONS.map((icon, index) => (
+          <Link
+            className="footer__icon-link"
+            href={icon.href}
+            key={icon.id}
+            motionProps={{
+              initial: { opacity: 0, x: -20 },
+              animate: footerAnimation.hasAnimated ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 },
+              transition: { duration: 0.5, delay: 1.1 + index * 0.1 },
+            }}
+          >
             <img className="footer__icon-img" src={assets[icon.img]} alt="" />
           </Link>
         ))}
-      </div>
-      <div className="footer__links">
-        {FOOTER_LINKS.map((link) => (
-          <Link className="footer__link text-footer-link" href={link.href} key={link.id}>
+      </motion.div>
+      <motion.div
+        className="footer__links"
+        initial={{ opacity: 0, y: 20 }}
+        animate={footerAnimation.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+        transition={{ duration: 0.5, delay: 1.2 }}
+      >
+        {FOOTER_LINKS.map((link, index) => (
+          <Link
+            className="footer__link text-footer-link"
+            href={link.href}
+            key={link.id}
+            motionProps={{
+              initial: { opacity: 0, x: -20 },
+              animate: footerAnimation.hasAnimated ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 },
+              transition: { duration: 0.5, delay: 1.3 + index * 0.1 },
+            }}
+          >
             {link.text}
           </Link>
         ))}
-      </div>
-      <Text className="footer__copyright text-footer-copyright">
-        © Copyright 2023,t All Rights Reserved
+      </motion.div>
+      <Text
+        className="footer__copyright text-footer-copyright"
+        motionProps={{
+          initial: { opacity: 0, y: 20 },
+          animate: footerAnimation.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
+          transition: { duration: 0.5, delay: 1.4 },
+        }}
+      >
+        © Copyright 2023, All Rights Reserved
       </Text>
     </Section>
   );

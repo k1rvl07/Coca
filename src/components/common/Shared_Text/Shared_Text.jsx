@@ -1,16 +1,34 @@
-import classnames from "classnames";
+import { motion } from "framer-motion";
 import React from "react";
 
-export const Shared_Text = ({ type = "body", headingTag = "h1", className, children }) => {
+export const Shared_Text = ({
+  type = "body",
+  headingTag = "h1",
+  className,
+  children,
+  motionProps = {},
+}) => {
   if (type === "body") {
-    return <p className={className}>{children}</p>;
+    return (
+      <motion.p className={className} {...motionProps}>
+        {children}
+      </motion.p>
+    );
   }
   if (type === "heading") {
-    const Tag = headingTag;
-    return <Tag className={className}>{children}</Tag>;
+    const Tag = motion(headingTag);
+    return (
+      <Tag className={className} {...motionProps}>
+        {children}
+      </Tag>
+    );
   }
   if (type === "span") {
-    return <span className={className}>{children}</span>;
+    return (
+      <motion.span className={className} {...motionProps}>
+        {children}
+      </motion.span>
+    );
   }
   console.error(`Unknown type: ${type}`);
   return null;
