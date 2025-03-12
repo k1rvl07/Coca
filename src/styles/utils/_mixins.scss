@@ -4,6 +4,7 @@
 @use "sass:meta";
 
 @use "./maps.scss" as *;
+@use "./functions.scss" as *;
 
 @mixin respond-to($media) {
   @if map.has-key($breakpoints-map, $media) {
@@ -273,7 +274,7 @@
       }
 
       @if $side == "all" {
-        top: list.nth($values, $value-index);    
+        top: list.nth($values, $value-index);
         right: list.nth($values, $value-index);
         bottom: list.nth($values, $value-index);
         left: list.nth($values, $value-index);
@@ -337,4 +338,33 @@
   background-repeat: $repeat;
   background-size: $size;
   background-position: $position;
+}
+
+@mixin button-effect($button-color) {
+  transition: all 0.5s ease-in-out;
+  &:hover {
+    transition: all 0.5s ease-in-out;
+  }
+  &:active {
+    transition: all 0.2s ease-in-out;
+  }
+  @if $button-color == "black" {
+    &:hover {
+      background-color: color(neutral-10);
+      color: color(neutral-100);
+    }
+    &:active {
+      background-color: color(neutral-100);
+      color: color(neutral-10);
+    }
+  } @else if ($button-color == "white") {
+    &:hover {
+      background-color: color(neutral-100);
+      color: color(neutral-10);
+    }
+    &:active {
+      background-color: color(neutral-10);
+      color: color(neutral-100);
+    }
+  }
 }

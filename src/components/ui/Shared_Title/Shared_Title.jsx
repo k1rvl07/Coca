@@ -5,23 +5,25 @@ export const Shared_Title = ({
   heading,
   headingTag = "h1",
   headingClass,
-  subHeading,
-  subHeadingClass,
+  subheading,
+  subheadingClass,
   isSubheadingLine = true,
+  subheadingLineColor = "black",
   motionProps = {},
 }) => {
   const { Shared_Text: Text } = components;
-  const { subheading_line } = assets;
+  const { subheading_line, subheading_line_white } = assets;
+  const line = subheadingLineColor === "black" ? subheading_line : subheading_line_white;
   return (
     <motion.div className="title" {...motionProps}>
       <Text type="heading" headingTag={headingTag} className={`title__heading ${headingClass}`}>
         {heading}
       </Text>
-      <Text type="body" className={`title__subheading ${subHeadingClass}`}>
+      <Text type="body" className={`title__subheading ${subheadingClass}`}>
         {isSubheadingLine && (
-          <img className="title__subheading-line" src={subheading_line} alt="subheading_line" />
+          <img className="title__subheading-line" src={line} alt="subheading_line" />
         )}
-        {subHeading}
+        {subheading}
       </Text>
     </motion.div>
   );

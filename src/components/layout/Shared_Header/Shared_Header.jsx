@@ -10,7 +10,7 @@ export const Shared_Header = () => {
     Shared_Link: Link,
   } = components;
   const { logo, burger, close } = assets;
-  const { SHARED_HEADER_LINKS: HEADER_LINKS } = content;
+  const { SHARED_HEADER_NAV: HEADER_NAV } = content;
   const { useScreenSize, useAnimatedIntersection } = hooks;
   const [showNav, setShowNav] = useState(false);
   const { width } = useScreenSize();
@@ -59,8 +59,8 @@ export const Shared_Header = () => {
         </Button>
       )}
       <Nav
-        navData={HEADER_LINKS}
-        className="nav"
+        navData={HEADER_NAV}
+        linkClassName="link-nav-black"
         motionProps={
           width > 1440
             ? {

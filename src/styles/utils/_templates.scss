@@ -75,7 +75,14 @@
   background-color: color(neutral-100);
   border-radius: 100px;
   @include border(all, 1px, solid, color(neutral-100));
-  @extend %buttom-effect;
+  @include button-effect("black");
+}
+
+%shared_button-white {
+  background-color: color(neutral-10);
+  border-radius: 100px;
+  @include border(all, 1px, solid, color(neutral-10));
+  @include button-effect("white");
 }
 
 %shared_button-arrow-active {
@@ -85,7 +92,7 @@
   @include size(default, 28px, 28px);
   @include flex(on, $align-items: center, $justify: center);
   @include border(all, 1px, solid, color(neutral-100));
-  @extend %buttom-effect;
+  @include button-effect("black");
   @include respond-to(desktop) {
     @include size(default, 50px, 50px);
   }
@@ -120,7 +127,7 @@
   position: relative;
 }
 
-%buttom-effect {
+%button-effect {
   transition: all 0.5s ease-in-out;
   &:hover {
     transition: all 0.5s ease-in-out;

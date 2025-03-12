@@ -31,6 +31,7 @@
     }
     &__confirm-button {
         @extend %shared_button-black;
+        @extend %shared_text-button-black;
         @include size(default, 60px);
         @include respond-to(desktop) {
             @include size(default, 80px);

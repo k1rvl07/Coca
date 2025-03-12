@@ -10,6 +10,12 @@
     &-title-subheading {
         @extend %shared_text-title-subheading;
     }
+    &-title-heading-footer {
+        @extend %shared_text-title-footer-heading;
+    }
+    &-title-subheading-footer {
+        @extend %shared_text-title-footer-subheading;
+    }
     &-title-heading-second-black {
         @extend %shared_text-title-heading-second-black;
     }
@@ -87,5 +93,26 @@
     }
     &-card-review-author-role {
         @extend %hone_text-card-review-author-role;
+    }
+    &-button-black {
+        @extend %shared_text-button-black;
+    }
+    &-button-white {
+        @extend %shared_text-button-white;
+    }
+    &-footer-nav-title {
+        @extend %shared_text-footer-nav-title;
+    }
+    &-footer-nav-link {
+        @extend %shared_text-footer-nav-link;
+    }
+    &-footer-slogan {
+        @extend %shared_text-footer-slogan;
+    }
+    &-footer-link {
+        @extend %shared_text-footer-link;
+    }
+    &-footer-copyright {
+        @extend %shared_text-footer-copyright;
     }
 }

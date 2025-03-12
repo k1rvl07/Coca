@@ -4,6 +4,9 @@
     &-black {
         @extend %shared_button-black;
     }
+    &-white {
+        @extend %shared_button-white;
+    }
     &-arrow-active {
         @extend %shared_button-arrow-active;
     }

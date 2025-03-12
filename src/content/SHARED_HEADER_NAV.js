@@ -1,6 +1,7 @@
-export const SHARED_HEADER_LINKS = [
+export const SHARED_HEADER_NAV = [
   {
     id: 1,
+    name: null,
     items: [
       {
         id: 1,

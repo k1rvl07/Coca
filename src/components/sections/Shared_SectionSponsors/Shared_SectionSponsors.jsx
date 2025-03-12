@@ -24,8 +24,8 @@ export const Shared_SectionSponsors = () => {
         heading="890+"
         headingTag="h2"
         headingClass="text-title-heading-second-black"
-        subHeading="some big companies that we work with, and trust us very much"
-        subHeadingClass="text-title-subheading-small"
+        subheading="some big companies that we work with, and trust us very much"
+        subheadingClass="text-title-subheading-small"
         isSubheadingLine={false}
         motionProps={{
           initial: { opacity: 0, x: -50 },

@@ -4,7 +4,6 @@ import React, { useState, useEffect, Fragment, useRef } from "react";
 
 export const HomePage = () => {
   const {
-    Shared_Header: Header,
     Shared_Section: Section,
     Shared_Title: Title,
     Shared_Form: Form,
@@ -82,7 +81,6 @@ export const HomePage = () => {
 
   return (
     <>
-      <Header />
       <main className="home-page">
         <Section
           className="main"
@@ -96,8 +94,8 @@ export const HomePage = () => {
           <Title
             heading="Digitally forward creative"
             headingClass="text-title-heading"
-            subHeading="When it comes to interactive marketing, we've got you covered. Be where the world is going."
-            subHeadingClass="text-title-subheading"
+            subheading="When it comes to interactive marketing, we've got you covered. Be where the world is going."
+            subheadingClass="text-title-subheading"
             motionProps={{
               initial: { opacity: 0, x: -50 },
               animate: main.hasAnimated ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 },
@@ -121,7 +119,11 @@ export const HomePage = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            <Button className="form__button button-black" type="submit" disabled={loading}>
+            <Button
+              className="form__button button-black text-button-black"
+              type="submit"
+              disabled={loading}
+            >
               Try for free
             </Button>
           </Form>
@@ -170,8 +172,8 @@ export const HomePage = () => {
             heading="Coca help our client solve complex customer problems."
             headingTag="h2"
             headingClass="text-title-heading-second-white"
-            subHeading="Our platform offers modern solutions for identity, activation, and data collaboration."
-            subHeadingClass="text-title-subheading-small"
+            subheading="Our platform offers modern solutions for identity, activation, and data collaboration."
+            subheadingClass="text-title-subheading-small"
             isSubheadingLine={false}
           />
           <div className="overview__cards">
@@ -233,8 +235,8 @@ export const HomePage = () => {
             heading="Passion to increase company revenue up to 85%"
             headingTag="h2"
             headingClass="text-title-heading-second-black"
-            subHeadingClass="text-title-subheading-small"
-            subHeading="Automate your sales, marketing and service in one platform. Avoid date leaks and enable consistent messaging"
+            subheadingClass="text-title-subheading-small"
+            subheading="Automate your sales, marketing and service in one platform. Avoid date leaks and enable consistent messaging"
             isSubheadingLine={false}
             motionProps={{
               initial: { opacity: 0, y: 30 },
@@ -311,8 +313,8 @@ export const HomePage = () => {
             heading="Lift your business to new heights with our digital marketing services"
             headingTag="h2"
             headingClass="text-title-heading-second-black"
-            subHeadingClass="text-title-subheading-small"
-            subHeading="To build software that gives customer facing teams in small and medium-sized businesses the ability to create rewarding and long-lasting relationships with customers"
+            subheadingClass="text-title-subheading-small"
+            subheading="To build software that gives customer facing teams in small and medium-sized businesses the ability to create rewarding and long-lasting relationships with customers"
             isSubheadingLine={false}
             motionProps={{
               initial: { opacity: 0, y: 30 },
@@ -335,8 +337,8 @@ export const HomePage = () => {
             heading="Here’s how Coca can benefit your business"
             headingTag="h2"
             headingClass="text-title-heading-second-black"
-            subHeadingClass="text-title-subheading-small"
-            subHeading="Build more meaningful and lasting relationships - better understand their needs, identify new opportunities to help address any problems faster"
+            subheadingClass="text-title-subheading-small"
+            subheading="Build more meaningful and lasting relationships - better understand their needs, identify new opportunities to help address any problems faster"
             isSubheadingLine={false}
             motionProps={{
               initial: { opacity: 0, y: 30 },
@@ -373,8 +375,8 @@ export const HomePage = () => {
             heading="Trending news from Coca"
             headingTag="h2"
             headingClass="text-title-heading-second-black"
-            subHeadingClass="text-title-subheading-small"
-            subHeading="we have some new Service to pamper you"
+            subheadingClass="text-title-subheading-small"
+            subheading="we have some new Service to pamper you"
             isSubheadingLine={false}
             motionProps={{
               initial: { opacity: 0, y: 30 },
@@ -425,8 +427,8 @@ export const HomePage = () => {
             heading="What our customers are saying"
             headingTag="h2"
             headingClass="text-title-heading-second-black"
-            subHeadingClass="text-title-subheading-small"
-            subHeading="We are trusted numerous companies from different business to meet their needs"
+            subheadingClass="text-title-subheading-small"
+            subheading="We are trusted numerous companies from different business to meet their needs"
             isSubheadingLine={false}
             motionProps={{
               initial: { opacity: 0, y: 30 },

@@ -1,0 +1,107 @@
+@use "@utils-scss" as *;
+
+.footer {
+    background-color: color(neutral-100);
+    @include spacing(padding, (top, bottom), 50px, 30px);
+    @include respond-to(desktop) {
+        @include spacing(padding, (top, bottom), 120px, 60px);
+    }
+    &__container {
+        @include respond-to("desktop") {
+            @include grid(
+                on,
+                repeat(4, auto),
+                repeat(8, auto),
+                "title title title title title . . button" "company company . nav nav nav nav nav"
+                    "line line line line line line line line" "icons links links links . . copyright copyright"
+            );
+        }
+    }
+    &__button {
+        @include spacing((padding, margin), (x, y, left), 24px, 12px, null, null, null, 34px);
+        @include respond-to(desktop) {
+            @include grid-item(button, end, center);
+            @include spacing((padding, margin), (x, y, left, bottom), 32px, 16px, null, null, null, null, 0px, 135px);
+        }
+    }
+    &__company {
+        @include size(default, 248px);
+        @include spacing(margin, y, 56px);
+        @include respond-to(desktop) {
+            @include grid-item(company);
+            @include spacing(margin, all, 0px);
+            @include size(default, 292px);
+        }
+    }
+    &__logo {
+        @include size(default, 95px, 44px);
+        @include spacing(margin, bottom, 10px);
+        @include respond-to(desktop) {
+            @include size(default, 140px, 66px);
+        }
+    }
+    &__line {
+        background-color: color(neutral-60);
+        @include size(default, 100%, 1px);
+        @include respond-to(desktop) {
+            @include grid-item(line);
+            @include spacing(margin, (top, bottom), 56px, 40px);
+        }
+    }
+    &__icons {
+        @include size(default, 168px);
+        @include flex(on, $justify: space-between);
+        @include spacing(margin, (top, bottom, x), 40px, 24px, auto);
+        @include respond-to(desktop) {
+            @include grid-item(icons);
+            @include spacing(margin, all, 0px);
+        }
+    }
+    &__links {
+        @include flex(on, $justify: space-between);
+        @include spacing(margin, bottom, 24px);
+        @include respond-to(desktop) {
+            @include grid-item(links);
+            @include spacing((margin), (bottom, left), 0px, 72px);
+            @include flex($gap: 40px);
+        }
+    }
+    &__copyright {
+        @include spacing(margin, x, auto);
+        @include size(default, fit-content);
+        @include respond-to(desktop) {
+            @include grid-item(copyright);
+        }
+    }
+    .title {
+        @include spacing(margin, bottom, 24px);
+        @include respond-to(desktop) {
+            @include grid-item(title);
+            @include spacing(margin, bottom, 135px);
+        }
+        &__subheading {
+            @include spacing(margin, top, 24px);
+            @include respond-to(desktop) {
+                @include size(default, 543px);
+            }
+            &-line {
+                @include respond-to(desktop) {
+                    display: none;
+                }
+            }
+        }
+    }
+    .nav {
+        display: none;
+        @include respond-to(desktop) {
+            @include flex(on, $gap: 94px);
+            @include grid-item(nav);
+            &__title {
+                @include spacing(margin, bottom, 24px);
+            }
+            &__list {
+                @include flex(on, column, $gap: 16px);
+            }
+        }
+    }
+}
