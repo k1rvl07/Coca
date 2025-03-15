@@ -19,7 +19,7 @@ const showAlert = (config) => {
   });
 };
 
-export const fetchSubscribe = async (email) => {
+export const subscribe = async (email) => {
   try {
     const response = await api.post("/subscribe", { email });
     console.log("Response:", response);
