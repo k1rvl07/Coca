@@ -1,8 +1,14 @@
-# React + Vite
+# Tech stack
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project uses the following technologies:
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Frontend: React, React Hooks, React Query, Framer Motion, Vite
+- Backend: Node.js, Express.js, PostgreSQL
+- Database: PostgreSQL
+- Styling: SCSS
+- Style parsing: PostCSS
+- Bundler: Vite
+- Code formatter: Biome
+- Linter: Biome
+- Version control: Git
+- IDE: Visual Studio Code
