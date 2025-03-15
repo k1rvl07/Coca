@@ -45,7 +45,7 @@ export const HomePage = () => {
 
   const { useAnimatedIntersection } = hooks;
 
-  const { fetchNews, fetchSubscribe } = services;
+  const { news: newsService, subscribe } = services;
 
   const sections = ["main", "overview", "features", "growth", "benefits", "news", "reviews"];
   const animations = sections.map(() => useAnimatedIntersection(0.2));
@@ -53,15 +53,14 @@ export const HomePage = () => {
 
   const [email, setEmail] = useState("");
   const [currentReviewIndex, setCurrentReviewIndex] = useState(0);
-  const [isSubscribing, _setIsSubscribing] = useState(false);
 
   const { data: newsData } = useQuery({
     queryKey: ["news"],
-    queryFn: fetchNews,
+    queryFn: newsService,
   });
 
   const subscribeMutation = useMutation({
-    mutationFn: (email) => fetchSubscribe(email),
+    mutationFn: (email) => subscribe(email),
     onSuccess: () => {
       setEmail("");
     },
@@ -118,7 +117,7 @@ export const HomePage = () => {
             <Button
               className="form__button button-black text-button-black"
               type="submit"
-              disabled={isSubscribing}
+              disabled={subscribeMutation.isLoading}
             >
               Try for free
             </Button>

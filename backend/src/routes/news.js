@@ -1,11 +1,11 @@
 import { Router } from "express";
-import { getNews } from "../controllers/newsController.js";
+import { news } from "../controllers/news.js";
 import middleware from "../middleware/index.js";
 
 const { cacheMiddleware } = middleware;
 
 const router = Router();
 
-router.get("/", cacheMiddleware(60), getNews);
+router.get("/", cacheMiddleware(60), news);
 
 export default router;
