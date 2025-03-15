@@ -1,0 +1,58 @@
+@use 'sass:map';
+@use 'sass:list';
+@use 'sass:math';
+@use 'sass:meta';
+
+@use 'functions.scss' as *;
+
+$text-list: (
+    "swal_confirm-button" "Inter" semi-bold normal "neutral-10" normal 12px 16px,
+    "swal_title" "Inter" semi-bold normal "neutral-100" normal 28px 36px,
+    "swal_text" "Inter" medium normal "neutral-60" normal 12px 16px,
+    "shared_link-nav-black" "Inter" medium normal "neutral-100" normal 16px 16px,
+    "shared_link-arrow-underline" "Inter" semi-bold normal "neutral-100" normal 16px 16px,
+    "shared_text-title-heading" "Inter" bold normal "neutral-100" normal 32px 80px,
+    "shared_text-title-subheading" "Inter" semi-bold normal "neutral-100" 1.5 16px 32px,
+    "shared_text-title-footer-heading" "Inter" semi-bold normal "neutral-10" normal 24px 64px,
+    "shared_text-title-footer-subheading" "Inter" medium normal "neutral-10" 1.5 16px 18px,
+    "shared_text-footer-slogan" "Inter" medium normal "neutral-60" 1.5 14px 16px,
+    "shared_text-footer-nav-title" "Inter" medium normal "neutral-10" normal 16px 16px,
+    "shared_text-footer-nav-link" "Inter" regular normal "neutral-60" normal 16px 16px,
+    "shared_text-footer-link" "Inter" medium normal "neutral-10" normal 14px 14px,
+    "shared_text-footer-copyright" "Inter" medium normal "neutral-10" normal 14px 14px,
+    "shared_text-title-heading-second-black" "Inter" bold normal "neutral-100" normal 24px 56px,
+    "shared_text-title-heading-second-white" "Inter" semi-bold normal "neutral-10" normal 24px 56px,
+    "shared_text-title-subheading-small" "Inter" medium normal "neutral-60" 1.65 14px 18px,
+    "shared_text-button-black" "Inter" semi-bold normal "neutral-10" normal 12px 16px,
+    "shared_text-button-white" "Inter" semi-bold normal "neutral-100" normal 12px 16px,
+    "home_text-main-image" "Inter" bold normal "neutral-100" normal 16px 20px,
+    "home_input-main" "Inter" medium normal "neutral-100" normal 16px 18px,
+    "home_input-main-placeholder" "Inter" medium normal "neutral-60" normal 14px 16px,
+    "home_text-card-sales-report-name" "Inter" semi-bold normal "neutral-50" normal 11px 14px,
+    "home_text-card-sales-report-price" "Inter" bold normal "neutral-10" normal 16px 20px,
+    "home_text-card-sales-report-percent-up" "Inter" semi-bold normal "green-main" normal 11px 14px,
+    "home_text-card-sales-report-percent-down" "Inter" semi-bold normal "red-main" normal 11px 14px,
+    "home_text-card-sales-report-period" "Inter" medium normal "neutral-60" normal 11px 11px,
+    "home_text-card-overview-name" "Inter" semi-bold normal "neutral-10" normal 18px 32px,
+    "home_text-card-overview-description" "Inter" medium normal "neutral-60" 1.55 14px 16px,
+    "home_text-statistic-heading" "Inter" medium normal "neutral-100" normal 10px 16px,
+    "home_text-card-statistic-name" "Inter" medium normal "neutral-60" normal 6px 10px,
+    "home_text-card-statistic-price" "Inter" bold normal "neutral-100" normal 14px 24px,
+    "home_text-card-statistic-percent" "Inter" medium normal "neutral-100" normal 6px 10px,
+    "home_text-card-statistic-description" "Inter" regular normal "neutral-60" normal 5px 8px,
+    "home_text-advantage-description" "Inter" medium normal "neutral-100" 1.5 14px 18px,
+    "home_text-result-number" "Inter" semi-bold normal "neutral-100" normal 32px 56px,
+    "home_text-result-description" "Inter" medium normal "neutral-60" normal 16px 18px,
+    "home_text-card-benefit-description-heading" "Inter" semi-bold normal "neutral-100" normal 16px 32px,
+    "home_text-card-benefit-description-text" "Inter" medium normal "neutral-60" normal 14px 16px,
+    "home_text-card-news-name" "Inter" semi-bold normal "neutral-100" normal 16px 32px,
+    "home_text-card-news-description" "Inter" regular normal "neutral-60" normal 12px 14px,
+    "home_text-card-review-star-count" "Inter" medium normal "neutral-100" normal 14px 16px,
+    "home_text-card-review-text" "Inter" semi-bold normal "neutral-100" normal 18px 40px,
+    "home_text-card-review-author-name" "Inter" semi-bold normal "neutral-100" normal 14px 18px,
+    "hone_text-card-review-author-role" "Inter" medium normal "neutral-60" normal 12px 16px
+);
+
+$dynamic-text-list: (
+
+);

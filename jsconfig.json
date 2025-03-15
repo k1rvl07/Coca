@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": "src",
+    "baseUrl": "frontend/src",
     "paths": {
       "@assets/*": ["assets/*"],
       "@components/*": ["components/*"],
@@ -17,5 +17,5 @@
       "@plop/*": ["plop_generators/*"]
     }
   },
-  "include": ["src"]
+  "include": ["frontend/src"]
 }
