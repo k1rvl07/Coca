@@ -79,7 +79,7 @@ export const Shared_Footer = () => {
       </motion.div>
       <Nav
         navData={FOOTER_NAV}
-        linkClassName="text-footer-nav-link"
+        linkClassName="link-footer-nav"
         titleClassName="text-footer-nav-title"
         motionProps={{
           initial: { opacity: 0, y: 20 },
@@ -136,7 +136,7 @@ export const Shared_Footer = () => {
       >
         {FOOTER_LINKS.map((link, index) => (
           <Link
-            className="footer__link text-footer-link"
+            className="footer__link link-footer-link"
             href={link.href}
             key={link.id}
             motionProps={{

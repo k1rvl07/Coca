@@ -1,0 +1,12 @@
+@use "@utils-scss" as *;
+
+.home-page {
+    .input {
+        &-main {
+            @extend %home_input-main;
+            &::placeholder {
+                @extend %home_input-main-placeholder;
+            }
+        }
+    }
+}

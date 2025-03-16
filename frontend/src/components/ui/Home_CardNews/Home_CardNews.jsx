@@ -2,8 +2,8 @@ import { components } from "@exports";
 import { motion } from "framer-motion";
 import React from "react";
 
-export const Home_CardNews = ({ img, date, creator, name, motionProps = {} }) => {
-  const { Shared_Text: Text } = components;
+export const Home_CardNews = ({ img, date, creator, name, href, motionProps = {} }) => {
+  const { Shared_Text: Text, Shared_Link: Link } = components;
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -25,9 +25,9 @@ export const Home_CardNews = ({ img, date, creator, name, motionProps = {} }) =>
           by : {creator}
         </Text>
       </div>
-      <Text type="body" className="card-news__name text-card-news-name">
+      <Link href={href} className="card-news__name link-card-news-name">
         {name}
-      </Text>
+      </Link>
     </motion.div>
   );
 };

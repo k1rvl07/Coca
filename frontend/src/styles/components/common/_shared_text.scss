@@ -1,0 +1,114 @@
+@use "@utils-scss" as *;
+
+.text {
+    &-title-heading {
+        @extend %shared_text-title-heading;
+    }
+    &-title-subheading {
+        @extend %shared_text-title-subheading;
+    }
+    &-title-heading-footer {
+        @extend %shared_text-title-footer-heading;
+    }
+    &-title-subheading-footer {
+        @extend %shared_text-title-footer-subheading;
+    }
+    &-title-heading-second-black {
+        @extend %shared_text-title-heading-second-black;
+    }
+    &-title-heading-second-white {
+        @extend %shared_text-title-heading-second-white;
+    }
+    &-title-subheading-small {
+        @extend %shared_text-title-subheading-small;
+    }
+    &-button-black {
+        @extend %shared_text-button-black;
+    }
+    &-button-white {
+        @extend %shared_text-button-white;
+    }
+    &-footer-nav-title {
+        @extend %shared_text-footer-nav-title;
+    }
+    &-footer-slogan {
+        @extend %shared_text-footer-slogan;
+    }
+    &-footer-copyright {
+        @extend %shared_text-footer-copyright;
+    }
+}
+
+.home-page {
+    .text {
+        &-main-image {
+            @extend %home_text-main-image;
+        }
+        &-card-sales-report-name {
+            @extend %home_text-card-sales-report-name;
+        }
+        &-card-sales-report-price {
+            @extend %home_text-card-sales-report-price;
+        }
+        &-card-sales-report-percent-up {
+            @extend %home_text-card-sales-report-percent-up;
+        }
+        &-card-sales-report-percent-down {
+            @extend %home_text-card-sales-report-percent-down;
+        }
+        &-card-sales-report-period {
+            @extend %home_text-card-sales-report-period;
+        }
+        &-card-overview-name {
+            @extend %home_text-card-overview-name;
+        }
+        &-card-overview-description {
+            @extend %home_text-card-overview-description;
+        }
+        &-statistic-heading {
+            @extend %home_text-statistic-heading;
+        }
+        &-card-statistic-name {
+            @extend %home_text-card-statistic-name;
+        }
+        &-card-statistic-price {
+            @extend %home_text-card-statistic-price;
+        }
+        &-card-statistic-percent {
+            @extend %home_text-card-statistic-percent;
+        }
+        &-card-statistic-description {
+            @extend %home_text-card-statistic-description;
+        }
+        &-advantage-description {
+            @extend %home_text-advantage-description;
+        }
+        &-result-number {
+            @extend %home_text-result-number;
+        }
+        &-result-description {
+            @extend %home_text-result-description;
+        }
+        &-card-benefit-description-heading {
+            @extend %home_text-card-benefit-description-heading;
+        }
+        &-card-benefit-description-text {
+            @extend %home_text-card-benefit-description-text;
+        }
+        &-card-news-description {
+            @extend %home_text-card-news-description;
+        }
+        &-card-review-star-count {
+            @extend %home_text-card-review-star-count;
+        }
+        &-card-review-text {
+            @extend %home_text-card-review-text;
+        }
+        &-card-review-author-name {
+            @extend %home_text-card-review-author-name;
+        }
+        &-card-review-author-role {
+            @extend %home_text-card-review-author-role;
+        }
+    }
+}

@@ -9,7 +9,7 @@ $text-list: (
     "swal_confirm-button" "Inter" semi-bold normal "neutral-10" normal 12px 16px,
     "swal_title" "Inter" semi-bold normal "neutral-100" normal 28px 36px,
     "swal_text" "Inter" medium normal "neutral-60" normal 12px 16px,
-    "shared_link-nav-black" "Inter" medium normal "neutral-100" normal 16px 16px,
+    "shared_link-header-nav" "Inter" medium normal "neutral-100" normal 16px 16px,
     "shared_link-arrow-underline" "Inter" semi-bold normal "neutral-100" normal 16px 16px,
     "shared_text-title-heading" "Inter" bold normal "neutral-100" normal 32px 80px,
     "shared_text-title-subheading" "Inter" semi-bold normal "neutral-100" 1.5 16px 32px,
@@ -17,8 +17,8 @@ $text-list: (
     "shared_text-title-footer-subheading" "Inter" medium normal "neutral-10" 1.5 16px 18px,
     "shared_text-footer-slogan" "Inter" medium normal "neutral-60" 1.5 14px 16px,
     "shared_text-footer-nav-title" "Inter" medium normal "neutral-10" normal 16px 16px,
-    "shared_text-footer-nav-link" "Inter" regular normal "neutral-60" normal 16px 16px,
-    "shared_text-footer-link" "Inter" medium normal "neutral-10" normal 14px 14px,
+    "shared_link-footer-nav" "Inter" regular normal "neutral-60" normal 16px 16px,
+    "shared_link-footer-link" "Inter" medium normal "neutral-10" normal 14px 14px,
     "shared_text-footer-copyright" "Inter" medium normal "neutral-10" normal 14px 14px,
     "shared_text-title-heading-second-black" "Inter" bold normal "neutral-100" normal 24px 56px,
     "shared_text-title-heading-second-white" "Inter" semi-bold normal "neutral-10" normal 24px 56px,
@@ -45,12 +45,12 @@ $text-list: (
     "home_text-result-description" "Inter" medium normal "neutral-60" normal 16px 18px,
     "home_text-card-benefit-description-heading" "Inter" semi-bold normal "neutral-100" normal 16px 32px,
     "home_text-card-benefit-description-text" "Inter" medium normal "neutral-60" normal 14px 16px,
-    "home_text-card-news-name" "Inter" semi-bold normal "neutral-100" normal 16px 32px,
+    "home_link-card-news-name" "Inter" semi-bold normal "neutral-100" normal 16px 32px,
     "home_text-card-news-description" "Inter" regular normal "neutral-60" normal 12px 14px,
     "home_text-card-review-star-count" "Inter" medium normal "neutral-100" normal 14px 16px,
     "home_text-card-review-text" "Inter" semi-bold normal "neutral-100" normal 18px 40px,
     "home_text-card-review-author-name" "Inter" semi-bold normal "neutral-100" normal 14px 18px,
-    "hone_text-card-review-author-role" "Inter" medium normal "neutral-60" normal 12px 16px
+    "home_text-card-review-author-role" "Inter" medium normal "neutral-60" normal 12px 16px
 );
 
 $dynamic-text-list: (

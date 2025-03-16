@@ -1,0 +1,31 @@
+@use "@utils-scss" as *;
+
+.link {
+    &-header-nav {
+        @extend %shared_link-header-nav;
+    }
+    &-footer-nav {
+        @extend %shared_link-footer-nav;
+    }
+    &-footer-link {
+        @extend %shared_link-footer-link;
+    }
+    &-arrow {
+        &-underline {
+            @extend %shared_link-arrow-underline;
+            text-decoration: underline;
+            text-underline-offset: 5px;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+.home-page {
+    .link {
+        &-card-news-name {
+            @extend %home_link-card-news-name;
+        }
+    }
+}

@@ -60,7 +60,7 @@ export const Shared_Header = () => {
       )}
       <Nav
         navData={HEADER_NAV}
-        linkClassName="link-nav-black"
+        linkClassName="link-header-nav"
         motionProps={
           width > 1440
             ? {
