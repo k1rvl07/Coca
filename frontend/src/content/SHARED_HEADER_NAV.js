@@ -5,7 +5,7 @@ export const SHARED_HEADER_NAV = [
     items: [
       {
         id: 1,
-        href: "#",
+        href: "/",
         text: "Home",
       },
       {
