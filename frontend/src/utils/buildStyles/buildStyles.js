@@ -64,8 +64,6 @@ const processFolder = (folderPath, folderConfig) => {
 
   const allFiles = fs.readdirSync(folderPath);
   const remainingFiles = allFiles.filter((file) => {
-    const filePath = path.join(folderPath, file);
-    const _isFile = fs.statSync(filePath).isFile();
     const isFileInOrder = folderConfig.files?.includes(file);
     const isSubfolderInOrder = folderConfig.subfolders?.some(
       (subfolder) => subfolder.folder === file,
@@ -109,7 +107,6 @@ const main = async () => {
   let foldersOrder = await loadConfig();
 
   const watcher = chokidar.watch([stylesDir, configPath], {
-    ignored: /(^|[\/\\])\../,
     persistent: true,
     ignoreInitial: true,
   });
