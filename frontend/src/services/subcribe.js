@@ -22,7 +22,6 @@ const showAlert = (config) => {
 export const subscribe = async (email) => {
   try {
     const response = await api.post("/subscribe", { email });
-    console.log("Response:", response);
 
     if ([200, 201].includes(response.status)) {
       const successCondition = SWAL_CONFIG.successConditions.find((condition) =>

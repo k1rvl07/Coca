@@ -1,5 +1,5 @@
 import { components, pages } from "@exports";
-import { Route, HashRouter as Router, Routes } from "react-router-dom";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 
 export const AppRouter = () => {
   const { HomePage } = pages;
@@ -7,7 +7,7 @@ export const AppRouter = () => {
   return (
     <>
       <Header />
-      <Router>
+      <Router basename="/Coca">
         <Routes>
           <Route path="/" element={<HomePage />} />
         </Routes>
