@@ -1,21 +1,16 @@
-import { assets, components } from "@exports";
+import { assets, components, hooks } from "@exports";
 import { motion } from "framer-motion";
 import React, { useState, useEffect } from "react";
 
 export const Home_CardReview = ({ reviews, reviewsAnimation, onUpdateIndex, motionProps = {} }) => {
   const { star } = assets;
   const { Shared_Text: Text, Shared_Arrows: Arrows } = components;
+  const { useCarouselNavigation } = hooks;
   const { hasAnimated } = reviewsAnimation;
-  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const { currentIndex, handleNext, handlePrev } = useCarouselNavigation(reviews);
+
   const [arrowsVisible, setArrowsVisible] = useState(false);
-
-  const handleNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % reviews.length);
-  };
-
-  const handlePrev = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + reviews.length) % reviews.length);
-  };
 
   useEffect(() => {
     if (hasAnimated) {
@@ -23,11 +18,11 @@ export const Home_CardReview = ({ reviews, reviewsAnimation, onUpdateIndex, moti
     }
   }, [hasAnimated]);
 
-  const currentReview = reviews[currentIndex];
-
   useEffect(() => {
     onUpdateIndex(currentIndex);
   }, [currentIndex, onUpdateIndex]);
+
+  const currentReview = reviews[currentIndex];
 
   const starsIndexes = [1, 2, 3, 4, 5];
 

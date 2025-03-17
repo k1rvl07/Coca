@@ -21,7 +21,6 @@ export const Home_CardSalesReport = ({ name, price, percent, color, motionProps 
           "text-card-sales-report-percent-up": color === "green",
         })}
       >
-        {" "}
         <img src={color === "green" ? up : down} className="card-sales-report__icon" alt="" />{" "}
         {percent}
         <Text type="span" className="card-sales-report__period text-card-sales-report-period">
