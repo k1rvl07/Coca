@@ -11,8 +11,8 @@ export default defineConfig(({ mode }) => {
       viteStaticCopy({
         targets: [
           {
-            src: "404.html", // Путь к вашему файлу 404.html
-            dest: ".", // Папка, куда нужно скопировать (в данном случае корень dist)
+            src: "404.html",
+            dest: ".",
           },
         ],
       }),
