@@ -112,3 +112,14 @@
         }
     }
 }
+
+.about-page {
+    .text {
+        &-main-card-title {
+            @extend %about_text-main-card-title;
+        }
+        &-main-card-description {
+            @extend %about_text-main-card-description;
+        }
+    }
+}

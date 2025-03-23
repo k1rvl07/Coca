@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import React from "react";
 
 export const Home_CardSalesReport = ({ name, price, percent, color, motionProps = {} }) => {
-  const { Shared_Text: Text } = components;
+  const { Shared_Text: Text, Shared_Image: Image } = components;
   const { up, down } = assets;
   return (
     <motion.div className="card-sales-report" {...motionProps}>
@@ -21,7 +21,7 @@ export const Home_CardSalesReport = ({ name, price, percent, color, motionProps 
           "text-card-sales-report-percent-up": color === "green",
         })}
       >
-        <img src={color === "green" ? up : down} className="card-sales-report__icon" alt="" />{" "}
+        <Image src={color === "green" ? up : down} className="card-sales-report__icon" alt="" />{" "}
         {percent}
         <Text type="span" className="card-sales-report__period text-card-sales-report-period">
           from last year

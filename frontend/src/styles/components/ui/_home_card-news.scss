@@ -1,18 +1,20 @@
 @use "@utils-scss" as *;
 
-.card-news {
-    &__info {
-        @include flex(on, $justify: space-between, $align-items: center);
-        @include spacing(margin, y, 8px);
-        @include respond-to(desktop) {
-            @include spacing(margin, y, 16px);
+.home-page {
+    .card-news {
+        &__info {
+            @include flex(true, $justify: space-between, $align-items: center);
+            @include spacing(margin, y, 8px);
+            @include respond-to(desktop) {
+                @include spacing(margin, y, 16px);
+            }
         }
-    }
-    &__image {
-        @include size(default, 299px, 191px);
-        @include image-fit(cover, center);
-        @include respond-to(desktop) {
-            @include size(default, 582px, 332px);
-        };
+        &__image {
+            @include size(default, 299px, 191px);
+            @include object-fit(cover, center);
+            @include respond-to(desktop) {
+                @include size(default, 582px, 332px);
+            }
+        }
     }
 }

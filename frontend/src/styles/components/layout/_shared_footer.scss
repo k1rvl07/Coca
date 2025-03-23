@@ -50,7 +50,7 @@
     }
     &__icons {
         @include size(default, 168px);
-        @include flex(on, $justify: space-between);
+        @include flex(true, $justify: space-between);
         @include spacing(margin, (top, bottom, x), 40px, 24px, auto);
         @include respond-to(desktop) {
             @include grid-item(icons);
@@ -58,7 +58,7 @@
         }
     }
     &__links {
-        @include flex(on, $justify: space-between);
+        @include flex(true, $justify: space-between);
         @include spacing(margin, bottom, 24px);
         @include respond-to(desktop) {
             @include grid-item(links);
@@ -94,13 +94,13 @@
     .nav {
         display: none;
         @include respond-to(desktop) {
-            @include flex(on, $gap: 94px);
+            @include flex(true, $gap: 94px);
             @include grid-item(nav);
             &__title {
                 @include spacing(margin, bottom, 24px);
             }
             &__list {
-                @include flex(on, column, $gap: 16px);
+                @include flex(true, column, $gap: 16px);
             }
         }
     }

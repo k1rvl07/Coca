@@ -8,7 +8,7 @@
         }
 
         &__list {
-            @include flex(on, $justify: space-between);
+            @include flex(true, $justify: space-between);
             @include respond-to(desktop) {
                 @include flex($gap: 32px);
             }

@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 
 export const Home_CardReview = ({ reviews, reviewsAnimation, onUpdateIndex, motionProps = {} }) => {
   const { star } = assets;
-  const { Shared_Text: Text, Shared_Arrows: Arrows } = components;
+  const { Shared_Text: Text, Shared_Arrows: Arrows, Shared_Image: Image } = components;
   const { useCarouselNavigation } = hooks;
   const { hasAnimated } = reviewsAnimation;
 
@@ -44,16 +44,18 @@ export const Home_CardReview = ({ reviews, reviewsAnimation, onUpdateIndex, moti
       >
         <div className="card-review__stars">
           {Array.from({ length: currentReview.starCount }, (_, index) => (
-            <motion.img
+            <Image
               className="card-review__star"
               key={starsIndexes[index]}
               src={star}
               alt="star"
-              initial={{ opacity: 0, scale: 0.8, x: -20 }}
-              animate={
-                hasAnimated ? { opacity: 1, scale: 1.2, x: 0 } : { opacity: 0, scale: 0.8, x: -20 }
-              }
-              transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+              motionProps={{
+                initial: { opacity: 0, scale: 0.8, x: -20 },
+                animate: hasAnimated
+                  ? { opacity: 1, scale: 1.2, x: 0 }
+                  : { opacity: 0, scale: 0.8, x: -20 },
+                transition: { duration: 0.5, delay: 0.3 + index * 0.1 },
+              }}
             />
           ))}
         </div>
@@ -81,15 +83,16 @@ export const Home_CardReview = ({ reviews, reviewsAnimation, onUpdateIndex, moti
         animate={hasAnimated ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
         transition={{ duration: 0.5, delay: 0.9 }}
       >
-        <motion.img
+        <Image
           className="card-review__author-image"
           src={assets[currentReview.image]}
           alt=""
-          initial={{ opacity: 0, x: -20 }}
-          animate={hasAnimated ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-          transition={{ duration: 0.5, delay: 0.9 }}
+          motionProps={{
+            initial: { opacity: 0, x: -20 },
+            animate: hasAnimated ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 },
+            transition: { duration: 0.5, delay: 0.9 },
+          }}
         />
-
         <motion.div
           className="card-review__author-info"
           initial={{ opacity: 0, x: -20 }}

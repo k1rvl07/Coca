@@ -3,10 +3,10 @@ import { motion } from "framer-motion";
 import React from "react";
 
 export const Home_CardOverview = ({ icon, name, description, motionProps = {} }) => {
-  const { Shared_Text: Text } = components;
+  const { Shared_Text: Text, Shared_Image: Image } = components;
   return (
     <motion.div className="card-overview" {...motionProps}>
-      <img className="card-overview__icon" src={icon} alt="" />
+      <Image className="card-overview__icon" src={icon} alt="" />
       <Text type="body" className="card-overview__name text-card-overview-name">
         {name}
       </Text>

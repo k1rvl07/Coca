@@ -47,7 +47,7 @@
 }
 
 @mixin flex(
-  $flex: on,
+  $flex: null,
   $direction: null,
   $justify: null,
   $align-content: null,
@@ -56,11 +56,8 @@
   $gap: null,
   $row-gap: null,
   $column-gap: null,
-  $flex-basis: null,
-  $flex-grow: null,
-  $flex-shrink: null
 ) {
-  @if $flex == on {
+  @if $flex == true {
     display: flex;
   }
 
@@ -95,18 +92,6 @@
   @if $column-gap != null {
     column-gap: $column-gap;
   }
-
-  @if $flex-basis != null {
-    flex-basis: $flex-basis;
-  }
-
-  @if $flex-grow != null {
-    flex-grow: $flex-grow;
-  }
-
-  @if $flex-shrink != null {
-    flex-shrink: $flex-shrink;
-  }
 }
 
 @mixin flex-item-alignment(
@@ -119,10 +104,6 @@
 ) {
   @if $align-self != null {
     align-self: $align-self;
-  }
-
-  @if $justify-self != null {
-    justify-self: $justify-self;
   }
 
   @if $flex-grow != null {
@@ -328,7 +309,7 @@
   }
 }
 
-@mixin image-fit($fit: null, $position: null) {
+@mixin object-fit($fit: null, $position: null) {
   object-fit: $fit;
   object-position: $position;
 }

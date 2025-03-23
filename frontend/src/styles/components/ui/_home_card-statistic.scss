@@ -1,37 +1,45 @@
 @use "@utils-scss" as *;
 
-.card-statistic {
-    @include flex(on, $justify: space-between, $align-items: center);
-    &__exchange {
-        @include size(default, 58px, 53px);
-        @include respond-to(desktop) {
-            @include size(default, 94px, 87px);
+.home-page {
+    .card-statistic {
+        @include flex(true, $justify: space-between, $align-items: center);
+        &__exchange {
+            @include size(default, 58px, 53px);
+            @include respond-to(desktop) {
+                @include size(default, 94px, 87px);
+            }
         }
-    }
-    &__info {
-        @include size(default, 84px);
-        @include respond-to(desktop) {
-            @include size(default, 136px);
+        &__info {
+            @include size(default, 84px);
+            @include respond-to(desktop) {
+                @include size(default, 136px);
+            }
         }
-    }
-    &__icon {
-        @include size(default, 12.21px);
-        @include respond-to(desktop) {
-            @include size(default, 20px);
+        &__icon {
+            @include size(default, 12.21px);
+            @include respond-to(desktop) {
+                @include size(default, 20px);
+            }
         }
-    }
-    &__price-percent {
-        @include flex(on, $align-items: center, $gap: 8px);
-        @include spacing(margin, (top, bottom), 4px, 5px);
-        @include respond-to(desktop) {
-            @include spacing(margin, (top, bottom), 6px, 8px);
-            @include flex($gap: 12px);
+        &__price-percent {
+            @include flex(true, $align-items: center, $gap: 8px);
+            @include spacing(margin, (top, bottom), 4px, 5px);
+            @include respond-to(desktop) {
+                @include spacing(margin, (top, bottom), 6px, 8px);
+                @include flex($gap: 12px);
+            }
         }
-    }
-    &__percent {
-        @include flex(on, $align-items: center);
-        @include respond-to(desktop) {
-            @include flex($gap: 2.5px);
+        &__percent {
+            @include flex(true, $align-items: center);
+            @include respond-to(desktop) {
+                @include flex($gap: 2.5px);
+            }
+        }
+        &:nth-child(2) {
+            @include spacing(margin, bottom, 28px);
+            @include respond-to(desktop) {
+                @include spacing(margin, bottom, 46px);
+            }
         }
     }
 }

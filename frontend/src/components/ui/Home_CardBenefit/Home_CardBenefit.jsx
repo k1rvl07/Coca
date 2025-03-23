@@ -3,12 +3,12 @@ import { motion } from "framer-motion";
 import React from "react";
 
 export const Home_CardBenefit = ({ img, svg, heading, text, motionProps = {} }) => {
-  const { Shared_Text: Text } = components;
+  const { Shared_Text: Text, Shared_Image: Image } = components;
   return (
     <motion.div className="card-benefit" {...motionProps}>
       <div className="card-benefit__image">
-        <img className="card-benefit__image-img" src={img} alt="" />
-        <img className="card-benefit__image-svg" src={svg} alt="" />
+        <Image className="card-benefit__image-img" src={img} alt="" />
+        <Image className="card-benefit__image-svg" src={svg} alt="" />
       </div>
       <div className="card-benefit__description">
         <Text

@@ -1,0 +1,121 @@
+@use "@utils-scss" as *;
+
+.about-page {
+    .main {
+        @include spacing(padding, (top, bottom), 32px, 56px);
+        @include respond-to(desktop) {
+            @include spacing(padding, (top, bottom), 90px, 160px);
+        }
+        &__container {
+            @include respond-to(desktop) {
+                @include grid(
+                    on,
+                    repeat(2, auto),
+                    repeat(2, auto),
+                    "title link" "slider slider",
+                    $row-gap: 135px
+                )
+            }
+        }
+        &__link {
+            @include spacing(margin, left, 266px);
+            @include respond-to(desktop) {
+                @include grid-item(link);
+                @include spacing(margin, (left, top), 0px, 412px);
+            }
+            &-image {
+                @include size(default, 69px);
+                @include respond-to(desktop) {
+                    @include size(default, 162px);
+                }
+            }
+        }
+        &__image {
+            display: none;
+            @include respond-to(desktop) {
+                display: block;
+            }
+        }
+        &__card {
+            &-image {
+                @include spacing(margin, bottom, 16px);
+            }
+            &-description {
+                @include spacing(margin, (top, bottom), 8px, 16px);
+                @include respond-to(desktop) {
+                    @include spacing(margin, bottom, 32px);
+                }
+            }
+            &-link {
+                @include flex(true, $align-items: center, $justify: center);
+                @include size(default, 144px, 36px);
+                @include respond-to(desktop) {
+                    @include size(default, 175px, 56px);
+                }
+            }
+        }
+        &__dragger {
+            display: none;
+            @include respond-to(desktop) {
+                transition: all 0.2s ease-in-out;
+                cursor: grab;
+                display: block;
+                @include position(absolute, (left, top), 468px, 100px);
+                touch-action: none;
+                &:active {
+                    transition: all 0.2s ease-in-out;
+                    cursor: grabbing;
+                    transform: scale(0.9);
+                }
+            }
+            &-image {
+                @include size(default, 100px);
+                pointer-events: none;
+            }
+        }
+        .title {
+            @include respond-to(desktop) {
+                @include grid-item(title);
+            }
+            &__heading {
+                @include respond-to(desktop) {
+                    @include size(default, 960px);
+                }
+            }
+            &__subheading {
+                @include spacing(margin, top, 48px);
+                @include respond-to(desktop) {
+                    @include spacing(margin, top, 104px);
+                    @include size(default, 840px);
+                }
+            }
+        }
+        .slider {
+            @include respond-to(desktop) {
+                @include grid-item(slider);
+            }
+            &__window {
+                @include respond-to(desktop) {
+                    overflow-x: hidden;
+                    scroll-snap-type: x none;
+                    @include size(default, 1200px, fit-content);
+                    &::-webkit-scrollbar {
+                        display: none;
+                    }
+                }
+            }
+            &__slides {
+                @include respond-to(desktop) {
+                    @include position(relative);
+                    @include size(default, fit-content);
+                    @include flex(true, $gap: 32px);
+                }
+            }
+            &__slide {
+                @include respond-to(desktop) {
+                    @include size(default, 502px);
+                }
+            }
+        }
+    }
+}

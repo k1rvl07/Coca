@@ -3,7 +3,7 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import { motion } from "framer-motion";
 import React, { useState, Fragment } from "react";
 
-export const HomePage = () => {
+export const Home = () => {
   const {
     Shared_Section: Section,
     Shared_Title: Title,
@@ -21,6 +21,7 @@ export const HomePage = () => {
     Shared_Slider: Slider,
     Home_CardNews: CardNews,
     Home_CardReview: CardReview,
+    Shared_Image: Image,
   } = components;
 
   const {
@@ -131,7 +132,7 @@ export const HomePage = () => {
             <Text type="body" className="main__image-text text-main-image">
               Sales Report
             </Text>
-            <img className="main__image-img" src={sales_report} alt="" />
+            <Image className="main__image-img" src={sales_report} alt="" />
           </motion.div>
           <motion.div
             className="main__sales-report"
@@ -201,14 +202,14 @@ export const HomePage = () => {
             animate={features.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
           >
-            <img className="features__image" src={features_image} alt="" />
+            <Image className="features__image" src={features_image} alt="" />
             <div className="statistic">
               <div className="statistic__container">
                 <div className="statistic__title">
                   <Text type="body" className="statistic__heading text-statistic-heading">
                     Statistic
                   </Text>
-                  <img className="statistic__more" src={more} alt="" />
+                  <Image className="statistic__more" src={more} alt="" />
                 </div>
                 {FEATURES_CARD_STATISTIC.map((item, index) => (
                   <CardStatistic
@@ -284,25 +285,29 @@ export const HomePage = () => {
                   }}
                 />
                 {index < 3 && (
-                  <motion.img
+                  <Image
                     className="growth__results-line"
                     src={results_line}
                     alt="line"
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={growth.hasAnimated ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-                    transition={{ duration: 0.5, ease: "easeOut", delay: 0.8 + index * 0.2 }}
+                    motionProps={{
+                      initial: { opacity: 0, x: -20 },
+                      animate: growth.hasAnimated ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 },
+                      transition: { duration: 0.5, ease: "easeOut", delay: 0.6 + index * 0.2 },
+                    }}
                   />
                 )}
               </Fragment>
             ))}
           </motion.div>
-          <motion.img
+          <Image
             className="growth__image"
             src={growth_team}
             alt=""
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={growth.hasAnimated ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
-            transition={{ duration: 0.6, ease: "easeOut", delay: 1.0 }}
+            motionProps={{
+              initial: { opacity: 0, scale: 0.9 },
+              animate: growth.hasAnimated ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 },
+              transition: { duration: 0.6, ease: "easeOut", delay: 1.0 },
+            }}
           />
           <Title
             heading="Lift your business to new heights with our digital marketing services"
@@ -398,14 +403,16 @@ export const HomePage = () => {
                 }}
               />
             ))}
-            <motion.img
+            <Image
               className="news__dragger"
               src={dragger}
               alt=""
               data-no-slide={true}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={news.hasAnimated ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
-              transition={{ duration: 0.6, ease: "easeOut", delay: 1.0 }}
+              motionProps={{
+                initial: { opacity: 0, scale: 0.9 },
+                animate: news.hasAnimated ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 },
+                transition: { duration: 0.6, ease: "easeOut", delay: 1.0 },
+              }}
             />
           </Slider>
         </Section>
@@ -437,19 +444,19 @@ export const HomePage = () => {
             animate={reviews.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.6 }}
           >
-            <motion.img
+            <Image
               className="reviews__cards-backtick"
               src={backtick}
               alt=""
               key={currentReviewIndex}
-              initial={{ opacity: 0, scale: 0.9, x: -20 }}
-              animate={
-                reviews.hasAnimated
+              motionProps={{
+                initial: { opacity: 0, scale: 0.9, x: -20 },
+                animate: reviews.hasAnimated
                   ? { opacity: 1, scale: 1, x: 0 }
-                  : { opacity: 0, scale: 0.9, x: -20 }
-              }
-              exit={{ opacity: 0, scale: 0.9, x: -20 }}
-              transition={{ duration: 0.4, ease: "easeOut", delay: 0.6 }}
+                  : { opacity: 0, scale: 0.9, x: -20 },
+                exit: { opacity: 0, scale: 0.9, x: -20 },
+                transition: { duration: 0.4, ease: "easeOut", delay: 0.6 },
+              }}
             />
             <CardReview
               reviews={REVIEWS_CARD_REVIEW}

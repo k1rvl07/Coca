@@ -90,7 +90,7 @@
   color: color(neutral-10);
   border-radius: 100px;
   @include size(default, 28px, 28px);
-  @include flex(on, $align-items: center, $justify: center);
+  @include flex(true, $align-items: center, $justify: center);
   @include border(all, 1px, solid, color(neutral-100));
   @include button-effect("black");
   @include respond-to(desktop) {
@@ -101,20 +101,11 @@
 %shared_button-arrow-disabled {
   background-color: color(neutral-10);
   color: color(neutral-60);
-  @include flex(on, $align-items: center, $justify: center);
+  @include flex(true, $align-items: center, $justify: center);
   @include border(all, 1px, solid, color(neutral-60), 100px);
   @include size(default, 28px, 28px);
   @include respond-to(desktop) {
     @include size(default, 50px, 50px);
-  }
-}
-
-%slider-window {
-  overflow-x: scroll;
-  overflow-y: hidden;
-  scroll-snap-type: x mandatory;
-  @include respond-to("desktop") {
-      overflow-x: hidden;
   }
 }
 
@@ -124,7 +115,7 @@
 
 %slide {
   scroll-snap-align: start;
-  position: relative;
+  @include position(relative);
 }
 
 %button-effect {

@@ -1,37 +1,39 @@
 @use "@utils-scss" as *;
 
-.card-benefit {
-    @include flex(on, $justify: space-between, $align-items: center);
-    @include respond-to(desktop) {
-        @include size(default, 568px);
-    }
-    &__image {
-        @include position(relative);
-        @include size(default, fit-content, fit-content);
-        &-img {
-            @include image-fit(cover, center);
-            @include size(default, 160px, 216px);
-            @include respond-to(desktop) {
-                @include size(default, 240px, 273px);
-            }
-        }
-        &-svg {
-            @include position(absolute, (top, right), 12px, 12px);
-            @include size(default, 40px);
-            @include respond-to(desktop) {
-                @include size(default, 56px);
-            }
-        }
-    }
-    &__description {
-        @include size(default, 160px);
+.home-page {
+    .card-benefit {
+        @include flex(true, $justify: space-between, $align-items: center);
         @include respond-to(desktop) {
-            @include size(default, 268px);
+            @include size(default, 568px);
         }
-        &-heading {
-            @include spacing(margin, bottom, 8px);
+        &__image {
+            @include position(relative);
+            @include size(default, fit-content, fit-content);
+            &-img {
+                @include object-fit(cover, center);
+                @include size(default, 160px, 216px);
+                @include respond-to(desktop) {
+                    @include size(default, 240px, 273px);
+                }
+            }
+            &-svg {
+                @include position(absolute, (top, right), 12px, 12px);
+                @include size(default, 40px);
+                @include respond-to(desktop) {
+                    @include size(default, 56px);
+                }
+            }
+        }
+        &__description {
+            @include size(default, 160px);
             @include respond-to(desktop) {
-                @include spacing(margin, bottom, 24px);
+                @include size(default, 268px);
+            }
+            &-heading {
+                @include spacing(margin, bottom, 8px);
+                @include respond-to(desktop) {
+                    @include spacing(margin, bottom, 24px);
+                }
             }
         }
     }

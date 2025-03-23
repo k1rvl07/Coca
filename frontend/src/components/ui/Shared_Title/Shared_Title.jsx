@@ -11,7 +11,7 @@ export const Shared_Title = ({
   subheadingLineColor = "black",
   motionProps = {},
 }) => {
-  const { Shared_Text: Text } = components;
+  const { Shared_Text: Text, Shared_Image: Image } = components;
   const { subheading_line, subheading_line_white } = assets;
   const line = subheadingLineColor === "black" ? subheading_line : subheading_line_white;
   return (
@@ -21,7 +21,7 @@ export const Shared_Title = ({
       </Text>
       <Text type="body" className={`title__subheading ${subheadingClass}`}>
         {isSubheadingLine && (
-          <img className="title__subheading-line" src={line} alt="subheading_line" />
+          <Image className="title__subheading-line" src={line} alt="subheading_line" />
         )}
         {subheading}
       </Text>

@@ -10,6 +10,7 @@ export const Shared_Footer = () => {
     Shared_Text: Text,
     Shared_Nav: Nav,
     Shared_Link: Link,
+    Shared_Image: Image,
   } = components;
   const { logo_white } = assets;
   const {
@@ -63,7 +64,7 @@ export const Shared_Footer = () => {
             transition: { duration: 0.5, delay: 0.6 },
           }}
         >
-          <img className="footer__logo" src={logo_white} alt="" />
+          <Image className="footer__logo" src={logo_white} alt="" />
         </Link>
         <Text
           className="footer__slogan text-footer-slogan"
@@ -124,7 +125,7 @@ export const Shared_Footer = () => {
               transition: { duration: 0.5, delay: 1.1 + index * 0.1 },
             }}
           >
-            <img className="footer__icon-img" src={assets[icon.img]} alt="" />
+            <Image className="footer__icon-img" src={assets[icon.img]} alt="" />
           </Link>
         ))}
       </motion.div>

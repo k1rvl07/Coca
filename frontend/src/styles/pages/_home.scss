@@ -16,7 +16,7 @@
             border-radius: 8px;
             @include spacing(margin, bottom, 24px);
             @include size(default, 335px, 278px);
-            @include flex(on, column, $align-items: center, $gap: 12px, $justify: center);
+            @include flex(true, column, $align-items: center, $gap: 12px, $justify: center);
             @include respond-to(desktop) {
                 @include spacing(margin, (top, bottom), 88px, 28px);
                 @include size(default, 419px, 346px);
@@ -36,13 +36,13 @@
         &__sales-report {
             background-color: black;
             border-radius: 6px;
-            @include flex(on, $align-items: center, $justify: center);
+            @include flex(true, $align-items: center, $justify: center);
             @include respond-to(desktop) {
                 @include size(default, null, fit-content);
                 @include grid-item(sales-report, null, end);
             }
             &-container {
-                @include flex(on, $align-items: center, $gap: 48px);
+                @include flex(true, $align-items: center, $gap: 48px);
                 @include spacing(padding, y, 16px);
                 @include respond-to(desktop) {
                     @include spacing(padding, y, 20px);
@@ -60,7 +60,7 @@
             }
         }
         .form {
-            @include flex(on, $justify: space-between, $align-items: bottom);
+            @include flex(true, $justify: space-between, $align-items: bottom);
             @include spacing(margin, (top, bottom), 40px, 56px);
             @include respond-to(desktop) {
                 @include spacing(margin, all, 0px);
@@ -93,7 +93,7 @@
         }
         &__cards {
             @include spacing(margin, top, 32px);
-            @include flex(on, $wrap: wrap, $justify: space-between, $gap: 24px);
+            @include flex(true, $wrap: wrap, $justify: space-between, $gap: 24px);
             @include respond-to(desktop) {
                 @include spacing(margin, top, 48px);
                 @include flex($gap: 56px);
@@ -132,10 +132,10 @@
             }
         }
         &__image {
-            @include image-fit(cover, center);
+            @include object-fit(cover, center);
         }
         &__advantages {
-            @include flex(on, column, $gap: 16px);
+            @include flex(true, column, $gap: 16px);
             @include respond-to(desktop) {
                 @include grid-item(advantages, null, end);
                 @include flex($gap: 32px);
@@ -147,7 +147,7 @@
             @include position(absolute, (right, bottom), 20px, 20px);
             background-color: color(neutral-10);
             @include size(default, 177px, 181px);
-            @include flex(on, column, $justify: center);
+            @include flex(true, column, $justify: center);
             @include respond-to(desktop) {
                 @include size(default, 290px, 298px);
                 @include position(null, (right, bottom), 40px, 40px);
@@ -159,7 +159,7 @@
                 }
             }
             &__title {
-                @include flex(on, $align-items: center, $justify: space-between);
+                @include flex(true, $align-items: center, $justify: space-between);
                 @include spacing(margin, bottom, 11px);
                 @include respond-to(desktop) {
                     @include spacing(margin, bottom, 18px);
@@ -169,14 +169,6 @@
                 @include size(default, 10px);
                 @include respond-to(desktop) {
                     @include size(default, 17.5px);
-                }
-            }
-            .card-statistic {
-                &:nth-child(2) {
-                    @include spacing(margin, bottom, 28px);
-                    @include respond-to(desktop) {
-                        @include spacing(margin, bottom, 46px);
-                    }
                 }
             }
         }
@@ -208,7 +200,7 @@
             @include spacing(padding, (top, bottom), 66px, 160px)
         }
         &__results {
-            @include flex(on, $justify: space-between, $align-items: center, $wrap: wrap, $gap: 16px);
+            @include flex(true, $justify: space-between, $align-items: center, $wrap: wrap, $gap: 16px);
             &-line {
                 display: none;
                 @include respond-to(desktop) {
@@ -219,7 +211,7 @@
         }
         &__image {
             @include size(default, 335px, 162px);
-            @include image-fit(cover, center);
+            @include object-fit(cover, center);
             @include spacing(margin, (top, bottom), 32px, 40px);
             @include respond-to(desktop) {
                 @include size(default, 1200px, 536px);
@@ -227,7 +219,7 @@
             }
         }
         .title {
-            @include flex(on, column, $gap: 16px);
+            @include flex(true, column, $gap: 16px);
             @include respond-to(desktop) {
                 @include flex($direction: row, $gap: 0px, $justify: space-between);
             }
@@ -255,7 +247,7 @@
             @include spacing(padding, (top, bottom), 160px, 100px);
         }
         &__cards {
-            @include flex(on, column, $gap: 24px);
+            @include flex(true, column, $gap: 24px);
             @include spacing(margin, top, 32px);
             @include respond-to(desktop) {
                 @include flex($direction: row, $justify: space-between, $align-items: center, $row-gap: 56px, $wrap: wrap);
@@ -289,11 +281,12 @@
         .slider {
             &__window {
                 @include size(default, 100%);
-
+                overflow-x: scroll;
+                scroll-snap-type: x mandatory;
             }
             &__slides {
                 @include position(relative);
-                @include flex(on, row-reverse, $align-items: center, $gap: 16px);
+                @include flex(true, row-reverse, $align-items: center, $gap: 16px);
                 @include size(default, fit-content);
                 @include respond-to(desktop) {
                     @include flex($gap: 36px);
@@ -310,7 +303,7 @@
             @include spacing(margin, bottom, 32px);
             @include respond-to(desktop) {
                 @include spacing(margin, bottom, 80px);
-                @include flex(on, column, $align-items: center);
+                @include flex(true, column, $align-items: center);
             }
             &__subheading {
                 @include spacing(margin, top, 16px);
@@ -326,7 +319,7 @@
             @include spacing(padding, (top, bottom), 70px, 160px);
         }
         &__cards {
-            @include flex(on, $justify: space-between);
+            @include flex(true, $justify: space-between);
             @include spacing(margin, top, 58px);
             &-backtick {
                 @include size(default, 32px, 21px);
@@ -339,7 +332,7 @@
             @include size(default, 232px);
             @include respond-to(desktop) {
                 @include size(default, auto);
-                @include flex(on, $align-items: center, $justify: space-between);
+                @include flex(true, $align-items: center, $justify: space-between);
             }
             &__heading {
                 @include respond-to(desktop) {

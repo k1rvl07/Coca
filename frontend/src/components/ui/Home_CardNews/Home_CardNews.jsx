@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import React from "react";
 
 export const Home_CardNews = ({ img, date, creator, name, href, motionProps = {} }) => {
-  const { Shared_Text: Text, Shared_Link: Link } = components;
+  const { Shared_Text: Text, Shared_Link: Link, Shared_Image: Image } = components;
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -16,7 +16,7 @@ export const Home_CardNews = ({ img, date, creator, name, href, motionProps = {}
 
   return (
     <motion.div className="card-news" {...motionProps}>
-      <img className="card-news__image" src={img} alt="" />
+      <Image className="card-news__image" src={img} alt="" />
       <div className="card-news__info">
         <Text type="body" className="card-news__description text-card-news-description">
           Publish in Insight {formatDate(date)}

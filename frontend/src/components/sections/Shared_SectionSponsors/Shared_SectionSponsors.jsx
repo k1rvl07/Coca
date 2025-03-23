@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import React from "react";
 
 export const Shared_SectionSponsors = () => {
-  const { Shared_Section: Section, Shared_Title: Title } = components;
+  const { Shared_Section: Section, Shared_Title: Title, Shared_Image: Image } = components;
   const { SHARED_SECTION_SPONSORS: SPONSORS } = content;
   const { useAnimatedIntersection } = hooks;
 
@@ -41,16 +41,18 @@ export const Shared_SectionSponsors = () => {
         transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
       >
         {SPONSORS.map((sponsor, index) => (
-          <motion.img
+          <Image
             key={sponsor.id}
             className="sponsor__image"
             src={assets[sponsor.img]}
             alt="sponsor"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={
-              sectionAnimation.hasAnimated ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }
-            }
-            transition={{ duration: 0.5, ease: "easeOut", delay: 0.6 + index * 0.15 }}
+            motionProps={{
+              initial: { opacity: 0, scale: 0.9 },
+              animate: sectionAnimation.hasAnimated
+                ? { opacity: 1, scale: 1 }
+                : { opacity: 0, scale: 0.8 },
+              transition: { duration: 0.8, ease: "easeOut", delay: 0.6 + index * 0.15 },
+            }}
           />
         ))}
       </motion.div>

@@ -3,7 +3,7 @@
 .sponsor {
     &__container {
         @include respond-to(desktop) {
-            @include flex(on, $justify: space-between, $align-items: center);
+            @include flex(true, $justify: space-between, $align-items: center);
         }
     }
     &__image {
@@ -14,7 +14,7 @@
     }
     &__images {
         @include size(default, 263px);
-        @include flex(on, $justify: space-between, $row-gap: 16px, $wrap: wrap);
+        @include flex(true, $justify: space-between, $row-gap: 16px, $wrap: wrap);
         @include spacing(margin, top, 8px);
         @include respond-to(desktop) {
             @include size(default, 700px);

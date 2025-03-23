@@ -8,6 +8,7 @@ export const Shared_Header = () => {
     Shared_Button: Button,
     Shared_Nav: Nav,
     Shared_Link: Link,
+    Shared_Image: Image,
   } = components;
   const { logo, burger, close } = assets;
   const { SHARED_HEADER_NAV: HEADER_NAV } = content;
@@ -34,26 +35,32 @@ export const Shared_Header = () => {
   return (
     <Section tagName="header" className="header" id="header" ref={header.targetRef}>
       <Link className="header__logo" href="/Coca">
-        <motion.img
+        <Image
           className="header__logo-img"
           src={logo}
           alt="logo"
-          initial={{ opacity: 0, scale: 0.6 }}
-          animate={header.hasAnimated ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.6 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+          motionProps={{
+            initial: { opacity: 0, scale: 0.6 },
+            animate: header.hasAnimated ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.6 },
+            transition: { duration: 0.6, ease: "easeOut" },
+          }}
         />
       </Link>
       {width <= 1440 && (
         <Button className="header__button" onClick={toggleNav}>
           <AnimatePresence mode="wait">
-            <motion.img
+            <Image
               key={showNav ? "close" : "burger"}
               src={showNav ? close : burger}
               alt={showNav ? "close" : "burger"}
-              initial={{ rotate: 0, opacity: 0 }}
-              animate={header.hasAnimated ? { rotate: 360, opacity: 1 } : { rotate: 0, opacity: 0 }}
-              exit={{ rotate: -360, opacity: 0 }}
-              transition={{ duration: 0.6, ease: "easeInOut" }}
+              motionProps={{
+                initial: { rotate: 0, opacity: 0 },
+                animate: header.hasAnimated
+                  ? { rotate: 360, opacity: 1 }
+                  : { rotate: 0, opacity: 0 },
+                exit: { rotate: -360, opacity: 0 },
+                transition: { duration: 0.6, ease: "easeInOut" },
+              }}
             />
           </AnimatePresence>
         </Button>

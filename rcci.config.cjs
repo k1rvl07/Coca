@@ -2,10 +2,10 @@
  * @type import("reactcci/build/types").Config
  */
 module.exports = {
-  multiProject: false,
+  multiProject: true,
   skipFinalStep: false,
   checkExistenceOnCreate: false,
-  folderPaths: ["src/components", "src/hooks"],
+  folderPaths: ["frontend/src/components/", "src/hooks"],
   templatesFolder: "templates",
   templates: [
     {
