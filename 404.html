@@ -5,9 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redirecting...</title>
     <script>
-      const segmentCount = 1;
-      const path = window.location.pathname.split('/').slice(0, 1 + segmentCount).join('/');
-      window.location.href = path;
+      const path = window.location.pathname.replace(/^\/Coca/, "");
+      window.location.href = `/Coca/index.html?redirect=${encodeURIComponent(path)}`;
     </script>
 </head>
 <body>

@@ -51,6 +51,8 @@
     "reactcci": "^1.14.0",
     "sass": "^1.80.4",
     "sweetalert2": "^11.17.2",
-    "vite": "^5.4.8"
+    "vite": "^5.4.8",
+    "vite-plugin-copy": "^0.1.6",
+    "vite-plugin-static-copy": "^2.3.0"
   }
 }

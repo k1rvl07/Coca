@@ -1,12 +1,24 @@
 import path from "node:path";
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
+import { viteStaticCopy } from "vite-plugin-static-copy";
 
 export default defineConfig(({ mode }) => {
   return {
-    base: mode === "development" ? "/Coca" : "./",
-    plugins: [react()],
+    base: mode === "development" ? "/Coca" : "/Coca/",
+    plugins: [
+      react(),
+      viteStaticCopy({
+        targets: [
+          {
+            src: "404.html", // Путь к вашему файлу 404.html
+            dest: ".", // Папка, куда нужно скопировать (в данном случае корень dist)
+          },
+        ],
+      }),
+    ],
     build: {
+      outDir: "dist",
       assetsInlineLimit: 0,
     },
     resolve: {
