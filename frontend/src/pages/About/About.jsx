@@ -11,13 +11,14 @@ export const About = () => {
     Shared_Image: Image,
     Shared_Button: Button,
     Shared_Slider: Slider,
+    Shared_Line: Line,
   } = components;
   const { get_in_touch, unite_work, unite_team, unite_worker, dragger } = assets;
   const { useAnimatedIntersection } = hooks;
 
-  const sections = ["main"];
+  const sections = ["main", "ideas"];
   const animations = sections.map(() => useAnimatedIntersection(0.2));
-  const [main] = animations;
+  const [main, ideas] = animations;
 
   return (
     <main className="about-page">
@@ -112,6 +113,46 @@ export const About = () => {
             <Image className="main__dragger-image" src={dragger} alt="" />
           </Button>
         </Slider>
+      </Section>
+      <Section
+        tagName="section"
+        className="ideas"
+        motionProps={{
+          ref: ideas.targetRef,
+          initial: { opacity: 0, y: 50 },
+          animate: ideas.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 },
+          transition: { duration: 0.6, ease: "easeOut" },
+        }}
+      >
+        <Line
+          className="ideas__hr"
+          motionProps={{
+            initial: { opacity: 0, scale: 0.9 },
+            animate: ideas.hasAnimated ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 },
+            transition: { duration: 0.4, ease: "easeOut", delay: 0.2 },
+          }}
+        />
+        <Title
+          heading="Powerful ideas & sales acceleration"
+          headingTag="h2"
+          headingClass="text-title-heading-second-black"
+          subheading="We are a software development firm specializing in digital products. We build beautiful, functional and cross-platform solutions that are accessible to all."
+          subheadingClass="text-ideas-title-subheading"
+          isSubheadingLine={false}
+          motionProps={{
+            initial: { opacity: 0, y: 30 },
+            animate: ideas.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
+            transition: { duration: 0.6, ease: "easeOut", delay: 0.2 },
+          }}
+        />
+        <Line
+          className="ideas__hr"
+          motionProps={{
+            initial: { opacity: 0, scale: 0.9 },
+            animate: ideas.hasAnimated ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 },
+            transition: { duration: 0.4, ease: "easeOut", delay: 0.2 },
+          }}
+        />
       </Section>
     </main>
   );

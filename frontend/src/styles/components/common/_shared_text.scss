@@ -121,5 +121,8 @@
         &-main-card-description {
             @extend %about_text-main-card-description;
         }
+        &-ideas-title-subheading {
+            @extend %about_text-ideas-title-subheading;
+        }
     }
 }

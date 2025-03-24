@@ -11,6 +11,7 @@ export const Shared_Footer = () => {
     Shared_Nav: Nav,
     Shared_Link: Link,
     Shared_Image: Image,
+    Shared_Line: Line,
   } = components;
   const { logo_white } = assets;
   const {
@@ -106,8 +107,14 @@ export const Shared_Footer = () => {
           exit: { opacity: 0, x: -20 },
         }}
       />
-
-      <hr className="footer__line" />
+      <Line
+        className="footer__line"
+        motionProps={{
+          initial: { opacity: 0, y: 20 },
+          animate: footerAnimation.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
+          transition: { duration: 0.5, delay: 1.0 },
+        }}
+      />
       <motion.div
         className="footer__icons"
         initial={{ opacity: 0, y: 20 }}

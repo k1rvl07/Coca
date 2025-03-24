@@ -8,7 +8,13 @@
         }
         &__container {
             @include respond-to(desktop) {
-                @include grid(on, repeat(2, auto), 617px 419px, "title image" "form sales-report", $justify-content: space-between);
+                @include grid(
+                    on,
+                    repeat(2, auto),
+                    617px 419px,
+                    "title image" "form sales-report",
+                    $justify-content: space-between
+                );
             }
         }
         &__image {
@@ -50,7 +56,7 @@
                 }
             }
         }
-        .title {    
+        .title {
             grid-area: title;
             &__subheading {
                 @include spacing(margin, top, 48px);
@@ -102,14 +108,14 @@
         .title {
             &__heading {
                 @include respond-to(desktop) {
-                    @include size(default, 816px)
+                    @include size(default, 816px);
                 }
             }
             &__subheading {
                 @include spacing(margin, top, 16px);
                 @include respond-to(desktop) {
                     @include spacing(margin, top, 24px);
-                    @include size(default, 660px)
+                    @include size(default, 660px);
                 }
             }
         }
@@ -121,7 +127,14 @@
         }
         &__container {
             @include respond-to(desktop) {
-                @include grid(on, repeat(2, auto), repeat(2, auto), "image-statistic title" "image-statistic advantages", $justify-content: space-between, $column-gap: 58px);
+                @include grid(
+                    on,
+                    repeat(2, auto),
+                    repeat(2, auto),
+                    "image-statistic title" "image-statistic advantages",
+                    $justify-content: space-between,
+                    $column-gap: 58px
+                );
             }
         }
         &__image-statistic {
@@ -184,7 +197,7 @@
                 @include spacing(margin, top, 16px);
                 @include respond-to(desktop) {
                     @include spacing(margin, top, 24px);
-                    @include size(default, 360px)
+                    @include size(default, 360px);
                 }
             }
             &__heading {
@@ -197,7 +210,7 @@
     .growth {
         @include spacing(padding, (top, bottom), 26px, 56px);
         @include respond-to(desktop) {
-            @include spacing(padding, (top, bottom), 66px, 160px)
+            @include spacing(padding, (top, bottom), 66px, 160px);
         }
         &__results {
             @include flex(true, $justify: space-between, $align-items: center, $wrap: wrap, $gap: 16px);
@@ -250,7 +263,13 @@
             @include flex(true, column, $gap: 24px);
             @include spacing(margin, top, 32px);
             @include respond-to(desktop) {
-                @include flex($direction: row, $justify: space-between, $align-items: center, $row-gap: 56px, $wrap: wrap);
+                @include flex(
+                    $direction: row,
+                    $justify: space-between,
+                    $align-items: center,
+                    $row-gap: 56px,
+                    $wrap: wrap
+                );
                 @include spacing(margin, top, 80px);
             }
         }
@@ -283,6 +302,9 @@
                 @include size(default, 100%);
                 overflow-x: scroll;
                 scroll-snap-type: x mandatory;
+                @include respond-to(desktop) {
+                    overflow-x: hidden;
+                }
             }
             &__slides {
                 @include position(relative);

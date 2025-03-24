@@ -8,13 +8,7 @@
         }
         &__container {
             @include respond-to(desktop) {
-                @include grid(
-                    on,
-                    repeat(2, auto),
-                    repeat(2, auto),
-                    "title link" "slider slider",
-                    $row-gap: 135px
-                )
+                @include grid(on, repeat(2, auto), repeat(2, auto), "title link" "slider slider", $row-gap: 135px);
             }
         }
         &__link {
@@ -114,6 +108,35 @@
             &__slide {
                 @include respond-to(desktop) {
                     @include size(default, 502px);
+                }
+            }
+        }
+    }
+    .ideas {
+        @include spacing(padding, (bottom), 80px, 80px);
+        &__hr {
+            background-color: color(neutral-40);
+            @include size(default, 335px, 1px);
+            @include respond-to(desktop) {
+                @include size(default, 1200px, 1px);
+            }
+        }
+        .title {
+            @include spacing(margin, y, 24px);
+            @include respond-to(desktop) {
+                @include flex(true, $justify: space-between, $align-items: center);
+                @include spacing(margin, y, 80px);
+            }
+            &__heading {
+                @include respond-to(desktop) {
+                    @include size(default, 480px);
+                }
+            }
+            &__subheading {
+                @include spacing(margin, top, 16px);
+                @include respond-to(desktop) {
+                    @include spacing(margin, top, 0px);
+                    @include size(default, 472px);
                 }
             }
         }
