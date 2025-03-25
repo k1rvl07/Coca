@@ -1,6 +1,5 @@
 import { assets, components, content, hooks, services } from "@exports";
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { motion } from "framer-motion";
 import React, { useState, Fragment } from "react";
 
 export const Home = () => {
@@ -22,6 +21,7 @@ export const Home = () => {
     Home_CardNews: CardNews,
     Home_CardReview: CardReview,
     Shared_Image: Image,
+    Shared_Box: Box,
   } = components;
 
   const {
@@ -123,24 +123,28 @@ export const Home = () => {
               Try for free
             </Button>
           </Form>
-          <motion.div
+          <Box
             className="main__image"
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={main.hasAnimated ? { scale: 1, opacity: 1 } : { scale: 0.9, opacity: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut", delay: 0.5 }}
+            motionProps={{
+              initial: { scale: 0.9, opacity: 0 },
+              animate: main.hasAnimated ? { scale: 1, opacity: 1 } : { scale: 0.9, opacity: 0 },
+              transition: { duration: 0.6, ease: "easeOut", delay: 0.5 },
+            }}
           >
             <Text type="body" className="main__image-text text-main-image">
               Sales Report
             </Text>
             <Image className="main__image-img" src={sales_report} alt="" />
-          </motion.div>
-          <motion.div
+          </Box>
+          <Box
             className="main__sales-report"
-            initial={{ opacity: 0, y: 30 }}
-            animate={main.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ duration: 0.6, ease: "easeOut", delay: 0.6 }}
+            motionProps={{
+              initial: { opacity: 0, y: 30 },
+              animate: main.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
+              transition: { duration: 0.6, ease: "easeOut", delay: 0.6 },
+            }}
           >
-            <div className="main__sales-report-container">
+            <Box className="main__sales-report-container">
               {MAIN_CARD_SALES_REPORT.map((item, index) => (
                 <CardSalesReport
                   key={item.id}
@@ -152,8 +156,8 @@ export const Home = () => {
                   }}
                 />
               ))}
-            </div>
-          </motion.div>
+            </Box>
+          </Box>
         </Section>
         <Section
           className="overview"
@@ -172,7 +176,7 @@ export const Home = () => {
             subheadingClass="text-title-subheading-small"
             isSubheadingLine={false}
           />
-          <div className="overview__cards">
+          <Box className="overview__cards">
             {OVERVIEW_CARDS.map((item, index) => (
               <CardOverview
                 key={item.id}
@@ -185,7 +189,7 @@ export const Home = () => {
                 }}
               />
             ))}
-          </div>
+          </Box>
         </Section>
         <Section
           className="features"
@@ -196,21 +200,23 @@ export const Home = () => {
             transition: { duration: 0.6, ease: "easeOut", delay: 0.2 },
           }}
         >
-          <motion.div
+          <Box
             className="features__image-statistic"
-            initial={{ opacity: 0, y: 30 }}
-            animate={features.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
+            motionProps={{
+              initial: { opacity: 0, y: 30 },
+              animate: features.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
+              transition: { duration: 0.6, ease: "easeOut", delay: 0.4 },
+            }}
           >
             <Image className="features__image" src={features_image} alt="" />
-            <div className="statistic">
-              <div className="statistic__container">
-                <div className="statistic__title">
+            <Box className="statistic">
+              <Box className="statistic__container">
+                <Box className="statistic__title">
                   <Text type="body" className="statistic__heading text-statistic-heading">
                     Statistic
                   </Text>
                   <Image className="statistic__more" src={more} alt="" />
-                </div>
+                </Box>
                 {FEATURES_CARD_STATISTIC.map((item, index) => (
                   <CardStatistic
                     key={item.id}
@@ -224,9 +230,9 @@ export const Home = () => {
                     }}
                   />
                 ))}
-              </div>
-            </div>
-          </motion.div>
+              </Box>
+            </Box>
+          </Box>
           <Title
             heading="Passion to increase company revenue up to 85%"
             headingTag="h2"
@@ -240,11 +246,13 @@ export const Home = () => {
               transition: { duration: 0.6, ease: "easeOut", delay: 0.8 },
             }}
           />
-          <motion.div
+          <Box
             className="features__advantages"
-            initial={{ opacity: 0, y: 30 }}
-            animate={features.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ duration: 0.6, ease: "easeOut", delay: 1.0 }}
+            motionProps={{
+              initial: { opacity: 0, y: 30 },
+              animate: features.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
+              transition: { duration: 0.6, ease: "easeOut", delay: 1.0 },
+            }}
           >
             {FEATURES_ADVANTAGES.map((item, index) => (
               <Advantage
@@ -257,7 +265,7 @@ export const Home = () => {
                 }}
               />
             ))}
-          </motion.div>
+          </Box>
         </Section>
         <Section
           className="growth"
@@ -268,11 +276,13 @@ export const Home = () => {
             transition: { duration: 0.6, ease: "easeOut", delay: 0.2 },
           }}
         >
-          <motion.div
+          <Box
             className="growth__results"
-            initial={{ opacity: 0, y: 30 }}
-            animate={growth.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
+            motionProps={{
+              initial: { opacity: 0, y: 30 },
+              animate: growth.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
+              transition: { duration: 0.6, ease: "easeOut", delay: 0.4 },
+            }}
           >
             {GROWTH_RESULTS.map((item, index) => (
               <Fragment key={item.id}>
@@ -298,7 +308,7 @@ export const Home = () => {
                 )}
               </Fragment>
             ))}
-          </motion.div>
+          </Box>
           <Image
             className="growth__image"
             src={growth_team}
@@ -346,7 +356,7 @@ export const Home = () => {
               transition: { duration: 0.6, ease: "easeOut", delay: 0.4 },
             }}
           />
-          <div className="benefits__cards">
+          <Box className="benefits__cards">
             {BENEFITS_CARD_BENEFIT.map((item, index) => (
               <CardBenefit
                 key={item.id}
@@ -360,7 +370,7 @@ export const Home = () => {
                 }}
               />
             ))}
-          </div>
+          </Box>
         </Section>
         <Section
           className="news"
@@ -438,11 +448,13 @@ export const Home = () => {
               transition: { duration: 0.6, ease: "easeOut", delay: 0.4 },
             }}
           />
-          <motion.div
+          <Box
             className="reviews__cards"
-            initial={{ opacity: 0, y: 30 }}
-            animate={reviews.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ duration: 0.6, ease: "easeOut", delay: 0.6 }}
+            motionProps={{
+              initial: { opacity: 0, y: 30 },
+              animate: reviews.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
+              transition: { duration: 0.6, ease: "easeOut", delay: 0.6 },
+            }}
           >
             <Image
               className="reviews__cards-backtick"
@@ -468,7 +480,7 @@ export const Home = () => {
                 transition: { duration: 0.6, ease: "easeOut", delay: 1.0 },
               }}
             />
-          </motion.div>
+          </Box>
         </Section>
       </main>
     </>

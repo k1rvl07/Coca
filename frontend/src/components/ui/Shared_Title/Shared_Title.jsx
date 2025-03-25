@@ -11,11 +11,11 @@ export const Shared_Title = ({
   subheadingLineColor = "black",
   motionProps = {},
 }) => {
-  const { Shared_Text: Text, Shared_Image: Image } = components;
+  const { Shared_Text: Text, Shared_Image: Image, Shared_Box: Box } = components;
   const { subheading_line, subheading_line_white } = assets;
   const line = subheadingLineColor === "black" ? subheading_line : subheading_line_white;
   return (
-    <motion.div className="title" {...motionProps}>
+    <Box className="title" motionProps={{ ...motionProps }}>
       <Text type="heading" headingTag={headingTag} className={`title__heading ${headingClass}`}>
         {heading}
       </Text>
@@ -25,6 +25,6 @@ export const Shared_Title = ({
         )}
         {subheading}
       </Text>
-    </motion.div>
+    </Box>
   );
 };

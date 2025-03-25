@@ -96,15 +96,17 @@ export const Shared_Header = () => {
           exit: { opacity: 0, x: -20 },
         }}
       />
-      <motion.div
-        initial={{ x: -60, opacity: 0 }}
-        animate={header.hasAnimated ? { x: 0, opacity: 1 } : { x: -60, opacity: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
+      <Link
+        className="header__contact link-arrow-underline"
+        href="/Coca/#"
+        motionProps={{
+          initial: { opacity: 0, x: -60 },
+          animate: header.hasAnimated ? { opacity: 1, x: 0 } : { opacity: 0, x: -60 },
+          transition: { duration: 0.8, ease: "easeOut" },
+        }}
       >
-        <Link className="header__contact link-arrow-underline" href="/Coca/#">
-          Contact Us 🡪
-        </Link>
-      </motion.div>
+        Contact Us 🡪
+      </Link>
     </Section>
   );
 };

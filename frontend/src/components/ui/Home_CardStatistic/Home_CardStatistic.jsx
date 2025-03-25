@@ -11,20 +11,20 @@ export const Home_CardStatistic = ({
   icon,
   motionProps = {},
 }) => {
-  const { Shared_Text: Text, Shared_Image: Image } = components;
+  const { Shared_Text: Text, Shared_Image: Image, Shared_Box: Box } = components;
   const words = description.split(" ");
 
   const firstWord = words[0];
   const secondWord = words[1];
   const restOfText = words.slice(2).join(" ");
   return (
-    <motion.div className="card-statistic" {...motionProps}>
+    <Box className="card-statistic" motionProps={{ ...motionProps }}>
       <Image className="card-statistic__exchange" src={exchange} alt="" />
-      <div className="card-statistic__info">
+      <Box className="card-statistic__info">
         <Text type="body" className="card-statistic__name text-card-statistic-name">
           {name}
         </Text>
-        <div className="card-statistic__price-percent">
+        <Box className="card-statistic__price-percent">
           <Text type="body" className="card-statistic__price text-card-statistic-price">
             {price}
           </Text>
@@ -34,11 +34,11 @@ export const Home_CardStatistic = ({
             </span>
             {percent}
           </Text>
-        </div>
+        </Box>
         <Text type="body" className="card-statistic__description text-card-statistic-description">
           {firstWord} <b>{secondWord}</b> {restOfText}
         </Text>
-      </div>
-    </motion.div>
+      </Box>
+    </Box>
   );
 };

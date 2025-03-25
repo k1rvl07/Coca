@@ -12,6 +12,7 @@ export const About = () => {
     Shared_Button: Button,
     Shared_Slider: Slider,
     Shared_Line: Line,
+    Shared_Box: Box,
   } = components;
   const { get_in_touch, unite_work, unite_team, unite_worker, dragger } = assets;
   const { useAnimatedIntersection } = hooks;
@@ -72,11 +73,13 @@ export const About = () => {
               transition: { duration: 0.5, ease: "easeOut", delay: 0.5 },
             }}
           />
-          <motion.div
+          <Box
             className="main__card"
-            initial={{ opacity: 0, y: 30 }}
-            animate={main.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
+            motionProps={{
+              initial: { opacity: 0, y: 30 },
+              animate: main.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
+              transition: { duration: 0.6, ease: "easeOut", delay: 0.4 },
+            }}
           >
             <Image className="main__card-image" src={unite_team} alt="unite_team" />
             <Text type="body" className="main__card-title text-main-card-title">
@@ -89,7 +92,7 @@ export const About = () => {
             <Link href="#" className="main__card-link button-black text-button-black">
               See Details 🡪
             </Link>
-          </motion.div>
+          </Box>
           <Image
             className="main__image"
             src={unite_worker}

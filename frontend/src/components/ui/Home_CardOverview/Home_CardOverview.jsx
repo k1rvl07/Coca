@@ -1,11 +1,10 @@
 import { components } from "@exports";
-import { motion } from "framer-motion";
 import React from "react";
 
 export const Home_CardOverview = ({ icon, name, description, motionProps = {} }) => {
-  const { Shared_Text: Text, Shared_Image: Image } = components;
+  const { Shared_Text: Text, Shared_Image: Image, Shared_Box: Box } = components;
   return (
-    <motion.div className="card-overview" {...motionProps}>
+    <Box className="card-overview" motionProps={{ ...motionProps }}>
       <Image className="card-overview__icon" src={icon} alt="" />
       <Text type="body" className="card-overview__name text-card-overview-name">
         {name}
@@ -13,6 +12,6 @@ export const Home_CardOverview = ({ icon, name, description, motionProps = {} })
       <Text type="body" className="card-overview__description text-card-overview-description">
         {description}
       </Text>
-    </motion.div>
+    </Box>
   );
 };

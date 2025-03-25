@@ -1,5 +1,4 @@
 import { components } from "@exports";
-import { motion } from "framer-motion";
 import { forwardRef } from "react";
 
 export const Shared_Section = forwardRef(
@@ -14,12 +13,12 @@ export const Shared_Section = forwardRef(
     },
     ref,
   ) => {
-    const { Shared_Container: Container } = components;
+    const { Shared_Container: Container, Shared_Box: Box } = components;
 
     const content = (
-      <motion.div {...motionProps} className={`${className}__container`}>
+      <Box motionProps={{ ...motionProps }} className={`${className}__container`}>
         {children}
-      </motion.div>
+      </Box>
     );
 
     return (

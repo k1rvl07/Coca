@@ -1,7 +1,8 @@
-import { motion } from "framer-motion";
+import { components } from "@exports";
 import React, { Children, useRef, useState, useEffect, useCallback } from "react";
 
 export const Shared_Slider = ({ children, motionProps = {}, draggerClass }) => {
+  const { Shared_Box: Box } = components;
   const slidesRef = useRef(null);
   const windowRef = useRef(null);
   const [isDragging, setIsDragging] = useState(false);
@@ -62,17 +63,17 @@ export const Shared_Slider = ({ children, motionProps = {}, draggerClass }) => {
   }, [handleMouseDown, handleMouseMove, handleMouseUp, handleMouseLeave]);
 
   return (
-    <motion.div className="slider" {...motionProps}>
-      <div className="slider__window" ref={windowRef}>
-        <div className="slider__slides" ref={slidesRef}>
+    <Box className="slider" motionProps={{ ...motionProps }}>
+      <Box className="slider__window" ref={windowRef}>
+        <Box className="slider__slides" ref={slidesRef}>
           {Children.map(children, (child) => {
             if (child.props["data-no-slide"]) {
               return child;
             }
-            return <div className="slider__slide">{child}</div>;
+            return <Box className="slider__slide">{child}</Box>;
           })}
-        </div>
-      </div>
-    </motion.div>
+        </Box>
+      </Box>
+    </Box>
   );
 };

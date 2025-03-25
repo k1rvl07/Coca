@@ -1,8 +1,7 @@
 import { components } from "@exports";
-import { motion } from "framer-motion";
 
 export const Shared_Arrows = ({ onNext, onPrev, isFirst, isLast, motionProps = {} }) => {
-  const { Shared_Button: Button } = components;
+  const { Shared_Button: Button, Shared_Box: Box } = components;
   const arrow_left = (
     <svg
       className="arrows__button-arrow"
@@ -57,9 +56,9 @@ export const Shared_Arrows = ({ onNext, onPrev, isFirst, isLast, motionProps = {
   };
 
   return (
-    <motion.div className="arrows" {...motionProps}>
+    <Box className="arrows" motionProps={{ ...motionProps }}>
       {renderArrowButton("left", onPrev, isFirst)}
       {renderArrowButton("right", onNext, isLast)}
-    </motion.div>
+    </Box>
   );
 };

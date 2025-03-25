@@ -10,7 +10,7 @@ export const Shared_Nav = ({
   itemMotion = {},
   titleMotion = {},
 }) => {
-  const { Shared_Link: Link, Shared_Text: Text } = components;
+  const { Shared_Link: Link, Shared_Text: Text, Shared_Box: Box } = components;
 
   const renderNavItems = (items, startIndex) =>
     items.map((liItem, index) => (
@@ -31,14 +31,14 @@ export const Shared_Nav = ({
         totalItems += itemsCount;
 
         return (
-          <div key={ulItem.id} className="nav__group">
+          <Box key={ulItem.id} className="nav__group">
             {ulItem.name && (
-              <motion.div {...titleMotion} custom={startIndex - 1}>
+              <Box {...titleMotion} custom={startIndex - 1}>
                 <Text className={`nav__title ${titleClassName}`}>{ulItem.name}</Text>
-              </motion.div>
+              </Box>
             )}
             <ul className="nav__list">{renderNavItems(ulItem.items, startIndex)}</ul>
-          </div>
+          </Box>
         );
       })}
     </motion.nav>

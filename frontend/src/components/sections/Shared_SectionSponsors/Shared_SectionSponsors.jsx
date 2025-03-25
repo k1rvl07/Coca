@@ -1,9 +1,13 @@
 import { assets, components, content, hooks } from "@exports";
-import { motion } from "framer-motion";
 import React from "react";
 
 export const Shared_SectionSponsors = () => {
-  const { Shared_Section: Section, Shared_Title: Title, Shared_Image: Image } = components;
+  const {
+    Shared_Section: Section,
+    Shared_Title: Title,
+    Shared_Image: Image,
+    Shared_Box: Box,
+  } = components;
   const { SHARED_SECTION_SPONSORS: SPONSORS } = content;
   const { useAnimatedIntersection } = hooks;
 
@@ -34,11 +38,13 @@ export const Shared_SectionSponsors = () => {
         }}
       />
 
-      <motion.div
+      <Box
         className="sponsor__images"
-        initial={{ opacity: 0, y: 30 }}
-        animate={sectionAnimation.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-        transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
+        motionProps={{
+          initial: { opacity: 0, y: 30 },
+          animate: sectionAnimation.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
+          transition: { duration: 0.6, ease: "easeOut", delay: 0.4 },
+        }}
       >
         {SPONSORS.map((sponsor, index) => (
           <Image
@@ -55,7 +61,7 @@ export const Shared_SectionSponsors = () => {
             }}
           />
         ))}
-      </motion.div>
+      </Box>
     </Section>
   );
 };

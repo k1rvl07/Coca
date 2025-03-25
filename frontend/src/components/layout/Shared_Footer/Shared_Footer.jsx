@@ -12,6 +12,7 @@ export const Shared_Footer = () => {
     Shared_Link: Link,
     Shared_Image: Image,
     Shared_Line: Line,
+    Shared_Box: Box,
   } = components;
   const { logo_white } = assets;
   const {
@@ -50,11 +51,13 @@ export const Shared_Footer = () => {
       <Button type="button" className="footer__button button-white text-button-white">
         Try for free
       </Button>
-      <motion.div
+      <Box
         className="footer__company"
-        initial={{ opacity: 0, y: 20 }}
-        animate={footerAnimation.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-        transition={{ duration: 0.5, delay: 0.5 }}
+        motionProps={{
+          initial: { opacity: 0, y: 20 },
+          animate: footerAnimation.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
+          transition: { duration: 0.5, delay: 0.5 },
+        }}
       >
         <Link
           className="footer__company-link"
@@ -78,7 +81,7 @@ export const Shared_Footer = () => {
           We built an elegant solution. Our team created a fully integrated sales and marketing
           solution for SMBs
         </Text>
-      </motion.div>
+      </Box>
       <Nav
         navData={FOOTER_NAV}
         linkClassName="link-footer-nav"
@@ -115,11 +118,13 @@ export const Shared_Footer = () => {
           transition: { duration: 0.5, delay: 1.0 },
         }}
       />
-      <motion.div
+      <Box
         className="footer__icons"
-        initial={{ opacity: 0, y: 20 }}
-        animate={footerAnimation.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-        transition={{ duration: 0.5, delay: 1.0 }}
+        motionProps={{
+          initial: { opacity: 0, y: 20 },
+          animate: footerAnimation.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
+          transition: { duration: 0.5, delay: 1.0 },
+        }}
       >
         {FOOTER_SOCIAL_ICONS.map((icon, index) => (
           <Link
@@ -135,12 +140,14 @@ export const Shared_Footer = () => {
             <Image className="footer__icon-img" src={assets[icon.img]} alt="" />
           </Link>
         ))}
-      </motion.div>
-      <motion.div
+      </Box>
+      <Box
         className="footer__links"
-        initial={{ opacity: 0, y: 20 }}
-        animate={footerAnimation.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-        transition={{ duration: 0.5, delay: 1.2 }}
+        motionProps={{
+          initial: { opacity: 0, y: 20 },
+          animate: footerAnimation.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
+          transition: { duration: 0.5, delay: 1.1 },
+        }}
       >
         {FOOTER_LINKS.map((link, index) => (
           <Link
@@ -156,7 +163,7 @@ export const Shared_Footer = () => {
             {link.text}
           </Link>
         ))}
-      </motion.div>
+      </Box>
       <Text
         className="footer__copyright text-footer-copyright"
         motionProps={{
