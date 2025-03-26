@@ -6,10 +6,10 @@ export const Home_CardOverview = ({ icon, name, description, motionProps = {} })
   return (
     <Box className="card-overview" motionProps={{ ...motionProps }}>
       <Image className="card-overview__icon" src={icon} alt="" />
-      <Text type="body" className="card-overview__name text-card-overview-name">
+      <Text as="p" className="card-overview__name text-card-overview-name">
         {name}
       </Text>
-      <Text type="body" className="card-overview__description text-card-overview-description">
+      <Text as="p" className="card-overview__description text-card-overview-description">
         {description}
       </Text>
     </Box>

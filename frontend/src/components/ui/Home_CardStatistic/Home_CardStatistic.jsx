@@ -21,21 +21,21 @@ export const Home_CardStatistic = ({
     <Box className="card-statistic" motionProps={{ ...motionProps }}>
       <Image className="card-statistic__exchange" src={exchange} alt="" />
       <Box className="card-statistic__info">
-        <Text type="body" className="card-statistic__name text-card-statistic-name">
+        <Text as="p" className="card-statistic__name text-card-statistic-name">
           {name}
         </Text>
         <Box className="card-statistic__price-percent">
-          <Text type="body" className="card-statistic__price text-card-statistic-price">
+          <Text as="p" className="card-statistic__price text-card-statistic-price">
             {price}
           </Text>
-          <Text type="body" className="card-statistic__percent text-card-statistic-percent">
+          <Text as="p" className="card-statistic__percent text-card-statistic-percent">
             <span>
               <Image className="card-statistic__icon" src={icon} alt="" />
             </span>
             {percent}
           </Text>
         </Box>
-        <Text type="body" className="card-statistic__description text-card-statistic-description">
+        <Text as="p" className="card-statistic__description text-card-statistic-description">
           {firstWord} <b>{secondWord}</b> {restOfText}
         </Text>
       </Box>

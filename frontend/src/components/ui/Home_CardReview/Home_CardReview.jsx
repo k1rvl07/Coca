@@ -75,7 +75,7 @@ export const Home_CardReview = ({ reviews, reviewsAnimation, onUpdateIndex, moti
           transition: { duration: 0.5, delay: 0.6 },
         }}
       >
-        <Text type="body" className="card-review__text text-card-review-text">
+        <Text as="p" className="card-review__text text-card-review-text">
           {currentReview.text}
         </Text>
       </Box>
@@ -107,10 +107,10 @@ export const Home_CardReview = ({ reviews, reviewsAnimation, onUpdateIndex, moti
             transition: { duration: 0.5, delay: 1.1 },
           }}
         >
-          <Text type="body" className="card-review__author-name text-card-review-author-name">
+          <Text as="p" className="card-review__author-name text-card-review-author-name">
             {currentReview.author}
           </Text>
-          <Text type="body" className="card-review__author-role text-card-review-author-role">
+          <Text as="p" className="card-review__author-role text-card-review-author-role">
             {currentReview.role}
           </Text>
         </Box>

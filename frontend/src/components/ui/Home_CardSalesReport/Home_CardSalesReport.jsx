@@ -8,14 +8,14 @@ export const Home_CardSalesReport = ({ name, price, percent, color, motionProps 
   const { up, down } = assets;
   return (
     <Box className="card-sales-report" motionProps={{ ...motionProps }}>
-      <Text type="body" className="card-sales-report__name text-card-sales-report-name">
+      <Text as="p" className="card-sales-report__name text-card-sales-report-name">
         {name}
       </Text>
-      <Text type="body" className="card-sales-report__price text-card-sales-report-price">
+      <Text as="p" className="card-sales-report__price text-card-sales-report-price">
         {price}
       </Text>
       <Text
-        type="body"
+        as="p"
         className={classnames("card-sales-report__percent", {
           "text-card-sales-report-percent-down": color === "red",
           "text-card-sales-report-percent-up": color === "green",
@@ -23,7 +23,7 @@ export const Home_CardSalesReport = ({ name, price, percent, color, motionProps 
       >
         <Image src={color === "green" ? up : down} className="card-sales-report__icon" alt="" />{" "}
         {percent}
-        <Text type="span" className="card-sales-report__period text-card-sales-report-period">
+        <Text as="span" className="card-sales-report__period text-card-sales-report-period">
           from last year
         </Text>
       </Text>

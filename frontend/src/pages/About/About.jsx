@@ -82,10 +82,10 @@ export const About = () => {
             }}
           >
             <Image className="main__card-image" src={unite_team} alt="unite_team" />
-            <Text type="body" className="main__card-title text-main-card-title">
+            <Text as="p" className="main__card-title text-main-card-title">
               What we believe in
             </Text>
-            <Text type="body" className="main__card-description text-main-card-description">
+            <Text as="p" className="main__card-description text-main-card-description">
               Over the years at Sans, we’ve put a lot of thought into what it is that makes us who
               we are. The qualities that unite us, that make us such an effective team, and...
             </Text>

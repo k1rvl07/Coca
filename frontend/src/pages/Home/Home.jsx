@@ -131,7 +131,7 @@ export const Home = () => {
               transition: { duration: 0.6, ease: "easeOut", delay: 0.5 },
             }}
           >
-            <Text type="body" className="main__image-text text-main-image">
+            <Text as="p" className="main__image-text text-main-image">
               Sales Report
             </Text>
             <Image className="main__image-img" src={sales_report} alt="" />
@@ -212,7 +212,7 @@ export const Home = () => {
             <Box className="statistic">
               <Box className="statistic__container">
                 <Box className="statistic__title">
-                  <Text type="body" className="statistic__heading text-statistic-heading">
+                  <Text as="p" className="statistic__heading text-statistic-heading">
                     Statistic
                   </Text>
                   <Image className="statistic__more" src={more} alt="" />

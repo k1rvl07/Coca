@@ -8,7 +8,7 @@ export const Home_Advantage = ({ text, motionProps = {} }) => {
   return (
     <Box className="advantage" motionProps={{ ...motionProps }}>
       <Image className="advantage__image" src={ok} alt="ok" />
-      <Text type="body" className="advantage__description text-advantage-description">
+      <Text as="p" className="advantage__description text-advantage-description">
         {text}
       </Text>
     </Box>

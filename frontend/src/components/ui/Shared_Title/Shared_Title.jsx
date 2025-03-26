@@ -16,10 +16,10 @@ export const Shared_Title = ({
   const line = subheadingLineColor === "black" ? subheading_line : subheading_line_white;
   return (
     <Box className="title" motionProps={{ ...motionProps }}>
-      <Text type="heading" headingTag={headingTag} className={`title__heading ${headingClass}`}>
+      <Text as={headingTag} className={`title__heading ${headingClass}`}>
         {heading}
       </Text>
-      <Text type="body" className={`title__subheading ${subheadingClass}`}>
+      <Text as="p" className={`title__subheading ${subheadingClass}`}>
         {isSubheadingLine && (
           <Image className="title__subheading-line" src={line} alt="subheading_line" />
         )}

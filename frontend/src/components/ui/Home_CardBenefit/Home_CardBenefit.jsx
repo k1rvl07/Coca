@@ -12,15 +12,12 @@ export const Home_CardBenefit = ({ img, svg, heading, text, motionProps = {} }) 
       </Box>
       <Box className="card-benefit__description">
         <Text
-          type="body"
+          as="p"
           className="card-benefit__description-heading text-card-benefit-description-heading"
         >
           {heading}
         </Text>
-        <Text
-          type="body"
-          className="card-benefit__description-text text-card-benefit-description-text"
-        >
+        <Text as="p" className="card-benefit__description-text text-card-benefit-description-text">
           {text}
         </Text>
       </Box>
