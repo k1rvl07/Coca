@@ -1,0 +1,39 @@
+@use "@utils-scss" as *;
+
+.about-page {
+    .card-team {
+        @include grid(true, repeat(2, auto), repeat(2, auto), "image image" "info socials", $row-gap: 8px);
+        @include size(default, 247px);
+        @include respond-to(desktop) {
+            @include size(default, 379px);
+            @include grid($row-gap: 16px);
+        }
+        &__image {
+            @include grid-item(image);
+            @include object-fit(cover, center);
+            @include size(default, 247px, 244px);
+            @include respond-to(desktop) {
+                @include size(default, 379px, 434px);
+            }
+        }
+        &__name {
+            @include spacing(margin, bottom, 4px);
+            @include respond-to(desktop) {
+                @include spacing(margin, bottom, 8px);
+            }
+        }
+        &__info {
+            @include grid-item(info, start, start);
+        }
+        &__socials {
+            @include grid-item(socials, end, start);
+            @include flex(true, $gap: 8px);
+            &-icon {
+                @include size(default, 20px);
+                @include respond-to(desktop) {
+                    @include size(default, 32px);
+                }
+            }
+        }
+    }
+}

@@ -36,7 +36,7 @@ export const Home = () => {
 
   const {
     HOME_MAIN_CARD_SALES_REPORT: MAIN_CARD_SALES_REPORT,
-    HOME_OVERVIEW_CARDS: OVERVIEW_CARDS,
+    HOME_OVERVIEW_CARD_OVERVIEW: CARD_OVERVIEW,
     HOME_FEATURES_ADVANTAGES: FEATURES_ADVANTAGES,
     HOME_FEATURES_CARD_STATISTIC: FEATURES_CARD_STATISTIC,
     HOME_GROWTH_RESULTS: GROWTH_RESULTS,
@@ -44,13 +44,14 @@ export const Home = () => {
     HOME_REVIEWS_CARD_REVIEW: REVIEWS_CARD_REVIEW,
   } = content;
 
-  const { useAnimatedIntersection } = hooks;
-
+  const { useSectionAnimation } = hooks;
   const { news: newsService, subscribe } = services;
 
   const sections = ["main", "overview", "features", "growth", "benefits", "news", "reviews"];
-  const animations = sections.map(() => useAnimatedIntersection(0.2));
-  const [main, overview, features, growth, benefits, news, reviews] = animations;
+  const [main, overview, features, growth, benefits, news, reviews] = Array.from(
+    { length: sections.length },
+    () => useSectionAnimation({ amount: 0.2, once: true }),
+  );
 
   const [email, setEmail] = useState("");
   const [currentReviewIndex, setCurrentReviewIndex] = useState(0);
@@ -80,10 +81,10 @@ export const Home = () => {
       <main className="home-page">
         <Section
           className="main"
+          ref={main.sectionRef}
           motionProps={{
-            ref: main.targetRef,
             initial: { opacity: 0, y: 50 },
-            animate: main.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 },
+            animate: main.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 },
             transition: { duration: 0.6, ease: "easeOut", delay: 0.2 },
           }}
         >
@@ -94,16 +95,15 @@ export const Home = () => {
             subheadingClass="text-title-subheading"
             motionProps={{
               initial: { opacity: 0, x: -50 },
-              animate: main.hasAnimated ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 },
+              animate: main.isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 },
               transition: { duration: 0.6, ease: "easeOut" },
             }}
           />
           <Form
             className="form"
             motionProps={{
-              ref: main.formRef,
               initial: { opacity: 0, y: 30 },
-              animate: main.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
+              animate: main.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
               transition: { duration: 0.5, ease: "easeOut", delay: 0.3 },
             }}
             onSubmit={handleSubmitSubscribe}
@@ -127,7 +127,7 @@ export const Home = () => {
             className="main__image"
             motionProps={{
               initial: { scale: 0.9, opacity: 0 },
-              animate: main.hasAnimated ? { scale: 1, opacity: 1 } : { scale: 0.9, opacity: 0 },
+              animate: main.isInView ? { scale: 1, opacity: 1 } : { scale: 0.9, opacity: 0 },
               transition: { duration: 0.6, ease: "easeOut", delay: 0.5 },
             }}
           >
@@ -140,7 +140,7 @@ export const Home = () => {
             className="main__sales-report"
             motionProps={{
               initial: { opacity: 0, y: 30 },
-              animate: main.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
+              animate: main.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
               transition: { duration: 0.6, ease: "easeOut", delay: 0.6 },
             }}
           >
@@ -151,7 +151,7 @@ export const Home = () => {
                   {...item}
                   motionProps={{
                     initial: { opacity: 0, y: 20 },
-                    animate: main.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
+                    animate: main.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
                     transition: { duration: 0.5, ease: "easeOut", delay: 0.7 + index * 0.2 },
                   }}
                 />
@@ -161,10 +161,10 @@ export const Home = () => {
         </Section>
         <Section
           className="overview"
+          ref={overview.sectionRef}
           motionProps={{
-            ref: overview.targetRef,
             initial: { opacity: 0, y: 50 },
-            animate: overview.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 },
+            animate: overview.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 },
             transition: { duration: 0.6, ease: "easeOut", delay: 0.2 },
           }}
         >
@@ -175,17 +175,22 @@ export const Home = () => {
             subheading="Our platform offers modern solutions for identity, activation, and data collaboration."
             subheadingClass="text-title-subheading-small"
             isSubheadingLine={false}
+            motionProps={{
+              initial: { opacity: 0, y: 30 },
+              animate: overview.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
+              transition: { duration: 0.6, ease: "easeOut", delay: 0.4 },
+            }}
           />
           <Box className="overview__cards">
-            {OVERVIEW_CARDS.map((item, index) => (
+            {CARD_OVERVIEW.map((item, index) => (
               <CardOverview
                 key={item.id}
                 {...item}
                 icon={assets[item.icon]}
                 motionProps={{
                   initial: { opacity: 0, y: 20 },
-                  animate: overview.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
-                  transition: { duration: 0.5, ease: "easeOut", delay: 0.4 + index * 0.2 },
+                  animate: overview.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
+                  transition: { duration: 0.5, ease: "easeOut", delay: 0.6 + index * 0.2 },
                 }}
               />
             ))}
@@ -193,10 +198,10 @@ export const Home = () => {
         </Section>
         <Section
           className="features"
+          ref={features.sectionRef}
           motionProps={{
-            ref: features.targetRef,
             initial: { opacity: 0, y: 50 },
-            animate: features.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 },
+            animate: features.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 },
             transition: { duration: 0.6, ease: "easeOut", delay: 0.2 },
           }}
         >
@@ -204,7 +209,7 @@ export const Home = () => {
             className="features__image-statistic"
             motionProps={{
               initial: { opacity: 0, y: 30 },
-              animate: features.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
+              animate: features.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
               transition: { duration: 0.6, ease: "easeOut", delay: 0.4 },
             }}
           >
@@ -225,7 +230,7 @@ export const Home = () => {
                     exchange={assets[item.exchange]}
                     motionProps={{
                       initial: { opacity: 0, y: 20 },
-                      animate: features.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
+                      animate: features.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
                       transition: { duration: 0.5, ease: "easeOut", delay: 0.6 + index * 0.2 },
                     }}
                   />
@@ -242,7 +247,7 @@ export const Home = () => {
             isSubheadingLine={false}
             motionProps={{
               initial: { opacity: 0, y: 30 },
-              animate: features.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
+              animate: features.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
               transition: { duration: 0.6, ease: "easeOut", delay: 0.8 },
             }}
           />
@@ -250,7 +255,7 @@ export const Home = () => {
             className="features__advantages"
             motionProps={{
               initial: { opacity: 0, y: 30 },
-              animate: features.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
+              animate: features.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
               transition: { duration: 0.6, ease: "easeOut", delay: 1.0 },
             }}
           >
@@ -260,7 +265,7 @@ export const Home = () => {
                 {...item}
                 motionProps={{
                   initial: { opacity: 0, y: 20 },
-                  animate: features.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
+                  animate: features.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
                   transition: { duration: 0.5, ease: "easeOut", delay: 1.2 + index * 0.2 },
                 }}
               />
@@ -269,10 +274,10 @@ export const Home = () => {
         </Section>
         <Section
           className="growth"
+          ref={growth.sectionRef}
           motionProps={{
-            ref: growth.targetRef,
             initial: { opacity: 0, y: 50 },
-            animate: growth.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 },
+            animate: growth.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 },
             transition: { duration: 0.6, ease: "easeOut", delay: 0.2 },
           }}
         >
@@ -280,7 +285,7 @@ export const Home = () => {
             className="growth__results"
             motionProps={{
               initial: { opacity: 0, y: 30 },
-              animate: growth.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
+              animate: growth.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
               transition: { duration: 0.6, ease: "easeOut", delay: 0.4 },
             }}
           >
@@ -290,7 +295,7 @@ export const Home = () => {
                   {...item}
                   motionProps={{
                     initial: { opacity: 0, y: 20 },
-                    animate: growth.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
+                    animate: growth.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
                     transition: { duration: 0.5, ease: "easeOut", delay: 0.6 + index * 0.2 },
                   }}
                 />
@@ -301,7 +306,7 @@ export const Home = () => {
                     alt="line"
                     motionProps={{
                       initial: { opacity: 0, x: -20 },
-                      animate: growth.hasAnimated ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 },
+                      animate: growth.isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 },
                       transition: { duration: 0.5, ease: "easeOut", delay: 0.6 + index * 0.2 },
                     }}
                   />
@@ -315,7 +320,7 @@ export const Home = () => {
             alt=""
             motionProps={{
               initial: { opacity: 0, scale: 0.9 },
-              animate: growth.hasAnimated ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 },
+              animate: growth.isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 },
               transition: { duration: 0.6, ease: "easeOut", delay: 1.0 },
             }}
           />
@@ -328,7 +333,7 @@ export const Home = () => {
             isSubheadingLine={false}
             motionProps={{
               initial: { opacity: 0, y: 30 },
-              animate: growth.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
+              animate: growth.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
               transition: { duration: 0.6, ease: "easeOut", delay: 1.4 },
             }}
           />
@@ -336,10 +341,10 @@ export const Home = () => {
         <SectionSponsors />
         <Section
           className="benefits"
+          ref={benefits.sectionRef}
           motionProps={{
-            ref: benefits.targetRef,
             initial: { opacity: 0, y: 50 },
-            animate: benefits.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 },
+            animate: benefits.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 },
             transition: { duration: 0.6, ease: "easeOut", delay: 0.2 },
           }}
         >
@@ -352,7 +357,7 @@ export const Home = () => {
             isSubheadingLine={false}
             motionProps={{
               initial: { opacity: 0, y: 30 },
-              animate: benefits.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
+              animate: benefits.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
               transition: { duration: 0.6, ease: "easeOut", delay: 0.4 },
             }}
           />
@@ -365,7 +370,7 @@ export const Home = () => {
                 svg={assets[item.svg]}
                 motionProps={{
                   initial: { opacity: 0, y: 20 },
-                  animate: benefits.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
+                  animate: benefits.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
                   transition: { duration: 0.5, ease: "easeOut", delay: 0.6 + index * 0.2 },
                 }}
               />
@@ -374,10 +379,10 @@ export const Home = () => {
         </Section>
         <Section
           className="news"
+          ref={news.sectionRef}
           motionProps={{
-            ref: news.targetRef,
             initial: { opacity: 0, y: 50 },
-            animate: news.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 },
+            animate: news.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 },
             transition: { duration: 0.6, ease: "easeOut", delay: 0.2 },
           }}
         >
@@ -390,14 +395,14 @@ export const Home = () => {
             isSubheadingLine={false}
             motionProps={{
               initial: { opacity: 0, y: 30 },
-              animate: news.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
+              animate: news.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
               transition: { duration: 0.6, ease: "easeOut", delay: 0.4 },
             }}
           />
           <Slider
             motionProps={{
               initial: { opacity: 0, y: 30 },
-              animate: news.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
+              animate: news.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
               transition: { duration: 0.6, ease: "easeOut", delay: 0.6 },
             }}
           >
@@ -408,7 +413,7 @@ export const Home = () => {
                 img={assets[`card_news_img_${item.id}`]}
                 motionProps={{
                   initial: { opacity: 0, x: -20 },
-                  animate: news.hasAnimated ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 },
+                  animate: news.isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 },
                   transition: { duration: 0.5, ease: "easeOut", delay: 1.2 - index * 0.2 },
                 }}
               />
@@ -420,7 +425,7 @@ export const Home = () => {
               data-no-slide={true}
               motionProps={{
                 initial: { opacity: 0, scale: 0.9 },
-                animate: news.hasAnimated ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 },
+                animate: news.isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 },
                 transition: { duration: 0.6, ease: "easeOut", delay: 1.0 },
               }}
             />
@@ -428,10 +433,10 @@ export const Home = () => {
         </Section>
         <Section
           className="reviews"
+          ref={reviews.sectionRef}
           motionProps={{
-            ref: reviews.targetRef,
             initial: { opacity: 0, y: 50 },
-            animate: reviews.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 },
+            animate: reviews.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 },
             transition: { duration: 0.6, ease: "easeOut", delay: 0.2 },
           }}
         >
@@ -444,7 +449,7 @@ export const Home = () => {
             isSubheadingLine={false}
             motionProps={{
               initial: { opacity: 0, y: 30 },
-              animate: reviews.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
+              animate: reviews.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
               transition: { duration: 0.6, ease: "easeOut", delay: 0.4 },
             }}
           />
@@ -452,7 +457,7 @@ export const Home = () => {
             className="reviews__cards"
             motionProps={{
               initial: { opacity: 0, y: 30 },
-              animate: reviews.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
+              animate: reviews.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
               transition: { duration: 0.6, ease: "easeOut", delay: 0.6 },
             }}
           >
@@ -463,7 +468,7 @@ export const Home = () => {
               key={currentReviewIndex}
               motionProps={{
                 initial: { opacity: 0, scale: 0.9, x: -20 },
-                animate: reviews.hasAnimated
+                animate: reviews.isInView
                   ? { opacity: 1, scale: 1, x: 0 }
                   : { opacity: 0, scale: 0.9, x: -20 },
                 exit: { opacity: 0, scale: 0.9, x: -20 },
@@ -476,7 +481,7 @@ export const Home = () => {
               onUpdateIndex={setCurrentReviewIndex}
               motionProps={{
                 initial: { opacity: 0, x: -20 },
-                animate: reviews.hasAnimated ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 },
+                animate: reviews.isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 },
                 transition: { duration: 0.6, ease: "easeOut", delay: 1.0 },
               }}
             />

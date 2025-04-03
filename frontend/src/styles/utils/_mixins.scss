@@ -124,7 +124,7 @@
 }
 
 @mixin grid(
-  $on: null,
+  $grid: null,
   $rows: null,
   $columns: null,
   $areas: null,
@@ -136,12 +136,12 @@
   $justify-content: null,
   $align-content: null
 ) {
-  @include grid-template($on, $rows, $columns, $areas, $row-gap, $column-gap, $gap);
+  @include grid-template($grid, $rows, $columns, $areas, $row-gap, $column-gap, $gap);
   @include grid-alignment($justify-items, $align-items, $justify-content, $align-content);
 }
 
 @mixin grid-template(
-  $on: null,
+  $grid: null,
   $rows: null,
   $columns: null,
   $areas: null,
@@ -149,7 +149,7 @@
   $column-gap: null,
   $gap: null
 ) {
-  @if $on == on {
+  @if $grid == true {
     display: grid;
   }
   @if $rows != null {

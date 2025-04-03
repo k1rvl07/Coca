@@ -3,7 +3,7 @@
 .home-page {
     .card-review {
         @include size(default, 303px);
-        @include grid(on, repeat(3, auto), repeat(2, auto), "rating rating" "text text" "author arrows");
+        @include grid(true, repeat(3, auto), repeat(2, auto), "rating rating" "text text" "author arrows");
         @include spacing(margin, top, 22px);
         @include respond-to(desktop) {
             @include size(default, 1040px);

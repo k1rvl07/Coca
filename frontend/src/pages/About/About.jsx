@@ -1,6 +1,6 @@
-import { assets, components, hooks } from "@exports";
-import { motion } from "framer-motion";
+import { assets, components, content, hooks } from "@exports";
 import React from "react";
+import { useMediaQuery } from "react-responsive";
 
 export const About = () => {
   const {
@@ -13,23 +13,26 @@ export const About = () => {
     Shared_Slider: Slider,
     Shared_Line: Line,
     Shared_Box: Box,
+    About_CardTeam: CardTeam,
   } = components;
-  const { get_in_touch, unite_work, unite_team, unite_worker, dragger } = assets;
-  const { useAnimatedIntersection } = hooks;
+  const { get_in_touch, unite_work, unite_team, unite_worker, dragger, link_arrow } = assets;
+  const { useSectionAnimation } = hooks;
+  const { ABOUT_TEAM_CARD_TEAM: CARD_TEAM } = content;
 
-  const sections = ["main", "ideas"];
-  const animations = sections.map(() => useAnimatedIntersection(0.2));
-  const [main, ideas] = animations;
+  const sections = ["main", "ideas", "team"];
+  const animations = sections.map(() => useSectionAnimation({ amount: 0.2, once: true }));
+  const [main, ideas, team] = animations;
+
+  const isMobile = useMediaQuery({ maxWidth: 1440 });
 
   return (
     <main className="about-page">
       <Section
-        tagName="section"
         className="main"
+        ref={main.sectionRef}
         motionProps={{
-          ref: main.targetRef,
           initial: { opacity: 0, y: 50 },
-          animate: main.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 },
+          animate: main.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 },
           transition: { duration: 0.6, ease: "easeOut", delay: 0.2 },
         }}
       >
@@ -40,7 +43,7 @@ export const About = () => {
           subheadingClass="text-title-subheading"
           motionProps={{
             initial: { opacity: 0, x: -50 },
-            animate: main.hasAnimated ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 },
+            animate: main.isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 },
             transition: { duration: 0.6, ease: "easeOut" },
           }}
         />
@@ -49,17 +52,25 @@ export const About = () => {
           href="#"
           motionProps={{
             initial: { opacity: 0, y: 30 },
-            animate: main.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
+            animate: main.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
             transition: { duration: 0.5, ease: "easeOut", delay: 0.3 },
           }}
         >
-          <Image className="main__link-image" src={get_in_touch} alt="get_in_touch" />
+          <Image
+            className="main__link-image"
+            src={get_in_touch}
+            alt="get_in_touch"
+            motionProps={{
+              animate: { rotate: 360 },
+              transition: { repeat: Number.POSITIVE_INFINITY, duration: 7, ease: "linear" },
+            }}
+          />
         </Link>
         <Slider
           draggerClass="main__dragger"
           motionProps={{
             initial: { opacity: 0, y: 30 },
-            animate: main.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
+            animate: main.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
             transition: { duration: 0.6, ease: "easeOut", delay: 0.4 },
           }}
         >
@@ -69,7 +80,7 @@ export const About = () => {
             alt="unite_work"
             motionProps={{
               initial: { opacity: 0, x: -20 },
-              animate: main.hasAnimated ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 },
+              animate: main.isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 },
               transition: { duration: 0.5, ease: "easeOut", delay: 0.5 },
             }}
           />
@@ -77,8 +88,8 @@ export const About = () => {
             className="main__card"
             motionProps={{
               initial: { opacity: 0, y: 30 },
-              animate: main.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
-              transition: { duration: 0.6, ease: "easeOut", delay: 0.4 },
+              animate: main.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
+              transition: { duration: 0.6, ease: "easeOut", delay: 0.6 },
             }}
           >
             <Image className="main__card-image" src={unite_team} alt="unite_team" />
@@ -99,8 +110,8 @@ export const About = () => {
             alt="unite_worker"
             motionProps={{
               initial: { opacity: 0, x: 20 },
-              animate: main.hasAnimated ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 },
-              transition: { duration: 0.5, ease: "easeOut", delay: 0.7 },
+              animate: main.isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 },
+              transition: { duration: 0.5, ease: "easeOut", delay: 0.8 },
             }}
           />
           <Button
@@ -109,30 +120,30 @@ export const About = () => {
             data-no-slide={true}
             motionProps={{
               initial: { opacity: 0, scale: 0.9 },
-              animate: main.hasAnimated ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 },
-              transition: { duration: 0.6, ease: "easeOut", delay: 0.8 },
+              animate: main.isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 },
+              transition: { duration: 0.6, ease: "easeOut", delay: 0.9 },
             }}
           >
             <Image className="main__dragger-image" src={dragger} alt="" />
           </Button>
         </Slider>
       </Section>
+
       <Section
-        tagName="section"
         className="ideas"
+        ref={ideas.sectionRef}
         motionProps={{
-          ref: ideas.targetRef,
           initial: { opacity: 0, y: 50 },
-          animate: ideas.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 },
-          transition: { duration: 0.6, ease: "easeOut" },
+          animate: ideas.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 },
+          transition: { duration: 0.6, ease: "easeOut", delay: 0.2 },
         }}
       >
         <Line
           className="ideas__hr"
           motionProps={{
             initial: { opacity: 0, scale: 0.9 },
-            animate: ideas.hasAnimated ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 },
-            transition: { duration: 0.4, ease: "easeOut", delay: 0.2 },
+            animate: ideas.isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 },
+            transition: { duration: 0.4, ease: "easeOut", delay: 0.3 },
           }}
         />
         <Title
@@ -144,18 +155,102 @@ export const About = () => {
           isSubheadingLine={false}
           motionProps={{
             initial: { opacity: 0, y: 30 },
-            animate: ideas.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
-            transition: { duration: 0.6, ease: "easeOut", delay: 0.2 },
+            animate: ideas.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
+            transition: { duration: 0.6, ease: "easeOut", delay: 0.4 },
           }}
         />
         <Line
           className="ideas__hr"
           motionProps={{
             initial: { opacity: 0, scale: 0.9 },
-            animate: ideas.hasAnimated ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 },
-            transition: { duration: 0.4, ease: "easeOut", delay: 0.2 },
+            animate: ideas.isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 },
+            transition: { duration: 0.4, ease: "easeOut", delay: 0.5 },
           }}
         />
+      </Section>
+
+      <Section
+        className="team"
+        ref={team.sectionRef}
+        motionProps={{
+          initial: { opacity: 0, y: 50 },
+          animate: team.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 },
+          transition: { duration: 0.6, ease: "easeOut", delay: 0.2 },
+        }}
+      >
+        <Title
+          heading="Meet our team of creators, designers, and world-class problem solvers"
+          headingTag="h2"
+          headingClass="text-title-heading-second-black"
+          subheading="To become the company that customers want, it takes a group of passionate people. Get to know the people who lead"
+          subheadingClass="text-title-subheading-small"
+          isSubheadingLine={false}
+          motionProps={{
+            initial: { opacity: 0, y: 30 },
+            animate: team.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
+            transition: { duration: 0.6, ease: "easeOut", delay: 0.3 },
+          }}
+        />
+        <Slider
+          motionProps={{
+            initial: { opacity: 0, y: 30 },
+            animate: team.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
+            transition: { duration: 0.6, ease: "easeOut", delay: 0.4 },
+          }}
+        >
+          {CARD_TEAM.map((card, index) => (
+            <CardTeam
+              key={card.id}
+              {...card}
+              img={assets[card.img]}
+              motionProps={{
+                initial: { opacity: 0, y: 20 },
+                animate: team.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
+                transition: { duration: 0.5, ease: "easeOut", delay: 0.5 + index * 0.2 },
+              }}
+            />
+          ))}
+          <Image
+            className="team__dragger"
+            src={dragger}
+            alt=""
+            data-no-slide={true}
+            motionProps={{
+              initial: { opacity: 0, scale: 0.8 },
+              animate: team.isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 },
+              transition: { duration: 0.4, ease: "easeOut", delay: 0.8 },
+            }}
+          />
+        </Slider>
+        <Box
+          className="team__join"
+          motionProps={{
+            initial: { opacity: 0, y: 20 },
+            animate: team.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
+            transition: { duration: 0.6, ease: "easeOut", delay: 0.6 },
+          }}
+        >
+          <Text as="h2" className="team__join-title text-title-heading-second-black">
+            {isMobile ? "Join the team" : "Join our team, The one with the master touch"}
+          </Text>
+          <Box className="team__join-description">
+            <Text as="p" className="team__join-text text-title-subheading-small">
+              We believe it takes great people to make a great product. That’s why we hire not only
+              the perfect professional fits, but people who embody our company values.
+            </Text>
+            <Link
+              href="#"
+              className="team__join-link link-team-join"
+              motionProps={{
+                initial: { opacity: 0, x: -20 },
+                animate: team.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 },
+                transition: { duration: 0.4, ease: "easeOut", delay: 1 },
+              }}
+            >
+              See open positions <Image src={link_arrow} alt="" />
+            </Link>
+          </Box>
+        </Box>
       </Section>
     </main>
   );

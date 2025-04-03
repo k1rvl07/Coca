@@ -20,7 +20,7 @@ export const Shared_Nav = ({
 
   const renderNavItems = (items, startIndex) =>
     items.map((liItem, index) => (
-      <Item key={liItem.id} {...itemMotion} custom={startIndex + index}>
+      <Item key={liItem.id} motionProps={{ ...itemMotion }} custom={startIndex + index}>
         <Link href={liItem.href} className={`nav__link ${linkClassName}`}>
           {liItem.text}
         </Link>
@@ -39,9 +39,13 @@ export const Shared_Nav = ({
         return (
           <Box key={ulItem.id} className="nav__group">
             {ulItem.name && (
-              <Box {...titleMotion} custom={startIndex - 1}>
-                <Text className={`nav__title ${titleClassName}`}>{ulItem.name}</Text>
-              </Box>
+              <Text
+                className={`nav__title ${titleClassName}`}
+                motionProps={{ ...titleMotion }}
+                custom={startIndex - 1}
+              >
+                {ulItem.name}
+              </Text>
             )}
             <List className="nav__list">{renderNavItems(ulItem.items, startIndex)}</List>
           </Box>

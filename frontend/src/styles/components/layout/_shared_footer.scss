@@ -9,7 +9,7 @@
     &__container {
         @include respond-to("desktop") {
             @include grid(
-                on,
+                true,
                 repeat(4, auto),
                 repeat(8, auto),
                 "title title title title title . . button" "company company . nav nav nav nav nav"

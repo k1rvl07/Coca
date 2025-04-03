@@ -46,6 +46,7 @@
     "postcss-pxtorem": "^6.1.0",
     "postcss-sort-media-queries": "^5.2.0",
     "react-intersection-observer": "^9.13.1",
+    "react-responsive": "^10.0.1",
     "react-router-dom": "^7.1.1",
     "react-swipeable": "^7.0.1",
     "reactcci": "^1.14.0",

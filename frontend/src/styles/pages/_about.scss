@@ -8,7 +8,7 @@
         }
         &__container {
             @include respond-to(desktop) {
-                @include grid(on, repeat(2, auto), repeat(2, auto), "title link" "slider slider", $row-gap: 135px);
+                @include grid(true, repeat(2, auto), repeat(2, auto), "title link" "slider slider", $row-gap: 135px);
             }
         }
         &__link {
@@ -113,7 +113,7 @@
         }
     }
     .ideas {
-        @include spacing(padding, (bottom), 80px, 80px);
+        @include spacing(padding, (bottom), 80px);
         &__hr {
             background-color: color(neutral-40);
             @include size(default, 335px, 1px);
@@ -137,6 +137,82 @@
                 @include respond-to(desktop) {
                     @include spacing(margin, top, 0px);
                     @include size(default, 472px);
+                }
+            }
+        }
+    }
+    .team {
+        @include spacing(padding, (top, bottom), 80px, 60px);
+        @include respond-to(desktop) {
+            @include spacing(padding, y, 160px);
+        }
+        &__dragger {
+            @include position(absolute, (left, top), 234px, 102px);
+            @include size(default, 40px);
+            @include respond-to(desktop) {
+                @include size(default, 80px);
+                @include position(null, (left, top), 352px, 178px);
+            }
+            &-image {
+                @include size(default, 40px);
+                @include respond-to(desktop) {
+                    @include size(default, 80px);
+                }
+            }
+        }
+        &__join {
+            @include respond-to(desktop) {
+                @include flex(true, $align-items: center, $justify: space-between);
+            }
+            &-title {
+                @include respond-to(desktop) {
+                    @include size(default, 626px);
+                }
+            }
+            &-description {
+                @include respond-to(desktop) {
+                    @include size(default, 506px);
+                }
+            }
+            &-text {
+                @include spacing(margin, y, 16px);
+                @include respond-to(desktop) {
+                    @include spacing(margin, (top, bottom), 0px, 24px);
+                }
+            }
+        }
+        .title {
+            &__heading {
+                @include spacing(margin, bottom, 16px);
+                @include respond-to(desktop) {
+                    @include spacing(margin, bottom, 24px);
+                    @include size(default, 904px);
+                }
+            }
+            &__subheading {
+                @include respond-to(desktop) {
+                    @include size(default, 534px);
+                }
+            }
+
+        }
+        .slider {
+            @include spacing(margin, (top, bottom), 32px, 56px);
+            @include respond-to(desktop) {
+                @include spacing(margin, (top, bottom), 80px, 100px);
+            }
+            &__window {
+                overflow-x: scroll;
+                scroll-snap-type: x mandatory;
+                @include respond-to(desktop) {
+                    overflow: hidden;
+                }
+            }
+            &__slides {
+                @include position(relative);
+                @include flex(true, $gap: 16px);
+                @include respond-to(desktop) {
+                    @include flex($gap: 32px);
                 }
             }
         }

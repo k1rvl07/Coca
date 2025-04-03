@@ -8,19 +8,20 @@ export const Shared_SectionSponsors = () => {
     Shared_Image: Image,
     Shared_Box: Box,
   } = components;
-  const { SHARED_SECTION_SPONSORS: SPONSORS } = content;
-  const { useAnimatedIntersection } = hooks;
 
-  const sectionAnimation = useAnimatedIntersection(0.2);
+  const { SHARED_SECTION_SPONSORS: SPONSORS } = content;
+  const { useSectionAnimation } = hooks;
+
+  const { sectionRef, isInView } = useSectionAnimation({ amount: 0.2, once: true });
 
   return (
     <Section
       tagName="section"
       className="sponsor"
+      ref={sectionRef}
       motionProps={{
-        ref: sectionAnimation.targetRef,
         initial: { opacity: 0, y: 50 },
-        animate: sectionAnimation.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 },
+        animate: isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 },
         transition: { duration: 0.6, ease: "easeOut", delay: 0.2 },
       }}
     >
@@ -33,7 +34,7 @@ export const Shared_SectionSponsors = () => {
         isSubheadingLine={false}
         motionProps={{
           initial: { opacity: 0, x: -50 },
-          animate: sectionAnimation.hasAnimated ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 },
+          animate: isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 },
           transition: { duration: 0.6, ease: "easeOut" },
         }}
       />
@@ -42,7 +43,7 @@ export const Shared_SectionSponsors = () => {
         className="sponsor__images"
         motionProps={{
           initial: { opacity: 0, y: 30 },
-          animate: sectionAnimation.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
+          animate: isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
           transition: { duration: 0.6, ease: "easeOut", delay: 0.4 },
         }}
       >
@@ -54,9 +55,7 @@ export const Shared_SectionSponsors = () => {
             alt="sponsor"
             motionProps={{
               initial: { opacity: 0, scale: 0.9 },
-              animate: sectionAnimation.hasAnimated
-                ? { opacity: 1, scale: 1 }
-                : { opacity: 0, scale: 0.8 },
+              animate: isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 },
               transition: { duration: 0.8, ease: "easeOut", delay: 0.6 + index * 0.15 },
             }}
           />

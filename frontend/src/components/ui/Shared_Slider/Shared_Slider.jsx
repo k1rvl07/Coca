@@ -1,66 +1,11 @@
-import { components } from "@exports";
-import React, { Children, useRef, useState, useEffect, useCallback } from "react";
+import { components, hooks } from "@exports";
+import React, { Children } from "react";
 
 export const Shared_Slider = ({ children, motionProps = {}, draggerClass }) => {
   const { Shared_Box: Box } = components;
-  const slidesRef = useRef(null);
-  const windowRef = useRef(null);
-  const [isDragging, setIsDragging] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState(0);
+  const { useSlider } = hooks;
 
-  const handleMouseDown = useCallback(
-    (e) => {
-      if (e.target.classList.contains(draggerClass)) {
-        setIsDragging(true);
-        setStartX(e.pageX);
-        setScrollLeft(windowRef.current.scrollLeft);
-      }
-    },
-    [draggerClass],
-  );
-
-  const handleMouseMove = useCallback(
-    (e) => {
-      if (!isDragging) {
-        return;
-      }
-      e.preventDefault();
-      const x = e.pageX;
-      const walk = (x - startX) * 1;
-      windowRef.current.scrollLeft = scrollLeft - walk;
-    },
-    [isDragging, startX, scrollLeft],
-  );
-
-  const handleMouseUp = useCallback(() => {
-    setIsDragging(false);
-  }, []);
-
-  const handleMouseLeave = useCallback(() => {
-    setIsDragging(false);
-  }, []);
-
-  useEffect(() => {
-    const slides = slidesRef.current;
-    const window = windowRef.current;
-
-    if (slides && window) {
-      slides.addEventListener("mousedown", handleMouseDown);
-      window.addEventListener("mousemove", handleMouseMove);
-      window.addEventListener("mouseup", handleMouseUp);
-      window.addEventListener("mouseleave", handleMouseLeave);
-    }
-
-    return () => {
-      if (slides && window) {
-        slides.removeEventListener("mousedown", handleMouseDown);
-        window.removeEventListener("mousemove", handleMouseMove);
-        window.removeEventListener("mouseup", handleMouseUp);
-        window.removeEventListener("mouseleave", handleMouseLeave);
-      }
-    };
-  }, [handleMouseDown, handleMouseMove, handleMouseUp, handleMouseLeave]);
+  const { slidesRef, windowRef } = useSlider(draggerClass);
 
   return (
     <Box className="slider" motionProps={{ ...motionProps }}>

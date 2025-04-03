@@ -1,4 +1,4 @@
-export const HOME_OVERVIEW_CARDS = [
+export const HOME_OVERVIEW_CARD_OVERVIEW = [
   {
     id: 1,
     icon: "calendar",

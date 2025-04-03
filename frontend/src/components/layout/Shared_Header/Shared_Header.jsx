@@ -1,6 +1,7 @@
 import { assets, components, content, hooks } from "@exports";
-import { AnimatePresence, motion } from "framer-motion";
-import React, { useEffect, useState } from "react";
+import { AnimatePresence } from "framer-motion";
+import React, { useState } from "react";
+import { useMediaQuery } from "react-responsive";
 
 export const Shared_Header = () => {
   const {
@@ -12,42 +13,52 @@ export const Shared_Header = () => {
   } = components;
   const { logo, burger, close } = assets;
   const { SHARED_HEADER_NAV: HEADER_NAV } = content;
-  const { useScreenSize, useAnimatedIntersection } = hooks;
+  const { useSectionAnimation } = hooks;
   const [showNav, setShowNav] = useState(false);
-  const { width } = useScreenSize();
 
-  const header = useAnimatedIntersection(0.2);
-
-  useEffect(() => {
-    if (width > 1440) {
-      setShowNav(true);
-    } else {
-      setShowNav(false);
-    }
-  }, [width]);
+  const isMobile = useMediaQuery({ maxWidth: 1440 });
+  const { sectionRef, isInView } = useSectionAnimation({ amount: 0.2, once: true });
 
   const toggleNav = () => {
-    if (width <= 1440) {
+    if (isMobile) {
       setShowNav(!showNav);
     }
   };
 
   return (
-    <Section tagName="header" className="header" id="header" ref={header.targetRef}>
-      <Link className="header__logo" href="/Coca">
-        <Image
-          className="header__logo-img"
-          src={logo}
-          alt="logo"
-          motionProps={{
-            initial: { opacity: 0, scale: 0.6 },
-            animate: header.hasAnimated ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.6 },
-            transition: { duration: 0.6, ease: "easeOut" },
-          }}
-        />
+    <Section
+      tagName="header"
+      className="header"
+      id="header"
+      ref={sectionRef}
+      motionProps={{
+        initial: { opacity: 0, y: -50 },
+        animate: isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -50 },
+        transition: { duration: 0.6, ease: "easeOut" },
+      }}
+    >
+      <Link
+        className="header__logo"
+        href="/Coca"
+        motionProps={{
+          initial: { opacity: 0, x: -20 },
+          animate: isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 },
+          transition: { duration: 0.5, delay: 0.3 },
+        }}
+      >
+        <Image className="header__logo-img" src={logo} alt="logo" />
       </Link>
-      {width <= 1440 && (
-        <Button className="header__button" onClick={toggleNav}>
+
+      {isMobile && (
+        <Button
+          className="header__button"
+          onClick={toggleNav}
+          motionProps={{
+            initial: { opacity: 0, x: 20 },
+            animate: isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 },
+            transition: { duration: 0.5, delay: 0.3 },
+          }}
+        >
           <AnimatePresence mode="wait">
             <Image
               key={showNav ? "close" : "burger"}
@@ -55,9 +66,7 @@ export const Shared_Header = () => {
               alt={showNav ? "close" : "burger"}
               motionProps={{
                 initial: { rotate: 0, opacity: 0 },
-                animate: header.hasAnimated
-                  ? { rotate: 360, opacity: 1 }
-                  : { rotate: 0, opacity: 0 },
+                animate: { rotate: 360, opacity: 1 },
                 exit: { rotate: -360, opacity: 0 },
                 transition: { duration: 0.6, ease: "easeInOut" },
               }}
@@ -65,44 +74,68 @@ export const Shared_Header = () => {
           </AnimatePresence>
         </Button>
       )}
-      <Nav
-        navData={HEADER_NAV}
-        linkClassName="link-header-nav"
-        motionProps={
-          width > 1440
-            ? {
-                initial: { opacity: 0, x: -20 },
-                animate: header.hasAnimated ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 },
-                exit: { opacity: 0, x: -20 },
-                transition: { duration: 0.5, ease: "easeOut" },
-              }
-            : {
-                initial: { opacity: 0, y: -50, visibility: "hidden" },
-                animate:
-                  showNav && header.hasAnimated
-                    ? { opacity: 1, y: 0, visibility: "visible" }
-                    : { opacity: 0, y: -20, visibility: "hidden" },
-                exit: { opacity: 0, y: -20, visibility: "hidden" },
-                transition: { duration: 0.5, ease: "easeInOut" },
-              }
-        }
-        itemMotion={{
-          initial: { opacity: 0, x: -40 },
-          animate: (i) => ({
-            opacity: header.hasAnimated ? 1 : 0,
-            x: header.hasAnimated ? 0 : -40,
-            transition: { delay: i * 0.1, duration: 0.6, ease: "easeOut" },
-          }),
-          exit: { opacity: 0, x: -20 },
-        }}
-      />
+
+      <AnimatePresence>
+        {(!isMobile || showNav) && (
+          <Nav
+            navData={HEADER_NAV}
+            linkClassName="link-header-nav"
+            motionProps={{
+              initial: { opacity: 0, y: -20, height: 0 },
+              animate: {
+                opacity: 1,
+                y: 0,
+                height: "auto",
+                transition: {
+                  duration: 0.8,
+                  ease: "easeInOut",
+                  when: "beforeChildren",
+                },
+              },
+              exit: {
+                opacity: 0,
+                y: -20,
+                height: 0,
+                transition: {
+                  duration: 0.8,
+                  ease: "easeInOut",
+                  when: "afterChildren",
+                },
+              },
+            }}
+            itemMotion={{
+              initial: { opacity: 0, x: !isMobile ? -40 : 0, y: !isMobile ? 0 : -40 },
+              animate: (i) => ({
+                opacity: 1,
+                x: 0,
+                y: 0,
+                transition: {
+                  delay: i * 0.1,
+                  duration: 0.8,
+                  ease: "easeInOut",
+                },
+              }),
+              exit: (i) => ({
+                opacity: 0,
+                y: -20,
+                transition: {
+                  delay: (HEADER_NAV.length - 1 - i) * 0.05,
+                  duration: 0.8,
+                  ease: "easeInOut",
+                },
+              }),
+            }}
+          />
+        )}
+      </AnimatePresence>
+
       <Link
         className="header__contact link-arrow-underline"
         href="/Coca/#"
         motionProps={{
-          initial: { opacity: 0, x: -60 },
-          animate: header.hasAnimated ? { opacity: 1, x: 0 } : { opacity: 0, x: -60 },
-          transition: { duration: 0.8, ease: "easeOut" },
+          initial: { opacity: 0, x: 20 },
+          animate: isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 },
+          transition: { duration: 0.5, delay: 0.8 },
         }}
       >
         Contact Us 🡪

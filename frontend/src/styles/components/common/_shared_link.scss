@@ -29,3 +29,11 @@
         }
     }
 }
+
+.about-page {
+    .link {
+        &-team-join {
+            @extend %about_link-team-join;
+        }
+    }
+}

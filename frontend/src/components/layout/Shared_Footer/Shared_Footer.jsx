@@ -1,8 +1,10 @@
 import { assets, components, content, hooks } from "@exports";
-import { motion } from "framer-motion";
 import React from "react";
 
 export const Shared_Footer = () => {
+  const { useSectionAnimation } = hooks;
+  const { sectionRef, isInView } = useSectionAnimation({ amount: 0.2, once: true });
+
   const {
     Shared_Section: Section,
     Shared_Title: Title,
@@ -20,18 +22,15 @@ export const Shared_Footer = () => {
     SHARED_FOOTER_SOCIAL_ICONS: FOOTER_SOCIAL_ICONS,
     SHARED_FOOTER_LINKS: FOOTER_LINKS,
   } = content;
-  const { useAnimatedIntersection } = hooks;
-
-  const footerAnimation = useAnimatedIntersection(0.2);
 
   return (
     <Section
       tagName="footer"
       className="footer"
+      ref={sectionRef}
       motionProps={{
-        ref: footerAnimation.targetRef,
         initial: { opacity: 0, y: 50 },
-        animate: footerAnimation.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 },
+        animate: isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 },
         transition: { duration: 0.6, ease: "easeOut", delay: 0.2 },
       }}
     >
@@ -44,7 +43,7 @@ export const Shared_Footer = () => {
         subheadingLineColor="white"
         motionProps={{
           initial: { opacity: 0, y: 20 },
-          animate: footerAnimation.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
+          animate: isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
           transition: { duration: 0.5, delay: 0.3 },
         }}
       />
@@ -55,7 +54,7 @@ export const Shared_Footer = () => {
         className="footer__company"
         motionProps={{
           initial: { opacity: 0, y: 20 },
-          animate: footerAnimation.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
+          animate: isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
           transition: { duration: 0.5, delay: 0.5 },
         }}
       >
@@ -64,7 +63,7 @@ export const Shared_Footer = () => {
           href="/Coca/#"
           motionProps={{
             initial: { opacity: 0, x: -20 },
-            animate: footerAnimation.hasAnimated ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 },
+            animate: isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 },
             transition: { duration: 0.5, delay: 0.6 },
           }}
         >
@@ -74,7 +73,7 @@ export const Shared_Footer = () => {
           className="footer__slogan text-footer-slogan"
           motionProps={{
             initial: { opacity: 0, y: 20 },
-            animate: footerAnimation.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
+            animate: isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
             transition: { duration: 0.5, delay: 0.7 },
           }}
         >
@@ -88,14 +87,14 @@ export const Shared_Footer = () => {
         titleClassName="text-footer-nav-title"
         motionProps={{
           initial: { opacity: 0, y: 20 },
-          animate: footerAnimation.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
+          animate: isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
           transition: { duration: 0.5, delay: 1.0 },
         }}
         itemMotion={{
           initial: { opacity: 0, x: -40 },
           animate: (i) => ({
-            opacity: footerAnimation.hasAnimated ? 1 : 0,
-            x: footerAnimation.hasAnimated ? 0 : -40,
+            opacity: isInView ? 1 : 0,
+            x: isInView ? 0 : -40,
             transition: { delay: 1.0 + i * 0.125, duration: 0.6, ease: "easeOut" },
           }),
           exit: { opacity: 0, x: -20 },
@@ -103,8 +102,8 @@ export const Shared_Footer = () => {
         titleMotion={{
           initial: { opacity: 0, x: -40 },
           animate: (i) => ({
-            opacity: footerAnimation.hasAnimated ? 1 : 0,
-            x: footerAnimation.hasAnimated ? 0 : -40,
+            opacity: isInView ? 1 : 0,
+            x: isInView ? 0 : -40,
             transition: { delay: 1.0 + i * 0.125, duration: 0.6, ease: "easeOut" },
           }),
           exit: { opacity: 0, x: -20 },
@@ -114,7 +113,7 @@ export const Shared_Footer = () => {
         className="footer__line"
         motionProps={{
           initial: { opacity: 0, y: 20 },
-          animate: footerAnimation.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
+          animate: isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
           transition: { duration: 0.5, delay: 1.0 },
         }}
       />
@@ -122,7 +121,7 @@ export const Shared_Footer = () => {
         className="footer__icons"
         motionProps={{
           initial: { opacity: 0, y: 20 },
-          animate: footerAnimation.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
+          animate: isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
           transition: { duration: 0.5, delay: 1.0 },
         }}
       >
@@ -133,7 +132,7 @@ export const Shared_Footer = () => {
             key={icon.id}
             motionProps={{
               initial: { opacity: 0, x: -20 },
-              animate: footerAnimation.hasAnimated ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 },
+              animate: isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 },
               transition: { duration: 0.5, delay: 1.1 + index * 0.1 },
             }}
           >
@@ -145,7 +144,7 @@ export const Shared_Footer = () => {
         className="footer__links"
         motionProps={{
           initial: { opacity: 0, y: 20 },
-          animate: footerAnimation.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
+          animate: isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
           transition: { duration: 0.5, delay: 1.1 },
         }}
       >
@@ -156,7 +155,7 @@ export const Shared_Footer = () => {
             key={link.id}
             motionProps={{
               initial: { opacity: 0, x: -20 },
-              animate: footerAnimation.hasAnimated ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 },
+              animate: isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 },
               transition: { duration: 0.5, delay: 1.3 + index * 0.1 },
             }}
           >
@@ -168,7 +167,7 @@ export const Shared_Footer = () => {
         className="footer__copyright text-footer-copyright"
         motionProps={{
           initial: { opacity: 0, y: 20 },
-          animate: footerAnimation.hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
+          animate: isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
           transition: { duration: 0.5, delay: 1.4 },
         }}
       >

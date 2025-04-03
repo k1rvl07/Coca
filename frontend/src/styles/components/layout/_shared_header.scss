@@ -6,7 +6,7 @@
         @include spacing(margin, y, 26px);
     }
     &__container {
-        @include grid(on, repeat(2, auto), repeat(2, auto), "logo burger" "nav nav");
+        @include grid(true, repeat(2, auto), repeat(2, auto), "logo burger" "nav nav");
         @include respond-to(desktop) {
             @include flex(true, $justify: space-between, $align-items: center);
         }

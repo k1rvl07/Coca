@@ -1,5 +1,4 @@
 import { assets, components, hooks } from "@exports";
-import { motion } from "framer-motion";
 import React, { useState, useEffect } from "react";
 
 export const Home_CardReview = ({ reviews, reviewsAnimation, onUpdateIndex, motionProps = {} }) => {
@@ -11,17 +10,17 @@ export const Home_CardReview = ({ reviews, reviewsAnimation, onUpdateIndex, moti
     Shared_Box: Box,
   } = components;
   const { useCarouselNavigation } = hooks;
-  const { hasAnimated } = reviewsAnimation;
+  const { isInView } = reviewsAnimation;
 
   const { currentIndex, handleNext, handlePrev } = useCarouselNavigation(reviews);
 
   const [arrowsVisible, setArrowsVisible] = useState(false);
 
   useEffect(() => {
-    if (hasAnimated) {
+    if (isInView) {
       setArrowsVisible(true);
     }
-  }, [hasAnimated]);
+  }, [isInView]);
 
   useEffect(() => {
     onUpdateIndex(currentIndex);
@@ -38,9 +37,7 @@ export const Home_CardReview = ({ reviews, reviewsAnimation, onUpdateIndex, moti
         key={`${currentIndex}-rating`}
         motionProps={{
           initial: { opacity: 0, scale: 0.8, x: -20 },
-          animate: hasAnimated
-            ? { opacity: 1, scale: 1, x: 0 }
-            : { opacity: 0, scale: 0.8, x: -20 },
+          animate: isInView ? { opacity: 1, scale: 1, x: 0 } : { opacity: 0, scale: 0.8, x: -20 },
           transition: { duration: 0.5, delay: 0.3 },
         }}
       >
@@ -53,7 +50,7 @@ export const Home_CardReview = ({ reviews, reviewsAnimation, onUpdateIndex, moti
               alt="star"
               motionProps={{
                 initial: { opacity: 0, scale: 0.8, x: -20 },
-                animate: hasAnimated
+                animate: isInView
                   ? { opacity: 1, scale: 1.2, x: 0 }
                   : { opacity: 0, scale: 0.8, x: -20 },
                 transition: { duration: 0.5, delay: 0.3 + index * 0.1 },
@@ -71,7 +68,7 @@ export const Home_CardReview = ({ reviews, reviewsAnimation, onUpdateIndex, moti
         key={`${currentIndex}-text`}
         motionProps={{
           initial: { opacity: 0, x: -20 },
-          animate: hasAnimated ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 },
+          animate: isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 },
           transition: { duration: 0.5, delay: 0.6 },
         }}
       >
@@ -85,7 +82,7 @@ export const Home_CardReview = ({ reviews, reviewsAnimation, onUpdateIndex, moti
         key={`${currentIndex}-author`}
         motionProps={{
           initial: { opacity: 0, x: -20 },
-          animate: hasAnimated ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 },
+          animate: isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 },
           transition: { duration: 0.5, delay: 0.9 },
         }}
       >
@@ -95,7 +92,7 @@ export const Home_CardReview = ({ reviews, reviewsAnimation, onUpdateIndex, moti
           alt=""
           motionProps={{
             initial: { opacity: 0, x: -20 },
-            animate: hasAnimated ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 },
+            animate: isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 },
             transition: { duration: 0.5, delay: 0.9 },
           }}
         />
@@ -103,7 +100,7 @@ export const Home_CardReview = ({ reviews, reviewsAnimation, onUpdateIndex, moti
           className="card-review__author-info"
           motionProps={{
             initial: { opacity: 0, x: -20 },
-            animate: hasAnimated ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 },
+            animate: isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 },
             transition: { duration: 0.5, delay: 1.1 },
           }}
         >

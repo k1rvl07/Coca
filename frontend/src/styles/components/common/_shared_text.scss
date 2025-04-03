@@ -124,5 +124,11 @@
         &-ideas-title-subheading {
             @extend %about_text-ideas-title-subheading;
         }
+        &-card-team-name {
+            @extend %about_text-card-team-name;
+        }
+        &-card-team-role {
+            @extend %about_text-card-team-role;
+        }
     }
 }
