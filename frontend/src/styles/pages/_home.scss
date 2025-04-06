@@ -9,7 +9,7 @@
         &__container {
             @include respond-to(desktop) {
                 @include grid(
-                    on,
+                    true,
                     repeat(2, auto),
                     617px 419px,
                     "title image" "form sales-report",
@@ -128,7 +128,7 @@
         &__container {
             @include respond-to(desktop) {
                 @include grid(
-                    on,
+                    true,
                     repeat(2, auto),
                     repeat(2, auto),
                     "image-statistic title" "image-statistic advantages",
