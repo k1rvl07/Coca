@@ -132,3 +132,14 @@
         }
     }
 }
+
+.blog-page {
+    .text {
+        &-card-blog-description {
+            @extend %blog_text-card-blog-description;
+        }
+        &-card-blog-text {
+            @extend %blog_text-card-blog-text;
+        }
+    }
+}

@@ -11,6 +11,7 @@
 @forward 'components/layout/shared_header';
 @forward 'components/sections/shared_section-sponsor';
 @forward 'components/ui/about_card-team';
+@forward 'components/ui/blog_card-blog';
 @forward 'components/ui/home_advantage';
 @forward 'components/ui/home_card-benefit';
 @forward 'components/ui/home_card-news';
@@ -23,4 +24,5 @@
 @forward 'components/ui/shared_slider';
 @forward 'components/ui/shared_title';
 @forward 'pages/about';
+@forward 'pages/blog';
 @forward 'pages/home';

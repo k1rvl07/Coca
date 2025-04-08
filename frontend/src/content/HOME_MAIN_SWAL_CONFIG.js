@@ -9,7 +9,7 @@ export const HOME_MAIN_SWAL_CONFIG = {
     emailRequired: { icon: "warning", title: "Warning", text: "Email is required!" },
     serverError: { icon: "error", title: "Error", text: "Server is unavailable. Try later." },
     subscriptionSuccess: { icon: "success", title: "Success", text: "You have subscribed!" },
-    failure: { title: "Error", text: "Something went wrong!" },
+    failure: { icon: "error", title: "Error", text: "Something went wrong!" },
   },
   errorConditions: [
     {

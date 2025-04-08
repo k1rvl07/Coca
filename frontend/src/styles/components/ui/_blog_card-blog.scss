@@ -1,0 +1,46 @@
+@use "@utils-scss" as *;
+
+.blog-page {
+    .card-blog {
+        @include size(default, 247px);
+        @include respond-to(desktop) {
+            @include size(default, 515px);
+        }
+        &__info {
+            display: none;
+            @include respond-to(desktop) {
+                @include flex(true, $justify: space-between, $align-items: center);
+                @include spacing(margin, (top, bottom), 16px, 24px);
+            }
+        }
+        &__image {
+            @include size(default, 247px, 225px);
+            @include object-fit(cover, center);
+            @include spacing(margin, bottom, 8px);
+            @include respond-to(desktop) {
+                @include size(default, 515px, 428px);
+                @include spacing(margin, bottom, 0px);
+            }
+        }
+        &__text {
+            @include spacing(margin, top, 8px);
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            @include respond-to(desktop) {
+                @include spacing(margin, top, 16px);
+            }
+        }
+        &__name {
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis; 
+        }
+    }
+}

@@ -51,20 +51,21 @@
         &__dragger {
             display: none;
             @include respond-to(desktop) {
+                @include size(default, 100px);
                 transition: all 0.2s ease-in-out;
                 cursor: grab;
                 display: block;
                 @include position(absolute, (left, top), 468px, 100px);
-                touch-action: none;
+                &:hover {
+                    transition: all 0.2s ease-in-out;
+                    cursor: grabbing;
+                    transform: scale(1.1);
+                }
                 &:active {
                     transition: all 0.2s ease-in-out;
                     cursor: grabbing;
                     transform: scale(0.9);
                 }
-            }
-            &-image {
-                @include size(default, 100px);
-                pointer-events: none;
             }
         }
         .title {
@@ -194,7 +195,6 @@
                     @include size(default, 534px);
                 }
             }
-
         }
         .slider {
             @include spacing(margin, (top, bottom), 32px, 56px);

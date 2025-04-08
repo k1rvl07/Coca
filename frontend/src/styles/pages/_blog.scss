@@ -1,0 +1,84 @@
+@use "@utils-scss" as *;
+
+.blog-page {
+  .main {
+    @include spacing(padding, (top, bottom), 32px, 36px);
+    @include respond-to(desktop) {
+      @include spacing(padding, (top, bottom), 90px, 168px);
+    }
+    &__dragger {
+      @include position(absolute, (left, top), 235px, 94px);
+      @include respond-to(desktop) {
+        @include size(default, 100px);
+        @include position(null, (left, top), 479px, 164px);
+        transition: all 0.2s ease-in-out;
+        cursor: grab;
+        display: block;
+        touch-action: none;
+        &:hover {
+          transition: all 0.2s ease-in-out;
+          transform: scale(1.1);
+          cursor: grabbing;
+        }
+        &:active {
+          transition: all 0.2s ease-in-out;
+          cursor: grabbing;
+          transform: scale(0.9);
+        }
+      }
+    }
+    .slider {
+      &:nth-child(2) {
+        @include spacing(margin, (top, bottom), 56px, 32px);
+        @include respond-to(desktop) {
+          @include spacing(margin, (top, bottom), 128px, 80px);
+        }
+        .slider {
+          &__window {
+            overflow-x: scroll;
+            &::-webkit-scrollbar {
+              display: none;
+            }
+          }
+          &__slides {
+            @include flex(true, $gap: 8px);
+            text-wrap: nowrap;
+          }
+        }
+      }
+      &:nth-child(3) {
+        .slider {
+          &__window {
+            @include size(default, null, 324px);
+            overflow-x: scroll;
+            scroll-snap-type: x none;
+            &::-webkit-scrollbar {
+              display: none;
+            }
+            @include respond-to(desktop) {
+              @include size(default, null, 630px);
+            }
+          }
+          &__slides {
+            @include position(relative);
+            @include flex(true, $gap: 16px);
+            @include respond-to(desktop) {
+              @include flex($gap: 32px);
+            }
+          }
+          &__slide {
+            @include size(default, fit-content);
+          }
+        }
+      }
+    }
+    .title {
+      @include respond-to(desktop) {
+        @include size(default, 851px);
+      }
+      &__heading {
+        @include spacing(margin, bottom, 48px);
+      }
+    }
+  }
+}

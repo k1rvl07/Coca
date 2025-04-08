@@ -7,6 +7,7 @@ export const Shared_Button = ({
   disabled,
   onClick,
   children,
+  style,
   motionProps = {},
 }) => {
   return (
@@ -15,6 +16,7 @@ export const Shared_Button = ({
       className={className}
       disabled={disabled}
       onClick={onClick}
+      style={style}
       {...motionProps}
     >
       {children}

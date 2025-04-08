@@ -15,3 +15,11 @@
     }
 }
 
+.blog-page {
+    .button {
+        &-activity {
+            @extend %blog_button-activity;
+        }
+    }
+}
+

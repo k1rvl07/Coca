@@ -15,13 +15,7 @@ try {
     if (file !== "index.js" && file.endsWith(".js")) {
       const routePath = path.join(routesDir, file);
       const route = await import(`file://${routePath}`);
-      const routeName = file.replace(".js", "");
-
-      if (typeof route.default === "function") {
-        router.use(`/${routeName}`, route.default);
-      } else {
-        console.error(`Module ${file} is not a function.`);
-      }
+      router.use(route.default);
     }
   });
   await Promise.all(routePromises);

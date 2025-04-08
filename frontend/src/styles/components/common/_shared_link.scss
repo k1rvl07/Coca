@@ -37,3 +37,11 @@
         }
     }
 }
+
+.blog-page {
+    .link {
+        &-card-blog-name {
+            @extend %blog_link-card-blog-name;
+        }
+    }
+}

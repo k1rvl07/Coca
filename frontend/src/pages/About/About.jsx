@@ -9,7 +9,6 @@ export const About = () => {
     Shared_Text: Text,
     Shared_Link: Link,
     Shared_Image: Image,
-    Shared_Button: Button,
     Shared_Slider: Slider,
     Shared_Line: Line,
     Shared_Box: Box,
@@ -114,18 +113,7 @@ export const About = () => {
               transition: { duration: 0.5, ease: "easeOut", delay: 0.8 },
             }}
           />
-          <Button
-            type="button"
-            className="main__dragger"
-            data-no-slide={true}
-            motionProps={{
-              initial: { opacity: 0, scale: 0.9 },
-              animate: main.isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 },
-              transition: { duration: 0.6, ease: "easeOut", delay: 0.9 },
-            }}
-          >
-            <Image className="main__dragger-image" src={dragger} alt="" />
-          </Button>
+          <Image className="main__dragger" src={dragger} data-no-slide={true} alt="" />
         </Slider>
       </Section>
 
