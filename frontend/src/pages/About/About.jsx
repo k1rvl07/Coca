@@ -20,7 +20,7 @@ export const About = () => {
 
   const sections = ["main", "ideas", "team"];
   const animations = sections.map(() => useSectionAnimation({ amount: 0.2, once: true }));
-  const [main, ideas, team] = animations;
+  const [mainAnimation, ideasAnimation, teamAnimation] = animations;
 
   const isMobile = useMediaQuery({ maxWidth: 1440 });
 
@@ -28,10 +28,10 @@ export const About = () => {
     <main className="about-page">
       <Section
         className="main"
-        ref={main.sectionRef}
+        ref={mainAnimation.sectionRef}
         motionProps={{
           initial: { opacity: 0, y: 50 },
-          animate: main.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 },
+          animate: mainAnimation.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 },
           transition: { duration: 0.6, ease: "easeOut", delay: 0.2 },
         }}
       >
@@ -42,7 +42,7 @@ export const About = () => {
           subheadingClass="text-title-subheading"
           motionProps={{
             initial: { opacity: 0, x: -50 },
-            animate: main.isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 },
+            animate: mainAnimation.isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 },
             transition: { duration: 0.6, ease: "easeOut" },
           }}
         />
@@ -51,7 +51,7 @@ export const About = () => {
           href="#"
           motionProps={{
             initial: { opacity: 0, y: 30 },
-            animate: main.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
+            animate: mainAnimation.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
             transition: { duration: 0.5, ease: "easeOut", delay: 0.3 },
           }}
         >
@@ -69,7 +69,7 @@ export const About = () => {
           draggerClass="main__dragger"
           motionProps={{
             initial: { opacity: 0, y: 30 },
-            animate: main.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
+            animate: mainAnimation.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
             transition: { duration: 0.6, ease: "easeOut", delay: 0.4 },
           }}
         >
@@ -79,7 +79,7 @@ export const About = () => {
             alt="unite_work"
             motionProps={{
               initial: { opacity: 0, x: -20 },
-              animate: main.isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 },
+              animate: mainAnimation.isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 },
               transition: { duration: 0.5, ease: "easeOut", delay: 0.5 },
             }}
           />
@@ -87,7 +87,7 @@ export const About = () => {
             className="main__card"
             motionProps={{
               initial: { opacity: 0, y: 30 },
-              animate: main.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
+              animate: mainAnimation.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
               transition: { duration: 0.6, ease: "easeOut", delay: 0.6 },
             }}
           >
@@ -109,7 +109,7 @@ export const About = () => {
             alt="unite_worker"
             motionProps={{
               initial: { opacity: 0, x: 20 },
-              animate: main.isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 },
+              animate: mainAnimation.isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 },
               transition: { duration: 0.5, ease: "easeOut", delay: 0.8 },
             }}
           />
@@ -119,10 +119,10 @@ export const About = () => {
 
       <Section
         className="ideas"
-        ref={ideas.sectionRef}
+        ref={ideasAnimation.sectionRef}
         motionProps={{
           initial: { opacity: 0, y: 50 },
-          animate: ideas.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 },
+          animate: ideasAnimation.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 },
           transition: { duration: 0.6, ease: "easeOut", delay: 0.2 },
         }}
       >
@@ -130,7 +130,9 @@ export const About = () => {
           className="ideas__hr"
           motionProps={{
             initial: { opacity: 0, scale: 0.9 },
-            animate: ideas.isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 },
+            animate: ideasAnimation.isInView
+              ? { opacity: 1, scale: 1 }
+              : { opacity: 0, scale: 0.9 },
             transition: { duration: 0.4, ease: "easeOut", delay: 0.3 },
           }}
         />
@@ -143,7 +145,7 @@ export const About = () => {
           isSubheadingLine={false}
           motionProps={{
             initial: { opacity: 0, y: 30 },
-            animate: ideas.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
+            animate: ideasAnimation.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
             transition: { duration: 0.6, ease: "easeOut", delay: 0.4 },
           }}
         />
@@ -151,7 +153,9 @@ export const About = () => {
           className="ideas__hr"
           motionProps={{
             initial: { opacity: 0, scale: 0.9 },
-            animate: ideas.isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 },
+            animate: ideasAnimation.isInView
+              ? { opacity: 1, scale: 1 }
+              : { opacity: 0, scale: 0.9 },
             transition: { duration: 0.4, ease: "easeOut", delay: 0.5 },
           }}
         />
@@ -159,10 +163,10 @@ export const About = () => {
 
       <Section
         className="team"
-        ref={team.sectionRef}
+        ref={teamAnimation.sectionRef}
         motionProps={{
           initial: { opacity: 0, y: 50 },
-          animate: team.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 },
+          animate: teamAnimation.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 },
           transition: { duration: 0.6, ease: "easeOut", delay: 0.2 },
         }}
       >
@@ -175,14 +179,14 @@ export const About = () => {
           isSubheadingLine={false}
           motionProps={{
             initial: { opacity: 0, y: 30 },
-            animate: team.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
+            animate: teamAnimation.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
             transition: { duration: 0.6, ease: "easeOut", delay: 0.3 },
           }}
         />
         <Slider
           motionProps={{
             initial: { opacity: 0, y: 30 },
-            animate: team.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
+            animate: teamAnimation.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
             transition: { duration: 0.6, ease: "easeOut", delay: 0.4 },
           }}
         >
@@ -193,7 +197,7 @@ export const About = () => {
               img={assets[card.img]}
               motionProps={{
                 initial: { opacity: 0, y: 20 },
-                animate: team.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
+                animate: teamAnimation.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
                 transition: { duration: 0.5, ease: "easeOut", delay: 0.5 + index * 0.2 },
               }}
             />
@@ -205,7 +209,9 @@ export const About = () => {
             data-no-slide={true}
             motionProps={{
               initial: { opacity: 0, scale: 0.8 },
-              animate: team.isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 },
+              animate: teamAnimation.isInView
+                ? { opacity: 1, scale: 1 }
+                : { opacity: 0, scale: 0.8 },
               transition: { duration: 0.4, ease: "easeOut", delay: 0.8 },
             }}
           />
@@ -214,7 +220,7 @@ export const About = () => {
           className="team__join"
           motionProps={{
             initial: { opacity: 0, y: 20 },
-            animate: team.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
+            animate: teamAnimation.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
             transition: { duration: 0.6, ease: "easeOut", delay: 0.6 },
           }}
         >
@@ -231,7 +237,7 @@ export const About = () => {
               className="team__join-link link-team-join"
               motionProps={{
                 initial: { opacity: 0, x: -20 },
-                animate: team.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 },
+                animate: teamAnimation.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 },
                 transition: { duration: 0.4, ease: "easeOut", delay: 1 },
               }}
             >

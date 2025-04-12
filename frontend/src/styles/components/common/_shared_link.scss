@@ -43,5 +43,8 @@
         &-card-blog-name {
             @extend %blog_link-card-blog-name;
         }
+        &-card-report-link {
+            @extend %blog_link-card-report-link;
+        }
     }
 }

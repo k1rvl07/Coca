@@ -19,7 +19,7 @@ const showAlert = (config) => {
   });
 };
 
-export const subscribe = async (email) => {
+export const postSubscribe = async (email) => {
   try {
     const response = await api.post("/subscribe", { email });
 

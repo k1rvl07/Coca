@@ -1,6 +1,6 @@
 import pool from "../models/db.js";
 
-export const blog = async (req, res) => {
+export const getBlog = async (req, res) => {
   const { category } = req.query;
   try {
     const query = category

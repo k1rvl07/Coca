@@ -1,0 +1,18 @@
+@use "@utils-scss" as *;
+
+.card-report {
+    @include flex(true, column, $gap: 16px);
+    @include respond-to(desktop) {
+        @include flex($gap: 24px);
+        @include size(default, 584px);
+    }
+    &__link {
+        text-underline-offset: 5px;
+        @include respond-to(desktop) {
+            text-underline-offset: 10px;
+        }
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}

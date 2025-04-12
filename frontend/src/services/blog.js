@@ -1,6 +1,6 @@
 import api from "./api";
 
-export const blog = async (category) => {
-  const response = await api.get(`/blog?category=${category !== null ? category : ""}`);
+export const fetchBlog = async (category) => {
+  const response = await api.get(`/blog${category ? `?category=${category}` : ""}`);
   return response.data;
 };

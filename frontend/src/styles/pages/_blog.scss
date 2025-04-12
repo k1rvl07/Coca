@@ -81,4 +81,37 @@
       }
     }
   }
+  .report {
+    @include spacing(padding, y, 40px);
+    background-color: color(neutral-100);
+    @include respond-to(desktop) {
+      @include spacing(padding, y, 120px);
+    }
+    &__container {
+      @include flex(true, column, $gap: 40px);
+      @include respond-to(desktop) {
+        @include grid(
+          true,
+          repeat(5, auto),
+          repeat(2, auto),
+          "card-1 card-2" "card-1 ." "card-1 card-4" ". card-4" "card-3 card-4",
+          $justify-items: space-between
+        );
+        .card-report {
+          &:nth-child(1) {
+            @include grid-item(card-1, start, start);
+          }
+          &:nth-child(2) {
+            @include grid-item(card-2, start, start);
+          }
+          &:nth-child(3) {
+            @include grid-item(card-3, start, start);
+          }
+          &:nth-child(4) {
+            @include grid-item(card-4, start, start);
+          }
+        }
+      }
+    }
+  }
 }

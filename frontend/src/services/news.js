@@ -1,6 +1,6 @@
 import api from "./api";
 
-export const news = async () => {
+export const fetchNews = async () => {
   const response = await api.get("/news");
   return response.data;
 };

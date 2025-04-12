@@ -141,5 +141,8 @@
         &-card-blog-text {
             @extend %blog_text-card-blog-text;
         }
+        &-card-report-description {
+            @extend %blog_text-card-report-description;
+        }
     }
 }
