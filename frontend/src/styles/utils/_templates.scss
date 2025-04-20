@@ -59,13 +59,9 @@
   background-color: color(neutral-100);
   color: color(neutral-10);
   border-radius: 100px;
-  @include size(default, 28px, 28px);
   @include flex(true, $align-items: center, $justify: center);
   @include border(all, 1px, solid, color(neutral-100));
   @include button-effect("black");
-  @include respond-to(desktop) {
-    @include size(default, 50px, 50px);
-  }
 }
 
 %shared_button-arrow-disabled {
@@ -73,10 +69,6 @@
   color: color(neutral-60);
   @include flex(true, $align-items: center, $justify: center);
   @include border(all, 1px, solid, color(neutral-60), 100px);
-  @include size(default, 28px, 28px);
-  @include respond-to(desktop) {
-    @include size(default, 50px, 50px);
-  }
 }
 
 %slides {
@@ -110,5 +102,27 @@
     transition: all 0.4s ease-in-out;
     color: color(neutral-100);
     text-decoration: underline;
+  }
+}
+
+%blog_button-article {
+  @include spacing(padding, (x, y), 24px, 12px);
+  transition: all 0.4s ease-in-out;
+  border-radius: 100px;
+  border: 1px solid color(neutral-40);
+  @include respond-to(desktop) {
+    @include spacing(padding, (x, y), 46px, 16px);
+  }
+  &:hover {
+    transition: all 0.4s ease-in-out;
+    border: 1px solid color(neutral-100);
+    color: color(neutral-10);
+    background-color: color(neutral-100);
+  }
+  &:active {
+    transition: all 0.2s ease-in-out;
+    border: 1px solid color(neutral-100);
+    color: color(neutral-100);
+    background-color: color(neutral-10);
   }
 }

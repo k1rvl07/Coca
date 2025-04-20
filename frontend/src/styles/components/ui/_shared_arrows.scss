@@ -1,0 +1,8 @@
+@use "@utils-scss" as *;
+
+.arrows {
+    @include flex(true, $gap: 8px);
+    @include respond-to(desktop) {
+        @include flex($gap: 16px);
+    }
+}

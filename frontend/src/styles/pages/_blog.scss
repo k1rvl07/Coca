@@ -18,7 +18,7 @@
         &:hover {
           transition: all 0.2s ease-in-out;
           transform: scale(1.1);
-          cursor: grabbing;
+          cursor: grab;
         }
         &:active {
           transition: all 0.2s ease-in-out;
@@ -109,6 +109,95 @@
           }
           &:nth-child(4) {
             @include grid-item(card-4, start, start);
+          }
+        }
+      }
+    }
+  }
+  .articles {
+    @include spacing(padding, (top, bottom), 56px, 80px);
+    @include respond-to(desktop) {
+      @include spacing(padding, (top, bottom), 160px, 220px);
+    }
+    &__container {
+      @include respond-to(desktop) {
+        @include grid(true, repeat(2, auto), repeat(2, auto), "title arrows" "slider slider", $row-gap: 80px);
+      }
+    }
+    .title {
+      @include respond-to(desktop) {
+        @include grid-item(title);
+      }
+      &__heading {
+        @include spacing(margin, bottom, 16px);
+        @include respond-to(desktop) {
+          @include spacing(margin, bottom, 24px);
+        }
+      }
+      &__subheading {
+        @include respond-to(desktop) {
+          @include size(default, 435px);
+        }
+      }
+    }
+    .arrows {
+      @include spacing(margin, (top, bottom), 24px, 32px);
+      @include respond-to(desktop) {
+        @include grid-item(arrows, end, center);
+      }
+      &__button {
+        @include size(default, 40px, 40px);
+        @include respond-to(desktop) {
+          @include size(default, 50px, 50px);
+        }
+      }
+    }
+    .slider {
+      @include respond-to(desktop) {
+        @include grid-item(slider);
+      }
+      &__window {
+        overflow-x: scroll;
+        scroll-snap-type: x mandatory;
+        &::-webkit-scrollbar {
+          display: none;
+        }
+      }
+      &__slides {
+        @include flex(true, $gap: 16px);
+        @include respond-to(desktop) {
+          @include flex($justify: space-between, $gap: 0px);
+        }
+      }
+      &__slide {
+        &:nth-child(1) {
+          .card-article {
+            &__image {
+              @include size(default, 263px, 374px);
+              @include respond-to(desktop) {
+                @include size(default, 406px, 577px);
+              }
+            }
+          }
+        }
+        &:nth-child(2) {
+          .card-article {
+            &__image {
+              @include size(default, 263px, 213px);
+              @include respond-to(desktop) {
+                @include size(default, 406px, 329px);
+              }
+            }
+          }
+        }
+        &:nth-child(3) {
+          .card-article {
+            &__image {
+              @include size(default, 263px, 386px);
+              @include respond-to(desktop) {
+                @include size(default, 406px, 695px);
+              }
+            }
           }
         }
       }

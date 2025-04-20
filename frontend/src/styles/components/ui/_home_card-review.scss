@@ -52,9 +52,11 @@
         }
         .arrows {
             @include grid-item(arrows, end, center);
-            @include flex(true, $gap: 8px);
-            @include respond-to(desktop) {
-                @include flex($gap: 16px);
+            &__button {
+                @include size(default, 28px, 28px);
+                @include respond-to(desktop) {
+                    @include size(default, 50px, 50px);
+                }
             }
         }
     }

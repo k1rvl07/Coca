@@ -12,8 +12,14 @@ export const Blog = () => {
     Blog_CardBlog: CardBlog,
     Shared_Slider: Slider,
     Blog_CardReport: CardReport,
+    Shared_Arrows: Arrows,
+    Blog_CardArticle: CardArticle,
   } = components;
-  const { BLOG_MAIN_BUTTONS: MAIN_BUTTONS, BLOG_REPORT_CARD_REPORT: CARD_REPORT } = content;
+  const {
+    BLOG_MAIN_BUTTONS: MAIN_BUTTONS,
+    BLOG_REPORT_CARD_REPORT: CARD_REPORT,
+    BLOG_ARTICLES_CARD_ARTICLE: CARD_ARTICLE,
+  } = content;
   const { fetchBlog } = services;
   const { dragger } = assets;
   const { useSectionAnimation } = hooks;
@@ -33,9 +39,27 @@ export const Blog = () => {
     queryFn: () => fetchBlog(CATEGORY_MAP[activeButton]),
   });
 
-  const sections = ["main", "report"];
+  const sections = ["main", "report", "articles"];
   const animations = sections.map(() => useSectionAnimation({ amount: 0.2, once: true }));
-  const [mainAnimation, reportAnimation] = animations;
+  const [mainAnimation, reportAnimation, articlesAnimation] = animations;
+
+  const [currentPage, setCurrentPage] = useState(0);
+  const itemsPerPage = 3;
+
+  const handleNext = () => {
+    if ((currentPage + 1) * itemsPerPage < CARD_ARTICLE.length) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const handlePrev = () => {
+    if (currentPage > 0) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const isFirstPage = currentPage === 0;
+  const isLastPage = (currentPage + 1) * itemsPerPage >= CARD_ARTICLE.length;
 
   return (
     <main className="blog-page">
@@ -136,6 +160,49 @@ export const Blog = () => {
             }}
           />
         ))}
+      </Section>
+      <Section className="articles" ref={articlesAnimation.sectionRef}>
+        <Title
+          heading="Articles"
+          headingClass="text-title-heading-second-black"
+          subheading="Complex tech decoded by engineers, business trends analyzed by experts."
+          subheadingClass="text-title-subheading-small"
+          isSubheadingLine={false}
+          motionProps={{
+            initial: { opacity: 0, x: -20 },
+            animate: articlesAnimation.isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 },
+            transition: { duration: 0.5, ease: "easeOut", delay: 0.2 },
+          }}
+        />
+        <Arrows
+          onNext={handleNext}
+          onPrev={handlePrev}
+          isFirst={isFirstPage}
+          isLast={isLastPage}
+          motionProps={{
+            initial: { opacity: 0, y: 20 },
+            animate: articlesAnimation.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
+            transition: { duration: 0.5, ease: "easeOut", delay: 0.35 },
+          }}
+        />
+        <Slider>
+          {CARD_ARTICLE.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage).map(
+            (item, index) => (
+              <CardArticle
+                key={item.id}
+                {...item}
+                img={assets[`article_img_${item.id}`]}
+                motionProps={{
+                  initial: { opacity: 0, y: 20 },
+                  animate: articlesAnimation.isInView
+                    ? { opacity: 1, y: 0 }
+                    : { opacity: 0, y: 20 },
+                  transition: { duration: 0.5, ease: "easeOut", delay: 0.35 * index },
+                }}
+              />
+            ),
+          )}
+        </Slider>
       </Section>
     </main>
   );

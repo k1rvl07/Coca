@@ -58,7 +58,7 @@
                 @include position(absolute, (left, top), 468px, 100px);
                 &:hover {
                     transition: all 0.2s ease-in-out;
-                    cursor: grabbing;
+                    cursor: grab;
                     transform: scale(1.1);
                 }
                 &:active {

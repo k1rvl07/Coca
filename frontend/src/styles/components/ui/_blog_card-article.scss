@@ -1,0 +1,25 @@
+@use "@utils-scss" as *;
+
+.blog-page {
+    .card-article {
+        @include size(default, 263px);
+        @include respond-to(desktop) {
+            @include size(default, 384px);
+        }
+        &__title {
+            @include spacing(margin, (top, bottom), 16px, 8px);
+            @include respond-to(desktop) {
+                @include spacing(margin, (top, bottom), 24px, 16px);
+            }
+        }
+        &__image {
+            @include object-fit(cover, center);
+        }
+        &__button {
+            @include spacing(margin, top, 16px);
+            @include respond-to(desktop) {
+                @include spacing(margin, top, 24px);
+            }
+        }
+    }
+}

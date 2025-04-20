@@ -20,6 +20,11 @@
         &-activity {
             @extend %blog_button-activity;
         }
+        &-article {
+            @extend %blog_button-article;
+        }
     }
 }
+
+
 
