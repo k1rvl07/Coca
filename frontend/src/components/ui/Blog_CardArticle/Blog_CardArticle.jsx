@@ -17,7 +17,7 @@ export const Blog_CardArticle = ({ img, title, description, href, motionProps = 
         {description}
       </Text>
       <Link href={href}>
-        <Button className="card-article__button button-article">Read More</Button>
+        <Button className="card-article__button button-grey">Read More</Button>
       </Link>
     </Box>
   );

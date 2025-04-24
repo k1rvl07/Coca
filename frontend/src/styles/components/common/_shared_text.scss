@@ -146,3 +146,14 @@
         }
     }
 }
+
+.pricing-page {
+    .text {
+        &-main-description {
+            @extend %pricing_text-main-description;
+        }
+        &-main-label {
+            @extend %pricing_text-main-label;
+        }
+    }
+}

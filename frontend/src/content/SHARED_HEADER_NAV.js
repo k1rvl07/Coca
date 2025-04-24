@@ -20,7 +20,7 @@ export const SHARED_HEADER_NAV = [
       },
       {
         id: 4,
-        href: "#",
+        href: "/Coca/Pricing",
         text: "Pricing",
       },
     ],

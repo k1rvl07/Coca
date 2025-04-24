@@ -13,15 +13,15 @@
     &-arrow-disabled {
         @extend %shared_button-arrow-disabled;
     }
+    &-grey {
+        @extend %shared_button-grey;
+    }
 }
 
 .blog-page {
     .button {
         &-activity {
             @extend %blog_button-activity;
-        }
-        &-article {
-            @extend %blog_button-article;
         }
     }
 }

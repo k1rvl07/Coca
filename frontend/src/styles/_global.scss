@@ -2,7 +2,7 @@
 @forward 'base/reset';
 @forward 'base/common';
 @forward 'special/swal';
-@forward 'components/common/shared_buttons';
+@forward 'components/common/shared_button';
 @forward 'components/common/shared_input';
 @forward 'components/common/shared_link';
 @forward 'components/common/shared_text';
@@ -29,3 +29,4 @@
 @forward 'pages/about';
 @forward 'pages/blog';
 @forward 'pages/home';
+@forward 'pages/pricing';

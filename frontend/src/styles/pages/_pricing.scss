@@ -1,0 +1,45 @@
+@use "@utils-scss" as *;
+
+.pricing-page {
+    .main {
+        &__container {
+            @include flex(true, column, $align-items: center);
+        }
+        &__title {
+            text-align: center;
+            @include spacing(margin, y, 16px);
+            @include respond-to(desktop) {
+                @include spacing(margin, (top, bottom), 24px, 56px);
+            }
+        }
+        &__label {
+            @include flex(true, $align-items: center, $gap: 12px);
+            @include size(default, fit-content);
+        }
+        &__checkbox {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            @include size(default, 44px, 24px);
+            background-color: color(neutral-30);
+            border-radius: 100px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            &::before {
+                content: "";
+                @include position(absolute, (top, left), 2px, 2px);
+                @include size(default, 20px, 20px);
+                background-color: color(neutral-60);
+                border-radius: 100px;
+                transition: all 0.2s ease-in-out;
+            }
+            &:checked {
+                &::before {
+                    background-color: color(iris-hover);
+                    transform: translateX(20px);
+                }
+            }
+        }
+    }
+}
