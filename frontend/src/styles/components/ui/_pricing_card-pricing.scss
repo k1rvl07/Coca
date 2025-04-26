@@ -1,0 +1,59 @@
+@use "@utils-scss" as *;
+
+.card-pricing {
+    &__background {
+        border-radius: 12px;
+        @include spacing(padding, (x, y), 20px, 24px);
+        @include respond-to(desktop) {
+            @include spacing(padding, (x, y), 24px, 40px);
+            @include size(default, 378px);
+        }
+        &-black {
+            background-color: color(neutral-100);
+        }
+        &-white {
+            background-color: color(neutral-10);
+        }
+    }
+    &__header {
+        @include flex(true, $justify: space-between, $align-items: center);
+        &-notice {
+            @include size(default, 118px, 28px);
+            background-color: color(iris-hover);
+            border-radius: 100px;
+            @include flex(true, $justify: center, $align-items: center);
+            @include respond-to(desktop) {
+                @include size(default, 118px, 32px);
+            }
+        }
+        &-icon {
+            @include size(default, 32px);
+            @include respond-to(desktop) {
+                @include size(default, 40px);
+            }
+        }
+    }
+    &__title {
+        @include spacing(margin, (top, bottom), 16px, 8px);
+    }
+    &__price {
+        @include spacing(margin, y, 24px);
+    }
+    &__features-list {
+        @include spacing(margin, (top, bottom), 16px, 24px);
+        @include flex(true, $direction: column, $gap: 16px);
+        @include respond-to(desktop) {
+            @include spacing(margin, bottom, 40px);
+            @include flex($gap: 18px);
+        }
+    }
+    &__feature-item {
+        @include flex(true, $align-items: center, $gap: 8px);
+    }
+    &__button {
+        @include spacing((padding, margin), (x, y, left), 16px, 12px, null, null, null, calc((295px - 118px) / 2));
+        @include respond-to(desktop) {
+            @include spacing((padding, margin), (x, y, left), 32px, 16px, null, null, null, calc((330px - 162px) / 2));
+        }
+    }
+}

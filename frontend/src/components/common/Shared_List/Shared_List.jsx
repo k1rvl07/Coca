@@ -1,20 +1,24 @@
 import { motion } from "framer-motion";
-import React from "react";
+import React, { memo } from "react";
 
-export const Shared_List = ({ as = "ul", children, className = "", motionProps = {} }) => {
-  const validTags = ["ul", "ol"];
+const MotionComponents = {
+  ul: motion.ul,
+  ol: motion.ol,
+};
 
-  if (!validTags.includes(as)) {
+export const Shared_List = memo(({ as = "ul", children, className = "", motionProps = {} }) => {
+  const MotionList = MotionComponents[as];
+
+  if (!MotionList) {
     throw new Error(
-      `Shared_List: Invalid tag "${as}". ` + `Expected one of: ${validTags.join(", ")}`,
+      `Shared_List: Invalid tag "${as}". ` +
+        `Expected one of: ${Object.keys(MotionComponents).join(", ")}`,
     );
   }
-
-  const MotionList = motion.create(as);
 
   return (
     <MotionList className={className} {...motionProps}>
       {children}
     </MotionList>
   );
-};
+});

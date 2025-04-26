@@ -16,9 +16,9 @@
             @include object-fit(cover, center);
         }
         &__button {
-            @include spacing(margin, top, 16px);
+            @include spacing((margin, padding), (top, x, y), 16px, null, null, null, 24px, 12px);
             @include respond-to(desktop) {
-                @include spacing(margin, top, 24px);
+                @include spacing((margin, padding), (top, x, y), 24px, null, null, null, 46px, 16px);
             }
         }
     }

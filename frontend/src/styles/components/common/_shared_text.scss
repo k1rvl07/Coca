@@ -155,5 +155,42 @@
         &-main-label {
             @extend %pricing_text-main-label;
         }
+        &-card-pricing-header-notice-text {
+            @extend %pricing_text-card-pricing-header-notice-text;
+        }
+        &-card-pricing-title-white {
+            @extend %pricing_text-card-pricing-title-white;
+        }
+        &-card-pricing-title-black {
+            @extend %pricing_text-card-pricing-title-black;
+        }
+        &-card-pricing-description {
+            @extend %pricing_text-card-pricing-description;
+        }
+        &-card-pricing-price-white {
+            @extend %pricing_text-card-pricing-price-white;
+        }
+        &-card-pricing-price-black {
+            @extend %pricing_text-card-pricing-price-black;
+        }
+        &-card-pricing-period {
+            @extend %pricing_text-card-pricing-period;
+        }
+        &-card-pricing-features-white {
+            @extend %pricing_text-card-pricing-features-white;
+        }
+        &-card-pricing-features-black {
+            @extend %pricing_text-card-pricing-features-black;
+        }
+        &-card-pricing-feature-white {
+            @extend %pricing_text-card-pricing-feature-white;
+        }
+        &-card-pricing-feature-black {
+            @extend %pricing_text-card-pricing-feature-black;
+        }
+        &-card-pricing-feature-disabled {
+            @extend %pricing_text-card-pricing-feature-disabled;
+            text-decoration: line-through;
+        }
     }
 }

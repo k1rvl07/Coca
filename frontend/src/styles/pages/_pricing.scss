@@ -2,6 +2,10 @@
 
 .pricing-page {
     .main {
+        @include spacing(padding, (top, bottom), 32px, 56px);
+        @include respond-to(desktop) {
+            @include spacing(padding, (top, bottom), 90px, 78px);
+        }
         &__container {
             @include flex(true, column, $align-items: center);
         }
@@ -38,6 +42,21 @@
                 &::before {
                     background-color: color(iris-hover);
                     transform: translateX(20px);
+                }
+            }
+        }
+        &__cards {
+                @include spacing(margin, top, 56px);
+                @include flex(true, $direction: column, $align-items: center, $gap: 32px);
+                @include respond-to(desktop) {
+                    @include spacing(margin, top, 102px);
+                    @include flex($direction: row, $align-items: start, $justify: space-between, $gap: 0px);
+                }
+        }
+        .card-pricing {
+            &:nth-child(1), &:nth-child(3) {
+                @include respond-to(desktop) {
+                    @include spacing(margin, top, 64px);
                 }
             }
         }

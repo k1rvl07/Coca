@@ -1,20 +1,31 @@
 import { motion } from "framer-motion";
-import React from "react";
+import React, { memo } from "react";
 
-export const Shared_Text = ({ as = "p", className, children, custom, motionProps = {} }) => {
-  const validTags = ["p", "h1", "h2", "h3", "h4", "h5", "h6", "span", "div"];
+const MotionComponents = {
+  p: motion.p,
+  h1: motion.h1,
+  h2: motion.h2,
+  h3: motion.h3,
+  h4: motion.h4,
+  h5: motion.h5,
+  h6: motion.h6,
+  span: motion.span,
+  div: motion.div,
+};
 
-  if (!validTags.includes(as)) {
+export const Shared_Text = memo(({ as = "p", className, children, custom, motionProps = {} }) => {
+  const MotionTag = MotionComponents[as];
+
+  if (!MotionTag) {
     throw new Error(
-      `Shared_Text: Invalid tag "${as}". ` + `Expected one of: ${validTags.join(", ")}`,
+      `Shared_Text: Invalid tag "${as}". ` +
+        `Expected one of: ${Object.keys(MotionComponents).join(", ")}`,
     );
   }
-
-  const MotionTag = motion.create(as);
 
   return (
     <MotionTag className={className} custom={custom} {...motionProps}>
       {children}
     </MotionTag>
   );
-};
+});
