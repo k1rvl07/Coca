@@ -11,14 +11,17 @@ export const Pricing = () => {
     Shared_Input: Input,
     Shared_Label: Label,
     Shared_Box: Box,
+    Shared_Title: Title,
     Pricing_CardPricing: CardPricing,
+    Pricing_Question: Question,
   } = components;
-  const { PRICING_MAIN_CARD_PRICING: CARD_PRICING } = content;
+  const { PRICING_MAIN_CARD_PRICING: CARD_PRICING, PRICING_QUESTIONS_QUESTION: QUESTIONS } =
+    content;
   const { useSectionAnimation } = hooks;
 
-  const sections = ["main"];
+  const sections = ["main", "questions"];
   const animations = sections.map(() => useSectionAnimation({ amount: 0.2, once: true }));
-  const [mainAnimation] = animations;
+  const [mainAnimation, questionsAnimation] = animations;
 
   return (
     <main className="pricing-page">
@@ -81,6 +84,37 @@ export const Pricing = () => {
               motionProps={{
                 initial: { opacity: 0, y: 20 },
                 animate: mainAnimation.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
+                transition: { duration: 0.5, ease: "easeOut", delay: 0.4 + index * 0.25 },
+              }}
+            />
+          ))}
+        </Box>
+      </Section>
+      <Section
+        className="questions"
+        ref={questionsAnimation.sectionRef}
+        motionProps={{
+          initial: { opacity: 0, y: 50 },
+          animate: questionsAnimation.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 },
+          transition: { duration: 0.6, ease: "easeOut", delay: 0.2 },
+        }}
+      >
+        <Title
+          heading="Frequently asked questions"
+          headingTag="h2"
+          headingClass="text-title-heading-second-black"
+          subheading="Everything you need to know about the product and billing."
+          subheadingClass="text-title-subheading-small"
+          isSubheadingLine={false}
+        />
+        <Box className="questions__cards">
+          {QUESTIONS.map((question, index) => (
+            <Question
+              key={question.id}
+              {...question}
+              motionProps={{
+                initial: { opacity: 0, y: 20 },
+                animate: questionsAnimation.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
                 transition: { duration: 0.5, ease: "easeOut", delay: 0.4 + index * 0.25 },
               }}
             />

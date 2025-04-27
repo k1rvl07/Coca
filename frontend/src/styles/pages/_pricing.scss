@@ -46,17 +46,45 @@
             }
         }
         &__cards {
-                @include spacing(margin, top, 56px);
-                @include flex(true, $direction: column, $align-items: center, $gap: 32px);
-                @include respond-to(desktop) {
-                    @include spacing(margin, top, 102px);
-                    @include flex($direction: row, $align-items: start, $justify: space-between, $gap: 0px);
-                }
+            @include spacing(margin, top, 56px);
+            @include flex(true, $direction: column, $align-items: center, $gap: 32px);
+            @include respond-to(desktop) {
+                @include spacing(margin, top, 102px);
+                @include flex($direction: row, $align-items: start, $justify: space-between, $gap: 0px);
+            }
         }
         .card-pricing {
-            &:nth-child(1), &:nth-child(3) {
+            &:nth-child(1),
+            &:nth-child(3) {
                 @include respond-to(desktop) {
                     @include spacing(margin, top, 64px);
+                }
+            }
+        }
+    }
+    .questions {
+        @include spacing(padding, (top, bottom), 58px, 80px);
+        @include respond-to(desktop) {
+            @include spacing(padding, (top, bottom), 82px, 160px);
+        }
+        &__cards {
+            @include flex(true, $direction: column, $align-items: center, $gap: 24px);
+            @include respond-to(desktop) {
+                @include flex($gap: 64px);
+            }
+        }
+        .title {
+            text-align: center;
+            @include size(default, 295px);
+            @include spacing(margin, (x, bottom), auto, 32px);
+            @include respond-to(desktop) {
+                @include spacing(margin, bottom, 80px);
+                @include size(default, 740px);
+            }
+            &__heading {
+                @include spacing(margin, bottom, 16px);
+                @include respond-to(desktop) {
+                    @include spacing(margin, bottom, 24px);
                 }
             }
         }

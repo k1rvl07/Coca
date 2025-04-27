@@ -1,0 +1,24 @@
+@use "@utils-scss" as *;
+
+.question {
+    @include size(default, 100%);
+    @include grid(true, repeat(2, auto), auto 16px, "question button" "answer .", $row-gap: 16px, $column-gap: 8px);
+    @include respond-to(desktop) {
+        @include grid($columns: auto 24px, $column-gap: 400px);
+    }
+    &__title {
+        @include grid-item(question, start, start);
+    }
+    &__button {
+        @include grid-item(button, end, start);
+    }
+    &__image {
+        @include size(default, 16px);
+        @include respond-to(desktop) {
+            @include size(default, 24px);
+        }
+    }
+    &__answer {
+        @include grid-item(answer, start, start);
+    }
+}

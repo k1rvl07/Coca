@@ -1,4 +1,5 @@
 import { assets, components } from "@exports";
+import { AnimatePresence } from "framer-motion";
 import React from "react";
 
 export const Pricing_CardPricing = ({
@@ -123,26 +124,29 @@ export const Pricing_CardPricing = ({
           {description}
         </Text>
 
-        <Text
-          as="p"
-          key={isSwitchOn ? "discount" : "regular"}
-          className={`card-pricing__price ${color === "black" ? "text-card-pricing-price-white" : "text-card-pricing-price-black"}`}
-          motionProps={{
-            initial: { opacity: 0, scale: 0.95 },
-            animate: isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 },
-            transition: {
-              delay: (motionProps.transition?.delay || 0) + 0.4 + index * 0.1,
-              duration: 0.4,
-              ease: "easeInOut",
-            },
-          }}
-        >
-          {"$"}
-          {price}{" "}
-          <Text as="span" className="card-pricing__period text-card-pricing-period">
-            /mo
+        <AnimatePresence mode="wait">
+          <Text
+            key={isSwitchOn ? "discount" : "regular"}
+            as="p"
+            className={`card-pricing__price ${color === "black" ? "text-card-pricing-price-white" : "text-card-pricing-price-black"}`}
+            motionProps={{
+              initial: { opacity: 0 },
+              animate: isInView ? { opacity: 1 } : { opacity: 0 },
+              exit: { opacity: 0 },
+              transition: {
+                delay: (motionProps.transition?.delay || 0) + 0.3 + index * 0.1,
+                duration: 0.3,
+                ease: "easeInOut",
+              },
+            }}
+          >
+            {"$"}
+            {price}{" "}
+            <Text as="span" className="card-pricing__period text-card-pricing-period">
+              /mo
+            </Text>
           </Text>
-        </Text>
+        </AnimatePresence>
 
         <Text
           as="p"

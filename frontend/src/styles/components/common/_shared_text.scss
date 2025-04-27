@@ -192,5 +192,11 @@
             @extend %pricing_text-card-pricing-feature-disabled;
             text-decoration: line-through;
         }
+        &-question-title {
+            @extend %pricing_text-question-title;
+        }
+        &-question-answer {
+            @extend %pricing_text-question-answer;
+        }
     }
 }
