@@ -200,3 +200,23 @@
         }
     }
 }
+
+.contact-page {
+    .text {
+        &-main-address-global {
+            @extend %contact_text-main-address-global;
+        } 
+        &-main-address-full {
+            @extend %contact_text-main-address-full; 
+        }
+        &-card-contact-name {
+            @extend %contact_text-card-contact-name;
+        }
+        &-card-contact-description {
+            @extend %contact_text-card-contact-description;
+        }
+        &-card-contact-info {
+            @extend %contact_text-card-contact-info;
+        }
+    } 
+}

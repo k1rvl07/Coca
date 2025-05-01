@@ -1,0 +1,16 @@
+@use "@utils-scss" as *;
+
+.card-contact {
+    @include size(default, 160px);
+    @include respond-to(desktop) {
+        @include size(default, 176px);
+        @include spacing(padding, bottom, 32px);
+        border-bottom: 1px solid color(neutral-50);
+    }
+    &__description {
+        @include spacing(padding, (top, bottom), 8px, 12px);
+        @include respond-to(desktop) {
+            @include spacing(padding, bottom, 20px);
+        }
+    }
+}

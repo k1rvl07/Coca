@@ -14,6 +14,7 @@
 @forward 'components/ui/blog_card-article';
 @forward 'components/ui/blog_card-blog';
 @forward 'components/ui/blog_card-report';
+@forward 'components/ui/contact_card-contact';
 @forward 'components/ui/home_advantage';
 @forward 'components/ui/home_card-benefit';
 @forward 'components/ui/home_card-news';
@@ -30,5 +31,6 @@
 @forward 'components/ui/shared_title';
 @forward 'pages/about';
 @forward 'pages/blog';
+@forward 'pages/contact';
 @forward 'pages/home';
 @forward 'pages/pricing';

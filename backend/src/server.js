@@ -16,7 +16,7 @@ app.get("/api", (_, res) => {
 
 app.use("/api", routes);
 
-app.use((err, _req, res, _next) => {
+app.use((err, res) => {
   console.error(err.stack);
   res.status(500).send("Something broke!");
 });

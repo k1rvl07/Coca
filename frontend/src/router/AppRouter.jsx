@@ -19,7 +19,7 @@ const RedirectHandler = () => {
 };
 
 export const AppRouter = () => {
-  const { Home, About, Blog, Pricing } = pages;
+  const { Home, About, Blog, Pricing, Contact } = pages;
   const { Shared_Header: Header, Shared_Footer: Footer } = components;
 
   return (
@@ -32,6 +32,7 @@ export const AppRouter = () => {
           <Route path="/About" element={<About />} />
           <Route path="/Blog" element={<Blog />} />
           <Route path="/Pricing" element={<Pricing />} />
+          <Route path="/Contact" element={<Contact />} />
         </Routes>
       </Router>
       <Footer />

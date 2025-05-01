@@ -131,7 +131,7 @@ export const Shared_Header = () => {
 
       <Link
         className="header__contact link-arrow-underline"
-        href="/Coca/#"
+        href="/Coca/Contact"
         motionProps={{
           initial: { opacity: 0, x: 20 },
           animate: isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 },

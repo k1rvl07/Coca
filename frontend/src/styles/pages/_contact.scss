@@ -1,0 +1,62 @@
+@use "@utils-scss" as *;
+
+.contact-page {
+    .main {
+        @include spacing(padding, (top, bottom), 32px, 54px);
+        @include respond-to(desktop) {
+            @include spacing(padding, y, 80px);
+        }
+        &__container {
+            @include respond-to(desktop) {
+                @include grid(true, repeat(2, auto), repeat(2, auto), "heading ." "map cards", $row-gap: 92px);
+            }
+        }
+        &__heading {
+            @include respond-to(desktop) {
+                @include grid-item(heading, start, start);
+                @include size(default, 740px)
+            }
+        }
+        &__map {
+            @include position(relative);
+            @include spacing(margin, (top, bottom), 32px, 58px);
+            @include respond-to(desktop) {
+                @include grid-item(map, start, start);
+                @include spacing(margin, all, 0px)
+            }
+        }
+        &__image {
+            @include object-fit(cover, center);
+            @include respond-to(desktop) {
+                @include size(default, 980px); 
+            }
+        }
+        &__address {
+            background-color: color(neutral-10);
+            border-radius: 5px;
+            @include size(default, fit-content);
+            @include position(absolute, (left, top), 228px, 75px);
+            @include respond-to(desktop) {
+                border-radius: 8px;
+                @include position(absolute, (left, top), 740px, 300px); 
+            }
+            &-container {
+                @include flex(true, column, $gap: 5px);
+                @include spacing(padding, (x, y), 10px, 8px);
+                @include size(default, 110px);
+                @include respond-to(desktop) {
+                    @include size(default, 180px);
+                    @include flex($gap: 8px);
+                    @include spacing(padding, (x, y), 16px, 12px); 
+                }
+            }
+        }
+        &__cards {
+            @include flex(true, $justify: space-between, $wrap: wrap, $row-gap: 24px);
+            @include respond-to(desktop) {
+                @include grid-item(cards, end, center);
+                @include flex($direction: column, $row-gap: 40px) 
+            }
+        }
+    }
+}
