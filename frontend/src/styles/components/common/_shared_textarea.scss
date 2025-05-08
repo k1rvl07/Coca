@@ -1,0 +1,9 @@
+@use "@utils-scss" as *;
+
+.contact-page {
+    .textarea {
+        &-feedback {
+            @extend %contact_textarea-feedback;
+        }
+    }
+}

@@ -218,5 +218,11 @@
         &-card-contact-info {
             @extend %contact_text-card-contact-info;
         }
+        &-feedback-form-title {
+            @extend %contact_text-feedback-form-title;
+        }
+        &-feedback-form-description {
+            @extend %contact_text-feedback-form-description;
+        }
     } 
 }

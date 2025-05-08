@@ -1,11 +1,14 @@
 @forward 'base/font';
 @forward 'base/reset';
 @forward 'base/common';
+@forward 'special/phone-input';
 @forward 'special/swal';
 @forward 'components/common/shared_button';
 @forward 'components/common/shared_input';
+@forward 'components/common/shared_label';
 @forward 'components/common/shared_link';
 @forward 'components/common/shared_text';
+@forward 'components/common/shared_textarea';
 @forward 'components/layout/shared_container';
 @forward 'components/layout/shared_footer';
 @forward 'components/layout/shared_header';

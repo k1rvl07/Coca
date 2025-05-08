@@ -1,23 +1,21 @@
 import { motion } from "framer-motion";
 import React from "react";
 
-export const Shared_Input = ({
+export const Shared_Textarea = ({
   className,
   id,
-  value,
-  type = "text",
   placeholder,
   onChange,
+  maxLength,
   motionProps = {},
 }) => {
   return (
-    <motion.input
+    <motion.textarea
       className={className}
       id={id}
-      value={value}
-      type={type}
       placeholder={placeholder}
       onChange={onChange}
+      maxLength={maxLength}
       {...motionProps}
     />
   );

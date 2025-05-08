@@ -15,7 +15,7 @@ export const Home = () => {
     Home_CardStatistic: CardStatistic,
     Home_Advantage: Advantage,
     Home_Result: Result,
-    Shared_SectionSponsors: SectionSponsors,
+    Shared_SectionSponsor: SectionSponsor,
     Home_CardBenefit: CardBenefit,
     Shared_Slider: Slider,
     Home_CardNews: CardNews,
@@ -358,7 +358,7 @@ export const Home = () => {
             }}
           />
         </Section>
-        <SectionSponsors />
+        <SectionSponsor />
         <Section
           className="benefits"
           ref={benefitsAnimation.sectionRef}

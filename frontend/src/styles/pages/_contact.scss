@@ -14,7 +14,7 @@
         &__heading {
             @include respond-to(desktop) {
                 @include grid-item(heading, start, start);
-                @include size(default, 740px)
+                @include size(default, 740px);
             }
         }
         &__map {
@@ -22,13 +22,13 @@
             @include spacing(margin, (top, bottom), 32px, 58px);
             @include respond-to(desktop) {
                 @include grid-item(map, start, start);
-                @include spacing(margin, all, 0px)
+                @include spacing(margin, all, 0px);
             }
         }
         &__image {
             @include object-fit(cover, center);
             @include respond-to(desktop) {
-                @include size(default, 980px); 
+                @include size(default, 980px);
             }
         }
         &__address {
@@ -38,7 +38,7 @@
             @include position(absolute, (left, top), 228px, 75px);
             @include respond-to(desktop) {
                 border-radius: 8px;
-                @include position(absolute, (left, top), 740px, 300px); 
+                @include position(absolute, (left, top), 740px, 300px);
             }
             &-container {
                 @include flex(true, column, $gap: 5px);
@@ -47,7 +47,7 @@
                 @include respond-to(desktop) {
                     @include size(default, 180px);
                     @include flex($gap: 8px);
-                    @include spacing(padding, (x, y), 16px, 12px); 
+                    @include spacing(padding, (x, y), 16px, 12px);
                 }
             }
         }
@@ -55,7 +55,102 @@
             @include flex(true, $justify: space-between, $wrap: wrap, $row-gap: 24px);
             @include respond-to(desktop) {
                 @include grid-item(cards, end, center);
-                @include flex($direction: column, $row-gap: 40px) 
+                @include flex($direction: column, $row-gap: 40px);
+            }
+        }
+    }
+    .sponsor {
+        @include spacing(padding, bottom, 56px);
+        @include respond-to(desktop) {
+            @include spacing(padding, y, 64px);
+        }
+    }
+    .feedback {
+        @include spacing(padding, (top, bottom), 56px, 80px);
+        @include respond-to(desktop) {
+            @include spacing(padding, (top, bottom), 120px, 160px);
+        }
+        &__container {
+            @include respond-to(desktop) {
+                @include size(default, 100%, 885px);
+                @include position(relative);
+            }
+        }
+        &__image {
+            display: none;
+            @include respond-to(desktop) {
+                display: block;
+                @include position(absolute, left, 382px);
+            }
+        }
+        .form {
+            border: 1px solid color(neutral-50);
+            @include size(default, fit-content);
+            background-color: color(neutral-10);
+            @include respond-to(desktop) {
+                z-index: 2;
+                @include position(absolute);
+            }
+            &__container {
+                @include spacing(padding, all, 24px);
+                @include respond-to(desktop) {
+                    @include spacing(padding, (x, y), 48px, 56px);
+                    @include size(default, 610px);
+                    @include grid(
+                        true,
+                        repeat(7, auto),
+                        repeat(2, auto),
+                        "title title" "description description" "first-name last-name" "email email" "phone phone"
+                            "message message" "button ."
+                    );
+                }
+            }
+            &__title {
+                @include respond-to(desktop) {
+                    @include grid-item(title, start, start);
+                }
+            }
+            &__description {
+                @include spacing(margin, top, 12px);
+                @include respond-to(desktop) {
+                    @include spacing(margin, (top, bottom), 20px, 24px);
+                    @include grid-item(description, start, start);
+                }
+                &-email {
+                    color: color(iris-hover);
+                }
+            }
+            &__button {
+                @include spacing(padding, (x, y), 24px, 12px);
+                @include spacing(margin, top, 32px);
+                @include respond-to(desktop) {
+                    @include grid-item(button, start, start);
+                    @include spacing(padding, (x, y), 32px, 16px);
+                }
+            }
+            &__group {
+                @include flex(true, column, $gap: 6px);
+                @include spacing(margin, top, 24px);
+                @include respond-to(desktop) {
+                    @include size(default, 100%);
+                    &:nth-child(3) {
+                        @include grid-item(first-name, start, start);
+                        @include size(default, 240px);
+                    }
+                    &:nth-child(4) {
+                        @include grid-item(last-name, end, start);
+                        @include size(default, 240px);
+                    }
+                    &:nth-child(5) {
+                        @include grid-item(email, start, start);
+                    }
+                    &:nth-child(6) {
+                        @include grid-item(phone, start, start);
+                    }
+                    &:nth-child(7) {
+                        @include grid-item(message, start, start);
+                    }
+                }
             }
         }
     }

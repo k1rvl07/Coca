@@ -10,3 +10,11 @@
         }
     }
 }
+
+.contact-page {
+    .input {
+        &-feedback {
+            @extend %contact_input-feedback;
+        }
+    } 
+}

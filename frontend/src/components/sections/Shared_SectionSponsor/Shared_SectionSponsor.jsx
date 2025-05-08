@@ -1,7 +1,7 @@
 import { assets, components, content, hooks } from "@exports";
 import React from "react";
 
-export const Shared_SectionSponsors = () => {
+export const Shared_SectionSponsor = () => {
   const {
     Shared_Section: Section,
     Shared_Title: Title,

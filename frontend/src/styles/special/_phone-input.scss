@@ -1,0 +1,27 @@
+@use "@utils-scss" as *;
+
+.contact-page {
+    .PhoneInput {
+        @include position(relative);
+    }
+    .PhoneInputCountrySelect {
+        @include spacing(margin, bottom, 12px);
+        @include size(default, 100%);
+        &:focus {
+            outline: none;
+        }
+    }
+    .PhoneInputCountryIcon {
+        @include size(default, 28px, fit-content);
+        @include spacing((margin, padding), (left, bottom), 4px, null, null, 2px);
+        cursor: default;
+    }
+    .PhoneInputInput {
+        @include position(absolute, (top, left), 40px, 60px);
+        @include size(default, 208px);
+        @include spacing(padding, y, 2px);
+        @include respond-to(desktop) {
+            @include size(default, 432px);
+        }
+    }
+}

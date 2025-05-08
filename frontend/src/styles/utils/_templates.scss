@@ -122,3 +122,24 @@
     background-color: color(neutral-10);
   }
 }
+
+%contact_input-textarea-feedback {
+  @include spacing(padding, (x, y), 14px, 10px);
+  border-radius: 8px;
+  border: 1px solid color(neutral-40);
+}
+
+%contact_input-feedback {
+  @extend %contact_input-textarea-feedback;
+  @include size(default, 100%);
+}
+
+%contact_textarea-feedback {
+  @extend %contact_input-textarea-feedback;
+  @include size(default, 100%, 134px);
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
