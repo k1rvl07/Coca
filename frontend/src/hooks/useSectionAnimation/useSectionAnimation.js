@@ -1,5 +1,5 @@
 import { useInView } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 
 export const useSectionAnimation = (options = {}) => {
   const sectionRef = useRef(null);

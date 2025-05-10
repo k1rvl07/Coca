@@ -1,7 +1,7 @@
 import { assets, components, content, hooks } from "@exports";
 import { services } from "@exports";
 import { useMutation } from "@tanstack/react-query";
-import React from "react";
+import React, { useState } from "react";
 import PhoneInput from "react-phone-number-input";
 
 export const Contact = () => {
@@ -27,9 +27,9 @@ export const Contact = () => {
   const animations = sections.map(() => useSectionAnimation({ amount: 0.2, once: true }));
   const [mainAnimation, feedbackAnimation] = animations;
 
-  const [_phone, _setPhone] = React.useState("");
+  const [_phone, _setPhone] = useState("");
 
-  const [formData, setFormData] = React.useState({
+  const [formData, setFormData] = useState({
     first_name: "",
     last_name: "",
     email: "",
